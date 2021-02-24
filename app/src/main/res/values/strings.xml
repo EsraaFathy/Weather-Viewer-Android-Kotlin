@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">KotlinProject</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="shape">shape</string>
+    <string name="current_city">Current City</string>
+    <string name="_20_2_2021">20-2-2021</string>
+    <string name="_11_11">11:11</string>
+    <string name="current_mode">current mode</string>
+    <string name="_8_c">8 ْ C</string>
+    <string name="mostly_clear">Mostly Clear</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="details">Details</string>
+    <string name="arrow">arrow</string>
+    <string name="current">Current</string>
+    <string name="daily">Daily</string>
+    <string name="hourly">Hourly</string>
+</resources>

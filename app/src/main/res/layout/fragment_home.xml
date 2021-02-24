@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".home.Home">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/currentCity"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_height="wrap_content"
+                android:text="@string/current_city"
+                style="@style/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/currentDate"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:text="@string/_20_2_2021"
+                style="@style/textView"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/currentCity"
+                app:layout_constraintStart_toStartOf="@id/currentCity"
+                app:layout_constraintTop_toBottomOf="@id/currentCity" />
+
+            <TextView
+                android:id="@+id/currentTime"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:text="@string/_11_11"
+                android:textSize="18sp"
+                style="@style/textView"
+                app:layout_constraintEnd_toEndOf="@id/currentDate"
+                app:layout_constraintStart_toStartOf="@id/currentDate"
+                app:layout_constraintTop_toBottomOf="@id/currentDate" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:id="@+id/currentModeImg"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginStart="0dp"
+                app:layout_constraintStart_toEndOf="@id/currentCity"
+                app:layout_constraintBottom_toBottomOf="@id/currentTime"
+                android:contentDescription="@string/current_mode" />
+
+            <TextView
+                android:id="@+id/currentTemp"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/_8_c"
+                android:textColor="@color/move"
+                android:textSize="30sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/currentTime" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/mostly_clear"
+                android:textColor="@color/move"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toBottomOf="@id/currentTemp"
+                app:layout_constraintStart_toEndOf="@id/currentTemp"
+                app:layout_constraintTop_toBottomOf="@id/currentTime" />
+
+            <ProgressBar
+                android:id="@+id/progress_home"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:progressTint="@color/broun"
+                />
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_margin="10dp"
+                app:cardElevation="10dp"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/cureentCard"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/daialyCard"
+                app:layout_constraintTop_toBottomOf="@id/currentTemp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_weight="1">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/current"
+                    style="@style/textView"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:id="@+id/daialyCard"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toStartOf="@id/hoourlyCard"
+                app:layout_constraintTop_toBottomOf="@id/currentTemp"
+                app:layout_constraintStart_toEndOf="@id/cureentCard"
+                app:layout_constraintHorizontal_weight="1">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daily"
+                    style="@style/textView"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp"
+                android:layout_width="0dp"
+                android:id="@+id/hoourlyCard"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/currentTemp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/daialyCard"
+                app:layout_constraintHorizontal_weight="1">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hourly"
+                    style="@style/textView"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_marginStart="20dp"
+                style="@style/textView"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/details"
+                app:layout_constraintTop_toBottomOf="@id/cureentCard"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/details"/>
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_arrow_24"
+                app:layout_constraintTop_toBottomOf="@id/hoourlyCard"
+                android:contentDescription="@string/arrow" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/details"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+</layout>

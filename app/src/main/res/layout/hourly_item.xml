@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/currentCity"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_height="wrap_content"
+        android:text="@string/current_city"
+        style="@style/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currentDate"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_20_2_2021"
+        style="@style/textView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/currentCity"
+        app:layout_constraintStart_toStartOf="@id/currentCity"
+        app:layout_constraintTop_toBottomOf="@id/currentCity" />
+
+    <TextView
+        android:id="@+id/currentTime"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_11_11"
+        android:textSize="18sp"
+        style="@style/textView"
+        app:layout_constraintEnd_toEndOf="@id/currentDate"
+        app:layout_constraintStart_toStartOf="@id/currentDate"
+        app:layout_constraintTop_toBottomOf="@id/currentDate" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:id="@+id/currentModeImg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="0dp"
+        app:layout_constraintStart_toEndOf="@id/currentCity"
+        app:layout_constraintBottom_toBottomOf="@id/currentTime"
+        android:contentDescription="@string/current_mode" />
+
+    <TextView
+        android:id="@+id/currentTemp"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="70dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_8_c"
+        android:textColor="@color/move"
+        android:textSize="30sp"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/currentTime" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="70dp"
+        android:layout_height="wrap_content"
+        android:text="@string/mostly_clear"
+        android:textColor="@color/move"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toBottomOf="@id/currentTemp"
+        app:layout_constraintStart_toEndOf="@id/currentTemp"
+        app:layout_constraintTop_toBottomOf="@id/currentTime" />
+</androidx.constraintlayout.widget.ConstraintLayout>
