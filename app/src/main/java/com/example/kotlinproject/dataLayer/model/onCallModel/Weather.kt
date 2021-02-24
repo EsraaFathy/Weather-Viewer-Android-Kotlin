@@ -1,4 +1,4 @@
-package com.example.kotlinproject.dataLayer.model
+package com.example.kotlinproject.dataLayer.model.onCallModel
 
 data class Weather(
     val description: String,

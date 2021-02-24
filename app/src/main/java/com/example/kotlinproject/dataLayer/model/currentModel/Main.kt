@@ -1,4 +1,4 @@
-package com.example.kotlinproject.dataLayer.model
+package com.example.kotlinproject.dataLayer.model.currentModel
 
 data class Main(
     val feels_like: Double,

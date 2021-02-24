@@ -1,6 +1,7 @@
 package com.example.kotlinproject.dataLayer.online
 
-import com.example.kotlinproject.dataLayer.model.ModelCurent
+import com.example.kotlinproject.dataLayer.model.currentModel.ModelCurent
+import com.example.kotlinproject.dataLayer.model.onCallModel.OneCallModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,9 +13,10 @@ interface ApiInterface {
                            @Query("lang") lang: String,
                            @Query("appid") appid: String): Call<ModelCurent>
 
-
-
-    //http://openweathermap.org/img/wn/10d@2x.png
-     @GET("img/wn/{imgUrl}")
-     fun getImage(@Query("imgUrl") img :String) : Call<Int>
+     @GET("/data/2.5/onecall?")
+    fun getOneCall(@Query("lat") lat: String,
+                   @Query("lon") lon: String,
+                   @Query("lang") lang: String,
+                   @Query("appid") appid: String,
+                    @Query("exclude") minutely : String) :Call<OneCallModel>
 }

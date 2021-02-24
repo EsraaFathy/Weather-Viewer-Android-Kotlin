@@ -9,14 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
-import com.example.kotlinproject.dataLayer.DataSourceViewModel
-import com.example.kotlinproject.dataLayer.model.ModelCurent
+import com.example.kotlinproject.dataLayer.model.currentModel.ModelCurent
 import com.example.kotlinproject.databinding.FragmentHomeBinding
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
 
 class Home : Fragment() {

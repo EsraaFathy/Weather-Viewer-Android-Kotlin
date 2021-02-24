@@ -7,9 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
-import com.example.kotlinproject.dataLayer.model.ModelCurent
-import com.example.kotlinproject.dataLayer.online.ApiClient
-import com.example.kotlinproject.dataLayer.online.Repository
+import com.example.kotlinproject.dataLayer.model.currentModel.ModelCurent
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter

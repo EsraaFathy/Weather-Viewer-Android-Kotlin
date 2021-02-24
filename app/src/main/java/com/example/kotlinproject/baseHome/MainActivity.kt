@@ -2,30 +2,40 @@ package com.example.kotlinproject.baseHome
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil.setContentView
-import com.bumptech.glide.Glide
+import androidx.fragment.app.Fragment
 import com.example.kotlinproject.R
-import com.example.kotlinproject.dataLayer.online.ApiClient
-import com.example.kotlinproject.dataLayer.online.Repository
 import com.example.kotlinproject.databinding.ActivityMainBinding
+import com.example.kotlinproject.favourit.Favourit
+import com.example.kotlinproject.home.Home
+import com.example.kotlinproject.setting.Setting
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding : ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
+    lateinit var fragment: Fragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= setContentView(this,R.layout.activity_main)
-//        setContentView()
-        val repository = Repository(ApiClient.apiService)
+        binding = setContentView(this, R.layout.activity_main)
 
 
-        //todo get data from sharedprefrence
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+            if (it.itemId==R.id.homeItem_menu){
+                fragment=Home()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment,fragment).commit()
+            }else if (it.itemId==R.id.favorite_menu){
+                fragment=Favourit()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment,fragment).commit()
+            }else {
+                fragment = Setting()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
+            }
+            return@setOnNavigationItemSelectedListener true
+
+        }
+
+        }
 
 
     }
-
-
-}

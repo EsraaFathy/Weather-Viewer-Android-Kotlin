@@ -1,4 +1,4 @@
-package com.example.kotlinproject.dataLayer.model
+package com.example.kotlinproject.dataLayer.model.currentModel
 
 data class Sys(
     val country: String,
