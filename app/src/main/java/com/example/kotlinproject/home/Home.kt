@@ -58,6 +58,9 @@ class Home : Fragment() {
         binding.description.text=it.weather[0].description
         // TODO definde c or f from shared preferences
         binding.currentTemp.text=it.main.temp.toString()
+        binding.humidityPercentage.text=it.main.humidity.toString()
+        binding.windSpeedPercentage.text=it.wind.speed.toString()
+        binding.pressurePercentage.text=it.clouds.all.toString()
 
 
     }
