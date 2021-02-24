@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:paddingVertical="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView
-        android:id="@+id/currentCity"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        android:layout_height="wrap_content"
-        android:text="@string/current_city"
-        style="@style/textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/currentCity"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/current_city"-->
+<!--        style="@style/textView" />-->
 
-    <TextView
-        android:id="@+id/currentDate"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_height="wrap_content"
-        android:text="@string/_20_2_2021"
-        style="@style/textView"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@id/currentCity"
-        app:layout_constraintStart_toStartOf="@id/currentCity"
-        app:layout_constraintTop_toBottomOf="@id/currentCity" />
 
     <TextView
         android:id="@+id/currentTime"
@@ -34,27 +23,24 @@
         android:text="@string/_11_11"
         android:textSize="18sp"
         style="@style/textView"
-        app:layout_constraintEnd_toEndOf="@id/currentDate"
-        app:layout_constraintStart_toStartOf="@id/currentDate"
-        app:layout_constraintTop_toBottomOf="@id/currentDate" />
-
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="30dp"
         android:id="@+id/currentModeImg"
+        android:src="@drawable/ic_cloud"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="0dp"
-        app:layout_constraintStart_toEndOf="@id/currentCity"
-        app:layout_constraintBottom_toBottomOf="@id/currentTime"
         android:contentDescription="@string/current_mode" />
-
     <TextView
         android:id="@+id/currentTemp"
         android:layout_width="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="20dp"
         android:layout_height="wrap_content"
         android:text="@string/_8_c"
         android:textColor="@color/move"
@@ -76,4 +62,156 @@
         app:layout_constraintBottom_toBottomOf="@id/currentTemp"
         app:layout_constraintStart_toEndOf="@id/currentTemp"
         app:layout_constraintTop_toBottomOf="@id/currentTime" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/more_details"
+        style="@style/textView"
+        android:id="@+id/more"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/lanierdetails"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintStart_toStartOf="@id/description"/>
+    <ImageView
+        android:id="@+id/showMoreDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/more"
+        app:layout_constraintTop_toTopOf="@id/more"
+        android:src="@drawable/ic_arrow_down_24"
+        app:layout_constraintBottom_toBottomOf="@id/more"
+        android:contentDescription="@string/down" />
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:id="@+id/lanierdetails"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/currentModeImg"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_margin="10dp"
+            app:cardCornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_humidity"
+                    android:contentDescription="@string/humidity" />
+                <TextView
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/humidity"
+                    style="@style/textView" />
+                <TextView
+                    android:gravity="end"
+                    android:id="@+id/humidityPercentage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_40"
+                    style="@style/textView" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="10dp"
+            app:cardCornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wind"
+                    android:contentDescription="@string/wind_speed" />
+                <TextView
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wind_speed"
+                    style="@style/textView" />
+                <TextView
+                    android:gravity="end"
+                    android:id="@+id/wind_speedPercentage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_40"
+                    style="@style/textView" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="10dp"
+            app:cardCornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_pressure"
+                    android:contentDescription="@string/pressure" />
+                <TextView
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pressure"
+                    style="@style/textView" />
+                <TextView
+                    android:gravity="end"
+                    android:id="@+id/pressurePercentage"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_40"
+                    style="@style/textView" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="10dp"
+            app:cardCornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_cloud"
+                    android:contentDescription="@string/clouds" />
+                <TextView
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clouds"
+                    style="@style/textView"
+                    />
+                <TextView
+                    android:gravity="end"
+                    android:id="@+id/cloudsPercentage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_40"
+                    style="@style/textView" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

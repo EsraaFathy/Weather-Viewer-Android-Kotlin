@@ -17,4 +17,11 @@
     <string name="current">Current</string>
     <string name="daily">Daily</string>
     <string name="hourly">Hourly</string>
+    <string name="humidity">Humidity</string>
+    <string name="_40">40%</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="pressure">Pressure</string>
+    <string name="clouds">Clouds</string>
+    <string name="more_details">More Details</string>
+    <string name="down">down</string>
 </resources>
