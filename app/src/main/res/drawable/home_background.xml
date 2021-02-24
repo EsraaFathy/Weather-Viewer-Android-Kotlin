@@ -4,9 +4,9 @@
     <corners
         android:bottomLeftRadius="30dp"
         android:bottomRightRadius="30dp"/>
-    <stroke
-        android:color="#567"
-        android:width="2dp"/>
+<!--    <stroke-->
+<!--        android:color="#567"-->
+<!--        android:width="2dp"/>-->
     <solid
         android:color="#8FA6BD"/>
 
