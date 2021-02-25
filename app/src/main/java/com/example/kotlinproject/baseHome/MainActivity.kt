@@ -2,14 +2,13 @@ package com.example.kotlinproject.baseHome
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ActivityMainBinding
-import com.example.kotlinproject.favourit.Favourit
-import com.example.kotlinproject.home.Home
-import com.example.kotlinproject.setting.Setting
+import com.example.kotlinproject.ui.favourit.Favourit
+import com.example.kotlinproject.ui.home.Home
+import com.example.kotlinproject.ui.setting.Setting
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,10 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             if (it.itemId==R.id.homeItem_menu){
-                fragment=Home()
+                fragment= Home()
                 supportFragmentManager.beginTransaction().replace(R.id.fragment,fragment).commit()
             }else if (it.itemId==R.id.favorite_menu){
-                fragment=Favourit()
+                fragment= Favourit()
                 supportFragmentManager.beginTransaction().replace(R.id.fragment,fragment).commit()
             }else {
                 fragment = Setting()

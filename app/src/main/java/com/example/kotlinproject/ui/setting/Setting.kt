@@ -1,4 +1,4 @@
-package com.example.kotlinproject.setting
+package com.example.kotlinproject.ui.setting
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.FragmentSettingBinding
 
 
@@ -25,10 +24,6 @@ class Setting : Fragment() {
     ): View? {
         binding = FragmentSettingBinding.inflate(inflater, container, false)
         settingViewModel= SettingViewModel(activity!!)
-
-        settingViewModel.gettingLocation().observe(this, Observer {
-            Toast.makeText(activity,it.latitude.toString(),Toast.LENGTH_SHORT).show()
-        })
 
         return binding.root
     }

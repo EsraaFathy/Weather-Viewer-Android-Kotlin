@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_background"
-        tools:context=".favourit.Favourit">
+        tools:context=".ui.favourit.Favourit">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

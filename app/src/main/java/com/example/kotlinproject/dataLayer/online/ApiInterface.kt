@@ -18,5 +18,6 @@ interface ApiInterface {
                    @Query("lon") lon: String,
                    @Query("lang") lang: String,
                    @Query("appid") appid: String,
-                    @Query("exclude") minutely : String) :Call<OneCallModel>
+                    @Query("exclude") minutely : String,
+                    @Query("units") units :String) :Call<OneCallModel>
 }

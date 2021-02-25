@@ -18,7 +18,7 @@ class Repository(private val apiInterface : ApiInterface) {
 //    val repository: Repository= Repository(ApiClient.apiService)
 
      private fun getCurrent(lat: String,lon: String,lang: String, appid: String) = apiInterface.getCurrent(lat,lon,lang,appid)
-     private fun getOneCall(lat: String,lon: String,lang: String, appid: String) = apiInterface.getOneCall(lat,lon,lang,appid,"minutely")
+     private fun getOneCall(lat: String,lon: String,lang: String, appid: String,units :String) = apiInterface.getOneCall(lat,lon,lang,appid,"minutely",units)
 
 
 
@@ -40,9 +40,9 @@ class Repository(private val apiInterface : ApiInterface) {
 
         }
     }
-    public fun loadOneCall(lat: String,lon: String,lang: String, appid: String) {
+    public fun loadOneCall(lat: String,lon: String,lang: String, appid: String,units :String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val data = getOneCall(lat,lon,lang,appid)
+            val data = getOneCall(lat,lon,lang,appid,units)
             data.enqueue(object : retrofit2.Callback<OneCallModel?> {
                 override fun onResponse(
                     call: Call<OneCallModel?>,

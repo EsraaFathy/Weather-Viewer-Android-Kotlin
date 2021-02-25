@@ -24,4 +24,5 @@
     <string name="clouds">Clouds</string>
     <string name="more_details">More Details</string>
     <string name="down">down</string>
+    <string name="title_activity_map">Map</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.kotlinproject.favourit
+package com.example.kotlinproject.ui.favourit
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

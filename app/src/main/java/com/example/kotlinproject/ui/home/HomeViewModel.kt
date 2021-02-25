@@ -1,5 +1,7 @@
-package com.example.kotlinproject.home
+package com.example.kotlinproject.ui.home
 
+import android.content.Context
+import android.location.Location
 import android.os.Build
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -13,7 +15,7 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(val context: Context) : ViewModel() {
     private var dateLiveData :MutableLiveData<String> =MutableLiveData<String>()
     private var progress :MutableLiveData<Int> =MutableLiveData<Int>()
     private var timeLiveData :MutableLiveData<String> =MutableLiveData<String>()
@@ -44,5 +46,11 @@ class HomeViewModel : ViewModel() {
     }
     fun getProgress():LiveData<Int>{
         return progress
+    }
+
+    fun gettingLocation() :LiveData<Location>{
+        val locationHanding: LocationHanding = LocationHanding(context)
+        locationHanding.loadLocation()
+        return locationHanding.getLocatin()
     }
 }
