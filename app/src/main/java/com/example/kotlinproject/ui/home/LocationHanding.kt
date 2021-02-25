@@ -4,11 +4,13 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.provider.Settings
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,8 +18,11 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
 class LocationHanding(val context: Context) {
-    private val LOCATION_PERMISSION_REQUEST_CODE = 1234
+    companion object {
+        const val LOCATION_PERMISSION_REQUEST_CODE = 1234
+    }
     private var locationLiveData : MutableLiveData<Location> = MutableLiveData<Location>()
+    private var loadLocal : MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     private var fusedLocationClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(
         context
     )
@@ -41,8 +46,22 @@ class LocationHanding(val context: Context) {
     }
 
     private fun enableLocationSitting() {
-        val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-        context.startActivity(intent)
+        val alertDialogBuilder = AlertDialog.Builder(context)
+        alertDialogBuilder.setTitle("Location Not enable")
+        alertDialogBuilder.setMessage("To load the current accurate temperature you have to enable location")
+        alertDialogBuilder.setPositiveButton("Enable") { dialog, which ->
+            val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+            context.startActivity(intent)
+        }
+        alertDialogBuilder.setNegativeButton("Load From Last Know") {dialog, which ->
+            loadLocal.value=true
+        }
+        alertDialogBuilder.show()
+
+
+
+
+
     }
 
     private fun chickPermition(): Boolean {
@@ -74,6 +93,9 @@ class LocationHanding(val context: Context) {
 
     fun getLocatin() : LiveData<Location>{
         return locationLiveData
+    }
+    fun getFromLoacl() : LiveData<Boolean>{
+        return getFromLoacl()
     }
 
 

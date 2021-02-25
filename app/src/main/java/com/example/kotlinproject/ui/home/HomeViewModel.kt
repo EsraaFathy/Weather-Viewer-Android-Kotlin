@@ -15,9 +15,10 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
-class HomeViewModel(val context: Context) : ViewModel() {
+class HomeViewModel(private val context: Context) : ViewModel() {
     private var dateLiveData :MutableLiveData<String> =MutableLiveData<String>()
     private var progress :MutableLiveData<Int> =MutableLiveData<Int>()
+    val locationHanding: LocationHanding = LocationHanding(context)
     private var timeLiveData :MutableLiveData<String> =MutableLiveData<String>()
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel()
     fun loadOnlineData(lat: String,lon: String,lang: String, appid: String): LiveData<ModelCurent> {
@@ -49,8 +50,11 @@ class HomeViewModel(val context: Context) : ViewModel() {
     }
 
     fun gettingLocation() :LiveData<Location>{
-        val locationHanding: LocationHanding = LocationHanding(context)
         locationHanding.loadLocation()
         return locationHanding.getLocatin()
+    }
+
+    fun getFromLocalDataBase() :LiveData<Boolean>{
+        return locationHanding.getFromLoacl()
     }
 }
