@@ -1,18 +1,18 @@
-package com.example.kotlinproject.dataLayer.model.onCallModel
+package com.example.kotlinproject.dataLayer.entity.oneCallEntity
 
-data class Current(
+data class Hourly(
     val clouds: Int,
     val dew_point: Double,
     val dt: Int,
     val feels_like: Double,
     val humidity: Int,
+    val pop: Double,
     val pressure: Int,
-    val sunrise: Int,
-    val sunset: Int,
+    val rain: Rain,
     val temp: Double,
     val uvi: Double,
     val visibility: Int,
-    val weather: List<Weather>,
+    val weather: List<WeatherXX>,
     val wind_deg: Int,
     val wind_speed: Double
 )

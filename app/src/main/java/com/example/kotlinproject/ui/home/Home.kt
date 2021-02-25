@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.kotlinproject.dataLayer.model.currentModel.ModelCurent
+import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
+import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Current
 import com.example.kotlinproject.databinding.FragmentHomeBinding
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -29,7 +31,8 @@ class Home : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
+        if (resultCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
+            Log.d("TAG","LOCATION_PERMISSION_REQUEST_CODE $requestCode")
             homeViewModel.gettingLocation()
         }
 
@@ -50,24 +53,18 @@ class Home : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun observ() {
         homeViewModel = HomeViewModel(activity!!)
+//        getFromLocal()
         homeViewModel.loadDate()
         homeViewModel.loadTime()
-        homeViewModel.loadOnlineData(
-            "30.590426",
-            "31.502410",
-            "en",
-            "517a14f849e519bb4fa84cdbd4755f56"
-        ).observe(this, {
-            initUI(it)
-        })
-        homeViewModel.getFromLocalDataBase().observe(this, androidx.lifecycle.Observer {
-            if (it == true){
-                //  todo get from local
+//
+        homeViewModel.getCurrentLocalStatue().observe(this, androidx.lifecycle.Observer {
+            if (it == true) {
+                getFromLocal()
 
             }
         })
         homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
-            Toast.makeText(activity, it.latitude.toString(), Toast.LENGTH_SHORT).show()
+            loadOnline(it.latitude,it.longitude)
         })
         homeViewModel.getDate().observe(this, {
             binding.currentDate.text = it
@@ -82,21 +79,51 @@ class Home : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun initUI(it: ModelCurent) {
-        loadImage(binding.currentModeImg, it.weather[0].icon)
-        binding.currentCity.text = it.name
-        binding.description.text = it.weather[0].description
-        // TODO definde c or f from shared preferences
-        binding.currentTemp.text = it.main.temp.toString()
-        binding.humidityPercentage.text = it.main.humidity.toString()
-        binding.windSpeedPercentage.text = it.wind.speed.toString()
-        binding.pressurePercentage.text = it.clouds.all.toString()
+    private fun loadOnline(latitude: Double, longitude: Double) {
+        homeViewModel.loadOnlineData(latitude.toString(), longitude.toString(), "en", "517a14f849e519bb4fa84cdbd4755f56", "minutely", "standard").observe(
+            this, {
+                initUI(it)
 
-
+                homeViewModel.saveCurentToLocal(it.current,it.timezone)
+            })
     }
 
 
-    @SuppressLint("SimpleDateFormat")
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getFromLocal() {
+        homeViewModel.getCurrentLocal().observe(this, androidx.lifecycle.Observer {
+            initUI(it)
+        })
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun initUI(it: AllData) {
+        loadImage(binding.currentModeImg, it.current.weather[0].icon)
+        binding.currentCity.text = it.timezone
+        binding.description.text = it.current.weather[0].description
+        // TODO definde c or f from shared preferences
+        binding.currentTemp.text = it.current.temp.toString()
+        binding.humidityPercentage.text = it.current.humidity.toString()
+        binding.windSpeedPercentage.text = it.current.wind_speed.toString()
+        binding.pressurePercentage.text = it.current.pressure.toString()
+        binding.cloudsPercentage.text = it.current.clouds.toString()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun initUI(it: Current) {
+//        loadImage(binding.currentModeImg, it.current.weather[0].icon)
+        binding.currentCity.text = it.weather[0].main
+        binding.description.text = it.weather[0].description
+        // TODO definde c or f from shared preferences
+        binding.currentTemp.text = String.format("%.2f", it.temp)
+
+        binding.humidityPercentage.text = it.humidity.toString()
+        binding.windSpeedPercentage.text = String.format("%.2f", it.wind_speed)
+        binding.pressurePercentage.text = it.pressure.toString()
+        binding.cloudsPercentage.text = it.clouds.toString()
+    }
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun loadImage(imageView: ImageView, string: String) {
         Glide.with(imageView)  //2

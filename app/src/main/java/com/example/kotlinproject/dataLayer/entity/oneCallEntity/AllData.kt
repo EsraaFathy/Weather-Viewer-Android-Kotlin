@@ -1,6 +1,7 @@
-package com.example.kotlinproject.dataLayer.model.onCallModel
+package com.example.kotlinproject.dataLayer.entity.oneCallEntity
 
-data class OneCallModel(
+data class AllData(
+    val alerts: List<Alert>,
     val current: Current,
     val daily: List<Daily>,
     val hourly: List<Hourly>,

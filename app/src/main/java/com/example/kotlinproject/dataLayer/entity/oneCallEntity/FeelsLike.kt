@@ -1,4 +1,4 @@
-package com.example.kotlinproject.dataLayer.model.onCallModel
+package com.example.kotlinproject.dataLayer.entity.oneCallEntity
 
 data class FeelsLike(
     val day: Double,

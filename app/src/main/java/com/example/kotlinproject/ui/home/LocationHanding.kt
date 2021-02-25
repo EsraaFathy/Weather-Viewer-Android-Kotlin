@@ -9,9 +9,11 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -51,9 +53,11 @@ class LocationHanding(val context: Context) {
         alertDialogBuilder.setMessage("To load the current accurate temperature you have to enable location")
         alertDialogBuilder.setPositiveButton("Enable") { dialog, which ->
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-            context.startActivity(intent)
+            startActivityForResult(context as Activity,intent, LOCATION_PERMISSION_REQUEST_CODE,
+                Bundle()
+            )
         }
-        alertDialogBuilder.setNegativeButton("Load From Last Know") {dialog, which ->
+        alertDialogBuilder.setNegativeButton("Load From Last Known") {dialog, which ->
             loadLocal.value=true
         }
         alertDialogBuilder.show()
@@ -95,7 +99,7 @@ class LocationHanding(val context: Context) {
         return locationLiveData
     }
     fun getFromLoacl() : LiveData<Boolean>{
-        return getFromLoacl()
+        return loadLocal
     }
 
 

@@ -1,7 +1,7 @@
-package com.example.kotlinproject.dataLayer.model.onCallModel
+package com.example.kotlinproject.dataLayer.entity.oneCallEntity
 
 data class Daily(
-    val clouds: Int,
+    val clouds: Double,
     val dew_point: Double,
     val dt: Int,
     val feels_like: FeelsLike,
