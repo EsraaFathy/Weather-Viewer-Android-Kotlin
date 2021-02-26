@@ -72,6 +72,10 @@ class Home : Fragment() {
         homeViewModel.getProgress().observe(this, {
             binding.progressHome.visibility = it
         })
+
+        homeViewModel.loadOnline().observe(this,{
+            initUI(it)
+        })
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

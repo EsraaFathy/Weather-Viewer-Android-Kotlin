@@ -35,6 +35,9 @@ class HomeViewModel(context: Context) : ViewModel() {
         Log.d("TAG", "loadOnlineData: ")
         dataSourceViewModel.loadOneCall(lat,lon,lang,appid,exclude,units)
     }
+    fun loadOnline():LiveData<AllData>{
+        return dataSourceViewModel.getOneCalltData()
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
      fun loadDate(){
