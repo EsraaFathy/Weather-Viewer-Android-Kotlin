@@ -33,7 +33,7 @@ class HomeViewModel(context: Context) : ViewModel() {
     fun loadOnlineData(lat: String,lon: String,lang: String, appid: String,exclude :String,units :String){
         progress.value=View.INVISIBLE
         Log.d("TAG", "loadOnlineData: ")
-        dataSourceViewModel.loadOneCall(lat,lon,lang,appid,exclude,units)
+        dataSourceViewModel.loadOneCall(lat,lon,lang,appid,exclude, units)
     }
     fun loadOnline():LiveData<AllData>{
         return dataSourceViewModel.getOneCalltData()

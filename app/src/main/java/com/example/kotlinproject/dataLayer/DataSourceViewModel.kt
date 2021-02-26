@@ -34,11 +34,15 @@ class DataSourceViewModel(context: Context){
     fun loadOneCall(lat: String,lon: String,lang: String, appid: String,exclude :String,units :String) {
         CoroutineScope(Dispatchers.IO).launch {
             val  data =async { repositoryonLine.getOneCall(lat,lon,lang,appid,exclude,units) }
+//            val  data =async { repositoryonLine.getOneCall(lat,lon,lang,appid,minutely,units) }
             data.await().enqueue(object : Callback<AllData?> {
                 override fun onResponse(call: Call<AllData?>, response: Response<AllData?>) {
                     oneCallData.value = response.body()
+                    CoroutineScope(Dispatchers.Default).launch {
                         Log.d("TAG","not null")
-//                        roomRepositry.saveAllData(response.body()!!)
+                        async { roomRepositry.saveAllData(response.body()!!) }
+                    }
+
                     saveCurentToLocal(response.body()!!.current, response.body()!!.timezone)
                 }
 
@@ -65,9 +69,6 @@ class DataSourceViewModel(context: Context){
     }
 
 
-    fun getHourly(): LiveData<AllData>{
-        return roomRepositry.getAllData()
-    }
 //
 //    fun getDaily(): LiveData<List<Daily>>{
 //        return roomRepositry.getDaily()

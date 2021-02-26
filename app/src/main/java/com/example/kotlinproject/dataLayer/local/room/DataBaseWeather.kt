@@ -12,7 +12,7 @@ import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
 
 @TypeConverters(Converter::class)
-@Database(entities = arrayOf(AllData::class), version = 1)
+@Database(entities = arrayOf(AllData::class), version = 1,exportSchema = false)
 abstract class DataBaseWeather : RoomDatabase() {
     companion object{
         private var db :DataBaseWeather? =null

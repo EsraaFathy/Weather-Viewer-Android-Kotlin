@@ -13,7 +13,7 @@ interface WeatherDao {
     fun getAllData(): LiveData<AllData>
 
     @Insert
-    fun saveAllData(allData :AllData)
+    suspend fun saveAllData(allData :AllData)
 
 
 //    @Query("SELECT * FROM Hourly")

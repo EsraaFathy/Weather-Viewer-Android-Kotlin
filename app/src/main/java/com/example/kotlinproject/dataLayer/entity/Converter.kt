@@ -47,12 +47,12 @@ class Converter {
     }
 
     @TypeConverter
-    fun fromAlertToGeson(list :List<Alert>) : String{
+    fun fromAlertToGeson(list :List<Alert>?) : String{
         return Gson().toJson(list)
     }
     @TypeConverter
-    fun fromJsonToAlert(gson: String):List<Alert>{
-        val type = object : TypeToken<List<Alert>>() {}.type
+    fun fromJsonToAlert(gson: String):List<Alert>?{
+        val type = object : TypeToken<List<Alert>?>() {}.type
         return Gson().fromJson(gson,type)
     }
 
