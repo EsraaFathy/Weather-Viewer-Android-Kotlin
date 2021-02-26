@@ -59,42 +59,35 @@ class Home : Fragment() {
 //
         homeViewModel.getCurrentLocalStatue().observe(this, androidx.lifecycle.Observer {
             if (it == true) {
-                getFromLocal()
+                loadCurrent()
 
             }
         })
-        homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
-            loadOnline(it.latitude,it.longitude)
-        })
-        homeViewModel.getDate().observe(this, {
-            binding.currentDate.text = it
-        })
-        homeViewModel.getTime().observe(this, {
-            binding.currentTime.text = it
+//https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=minutely&lang=ar&units=standard&appid=517a14f849e519bb4fa84cdbd4755f56
 
+        homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
+            homeViewModel.loadOnlineData("33.441792","-94.037689","ar","517a14f849e519bb4fa84cdbd4755f56","minutely","standard")
         })
+
         homeViewModel.getProgress().observe(this, {
             binding.progressHome.visibility = it
         })
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun loadOnline(latitude: Double, longitude: Double) {
-        homeViewModel.loadOnlineData(latitude.toString(), longitude.toString(), "en", "517a14f849e519bb4fa84cdbd4755f56", "minutely", "standard").observe(
-            this, {
-                initUI(it)
-
-                homeViewModel.saveCurentToLocal(it.current,it.timezone)
-            })
-    }
-
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun getFromLocal() {
-        homeViewModel.getCurrentLocal().observe(this, androidx.lifecycle.Observer {
+    private fun loadCurrent() {
+        homeViewModel.getCurrentLocal().observe(this,{
             initUI(it)
         })
     }
+
+
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    private fun getFromLocal() {
+//        homeViewModel.getCurrentLocal().observe(this, androidx.lifecycle.Observer {
+//            initUI(it)
+//        })
+//    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initUI(it: AllData) {
@@ -130,23 +123,6 @@ class Home : Fragment() {
             .load("http://openweathermap.org/img/wn/" + string + "@2x.png") //3
             .centerCrop() //4
             .into(imageView)
-
-        val s = java.time.format.DateTimeFormatter.ISO_INSTANT.format(
-            java.time.Instant.ofEpochSecond(
-                1532358895
-            )
-        )
-
-        val dtStart = s
-        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-        try {
-            val date: Date = format.parse(dtStart)
-            System.out.println(date)
-            Toast.makeText(activity, date.toString(), Toast.LENGTH_SHORT).show()
-
-        } catch (e: ParseException) {
-            e.printStackTrace()
-        }
     }
 
 }

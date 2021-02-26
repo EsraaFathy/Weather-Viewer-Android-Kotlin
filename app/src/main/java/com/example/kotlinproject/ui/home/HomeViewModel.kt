@@ -5,6 +5,7 @@ import android.location.Location
 import android.os.Build
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,10 +14,13 @@ import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Weather
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Current
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.util.*
 
 class HomeViewModel(context: Context) : ViewModel() {
     private var dateLiveData :MutableLiveData<String> =MutableLiveData<String>()
@@ -26,17 +30,11 @@ class HomeViewModel(context: Context) : ViewModel() {
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(context)
 
 
-    fun loadOnlineData(lat: String,lon: String,lang: String, appid: String,exclude :String,units :String): LiveData<AllData> {
+    fun loadOnlineData(lat: String,lon: String,lang: String, appid: String,exclude :String,units :String){
         progress.value=View.INVISIBLE
         Log.d("TAG", "loadOnlineData: ")
-       return dataSourceViewModel.loadOnCallData(lat,lon,lang,appid,exclude,units)
+        dataSourceViewModel.loadOneCall(lat,lon,lang,appid,exclude,units)
     }
-//    fun load(lat: String,lon: String,lang: String, appid: String): LiveData<ModelCurent> {
-//        progress.value=View.INVISIBLE
-//        Log.d("TAG", "loadOnlineData: ")
-//       return dataSourceViewModel.loadOnlineData(lat,lon,lang,appid)
-//    }
-
 
     @RequiresApi(Build.VERSION_CODES.O)
      fun loadDate(){
@@ -72,7 +70,28 @@ class HomeViewModel(context: Context) : ViewModel() {
         progress.value=View.INVISIBLE
         return dataSourceViewModel.getCurrentFromLocal()
     }
-    fun saveCurentToLocal(current: Current,timezone:String){
-        dataSourceViewModel.saveCurentToLocal(current,timezone)
+//    fun saveCurentToLocal(current: Current,timezone:String){
+//        dataSourceViewModel.saveCurentToLocal(current,timezone)
+//    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getTimeAndDate(dt : String):Date{
+        ///// todo
+//        val s = java.time.format.DateTimeFormatter.ISO_INSTANT.format(
+//            java.time.Instant.ofEpochSecond()
+//        )
+        lateinit var date :Date
+        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        try {
+            date  = format.parse(dt)
+
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+        return date
+    }
+
+
+    fun handelData(lat: String,lon: String){
     }
 }

@@ -1,5 +1,6 @@
 package com.example.kotlinproject.dataLayer.entity.oneCallEntity
 
+
 data class Daily(
     val clouds: Double,
     val dew_point: Double,
