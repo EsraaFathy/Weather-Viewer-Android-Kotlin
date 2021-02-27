@@ -58,12 +58,19 @@ class Home : Fragment() {
             homeViewModel.getSetting().observe(this,{
                 Log.d("TAG","it.lang"+ it.lang)
 
-                homeViewModel.loadOnlineData(location.latitude.toString(),
-                    location.longitude.toString(),
-                    it.lang,
-                    "517a14f849e519bb4fa84cdbd4755f56",
-                    "minutely",
-                    it.units)
+                homeViewModel.loadOnlineData(
+                    lat="33.441792",
+                    lon = "-94.037689",
+                    lang = "ar",
+                    appid = "517a14f849e519bb4fa84cdbd4755f56",
+                    exclude="minutely",
+                    units = "standard")
+//homeViewModel.loadOnlineData(location.latitude.toString(),
+//                    location.longitude.toString(),
+//                    it.lang,
+//                    "517a14f849e519bb4fa84cdbd4755f56",
+//                    "minutely",
+//                    it.units)
             })
         })
 
