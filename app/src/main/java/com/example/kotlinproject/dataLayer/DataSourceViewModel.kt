@@ -1,14 +1,12 @@
 package com.example.kotlinproject.dataLayer
 
-import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Current
+import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
+import com.example.kotlinproject.dataLayer.local.curent.SettingModel
 import com.example.kotlinproject.dataLayer.local.curent.SharedPrefrencesReopsitory
 import com.example.kotlinproject.dataLayer.local.room.RoomRepositry
 import com.example.kotlinproject.dataLayer.online.ApiClient
@@ -21,29 +19,29 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DataSourceViewModel(context: Context){
+class DataSourceViewModel(context: Context) {
 
-    private val sharedPreferencesReopsitory : SharedPrefrencesReopsitory = SharedPrefrencesReopsitory(context)
+    private val sharedPreferencesReopsitory: SharedPrefrencesReopsitory =
+        SharedPrefrencesReopsitory(context)
     private val repositoryonLine = Repository(ApiClient.apiService)
-    private val roomRepositry : RoomRepositry= RoomRepositry(context)
+    private val roomRepositry: RoomRepositry = RoomRepositry(context)
 
 
-    private var oneCallData: MutableLiveData<AllData> = MutableLiveData<AllData>()
+    private var roomDataLiveData: MutableLiveData<AllData> = MutableLiveData<AllData>()
 
-   // TODO("shared setting ")
     fun loadOneCall(lat: String,lon: String,lang: String, appid: String,exclude :String,units :String) {
         CoroutineScope(Dispatchers.IO).launch {
             val  data =async { repositoryonLine.getOneCall(lat,lon,lang,appid,exclude,units) }
 //            val  data =async { repositoryonLine.getOneCall(lat,lon,lang,appid,minutely,units) }
             data.await().enqueue(object : Callback<AllData?> {
                 override fun onResponse(call: Call<AllData?>, response: Response<AllData?>) {
-                    oneCallData.value = response.body()
                     CoroutineScope(Dispatchers.Default).launch {
-                        Log.d("TAG","not null")
-                        async { roomRepositry.saveAllData(response.body()!!) }
+                        Log.d("TAG", response.body()?.timezone.toString())
+                        val delete =async { roomRepositry.deleteAll() }
+                        delete.await()
+                        roomRepositry.saveAllData(response.body()!!)
                     }
 
-                    saveCurentToLocal(response.body()!!.current, response.body()!!.timezone)
                 }
 
                 override fun onFailure(call: Call<AllData?>, t: Throwable) {
@@ -56,21 +54,54 @@ class DataSourceViewModel(context: Context){
     }
 
 
-    fun getOneCalltData() : LiveData<AllData>{
-        return oneCallData;
+    fun saveFave(lat: String,lon: String,lang: String, appid: String,exclude :String,units :String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val  data =async { repositoryonLine.getFavCall(lat,lon,lang,appid,exclude,units) }
+//            val  data =async { repositoryonLine.getOneCall(lat,lon,lang,appid,minutely,units) }
+            data.await().enqueue(object : Callback<FavData?> {
+                override fun onResponse(call: Call<FavData?>, response: Response<FavData?>) {
+                    CoroutineScope(Dispatchers.Default).launch {
+                        Log.d("TAG", response.body()?.timezone.toString())
+                        roomRepositry.saveFavData(response.body()!!)
+                    }
+
+                }
+
+                override fun onFailure(call: Call<FavData?>, t: Throwable) {
+                    t.printStackTrace()
+                    Log.d("TAG","onFailure")
+
+                }
+            })
+        }
     }
 
 
-    private fun saveCurentToLocal(current: Current,timezone:String){
-        sharedPreferencesReopsitory.saveCurrent(current,timezone)
+     fun updateSetting(settingModel: SettingModel) {
+        sharedPreferencesReopsitory.updateSetting(settingModel)
     }
-    fun getCurrentFromLocal(): LiveData<Current>{
-        return sharedPreferencesReopsitory.getLoca()
+
+    fun getSetting(): LiveData<SettingModel> {
+        return sharedPreferencesReopsitory.getSetting()
+    }
+
+
+    fun loadRoomData(){
+        CoroutineScope(Dispatchers.Default).launch {
+            Log.d("TAG", "not null")
+
+            roomDataLiveData.postValue(roomRepositry.getAllData().value)
+        }
+    }
+
+
+    fun getRoomDataBase() : LiveData<AllData>{
+        return roomDataLiveData
     }
 
 
 //
 //    fun getDaily(): LiveData<List<Daily>>{
 //        return roomRepositry.getDaily()
-//    }
+
 }

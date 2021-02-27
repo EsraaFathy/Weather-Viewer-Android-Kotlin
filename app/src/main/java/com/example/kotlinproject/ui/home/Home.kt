@@ -13,8 +13,10 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Current
+import com.example.kotlinproject.dataLayer.local.curent.SettingModel
 import com.example.kotlinproject.databinding.FragmentHomeBinding
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -57,41 +59,36 @@ class Home : Fragment() {
         homeViewModel.loadDate()
         homeViewModel.loadTime()
 //
-        homeViewModel.getCurrentLocalStatue().observe(this, androidx.lifecycle.Observer {
-            if (it == true) {
-                loadCurrent()
 
-            }
-        })
 //https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=minutely&lang=ar&units=standard&appid=517a14f849e519bb4fa84cdbd4755f56
 
         homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
-            homeViewModel.loadOnlineData("33.441792","-94.037689","ar","517a14f849e519bb4fa84cdbd4755f56","minutely","standard")
+            val location =it
+            Log.d("TAG","it.lang"+ location.latitude)
+            homeViewModel.getSetting().observe(this,{
+                Log.d("TAG","it.lang"+ it.lang)
+
+                homeViewModel.loadOnlineData(location.latitude.toString(),
+                    location.longitude.toString(),
+                    it.lang,
+                    "517a14f849e519bb4fa84cdbd4755f56",
+                    "minutely",
+                    it.units)
+            })
         })
+//        homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
+//            homeViewModel.loadOnlineData(
+//                it.latitude.toString(),
+//                it.longitude.toString(),
+//                "ar","517a14f849e519bb4fa84cdbd4755f56","minutely","standard")
+//        })
 
         homeViewModel.getProgress().observe(this, {
             binding.progressHome.visibility = it
         })
 
-        homeViewModel.loadOnline().observe(this,{
-            initUI(it)
-        })
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun loadCurrent() {
-        homeViewModel.getCurrentLocal().observe(this,{
-            initUI(it)
-        })
-    }
-
-
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    private fun getFromLocal() {
-//        homeViewModel.getCurrentLocal().observe(this, androidx.lifecycle.Observer {
-//            initUI(it)
-//        })
-//    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initUI(it: AllData) {
@@ -124,7 +121,7 @@ class Home : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun loadImage(imageView: ImageView, string: String) {
         Glide.with(imageView)  //2
-            .load("http://openweathermap.org/img/wn/" + string + "@2x.png") //3
+            .load("http://openweathermap.org/img/wn/$string@2x.png") //3
             .centerCrop() //4
             .into(imageView)
     }

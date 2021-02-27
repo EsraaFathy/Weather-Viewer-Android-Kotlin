@@ -1,5 +1,6 @@
 package com.example.kotlinproject.dataLayer.online
 
+import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import retrofit2.Call
 import retrofit2.http.GET
@@ -13,4 +14,12 @@ interface ApiInterface {
                    @Query("appid") appid: String,
                    @Query("exclude") exclude :String,
                    @Query("units") units :String) :Call<AllData>
+
+    @GET("/data/2.5/onecall?")
+    fun getFavCall(@Query("lat") lat: String,
+                   @Query("lon") lon: String,
+                   @Query("lang") lang: String,
+                   @Query("appid") appid: String,
+                   @Query("exclude") exclude :String,
+                   @Query("units") units :String) :Call<FavData>
 }

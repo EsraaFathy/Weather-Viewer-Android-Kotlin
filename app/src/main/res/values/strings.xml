@@ -25,4 +25,6 @@
     <string name="more_details">More Details</string>
     <string name="down">down</string>
     <string name="title_activity_map">Map</string>
+    <string name="api_key">517a14f849e519bb4fa84cdbd4755f56</string>
+    <string name="minutely">minutely</string>
 </resources>

@@ -33,6 +33,7 @@ class LocationHanding(val context: Context) {
     fun loadLocation(){
         if (verifyLocationEnabled()){
             if (chickPermition()){
+
                 fusedLocationClient.lastLocation
                     .addOnSuccessListener { location: Location? ->
                         if (location!=null)
@@ -41,6 +42,7 @@ class LocationHanding(val context: Context) {
                     }
             }else{
                 requestPremition()
+                loadLocation()
             }
         }else {
             enableLocationSitting()
