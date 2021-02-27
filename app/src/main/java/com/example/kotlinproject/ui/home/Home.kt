@@ -48,10 +48,7 @@ class Home : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun observ() {
         homeViewModel = HomeViewModel(activity!!)
-//        getFromLocal()
-        homeViewModel.loadDate()
-        homeViewModel.loadTime()
-//
+
 
 //https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=minutely&lang=ar&units=standard&appid=517a14f849e519bb4fa84cdbd4755f56
 
@@ -69,23 +66,24 @@ class Home : Fragment() {
                     it.units)
             })
         })
-//        homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
-//            homeViewModel.loadOnlineData(
-//                it.latitude.toString(),
-//                it.longitude.toString(),
-//                "ar","517a14f849e519bb4fa84cdbd4755f56","minutely","standard")
-//        })
 
         homeViewModel.getProgress().observe(this, {
             binding.progressHome.visibility = it
         })
+
+
+
+//        homeViewModel.getRoomData()?.observe(this,{
+//                Log.d("TAG",it[0].current.humidity.toString())
+//            initUI(it[0])
+//        })
 
     }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initUI(it: AllData) {
-        loadImage(binding.currentModeImg, it.current.weather[0].icon)
+//        loadImage(binding.currentModeImg, it.current.weather[0].icon)
         binding.currentCity.text = it.timezone
         binding.description.text = it.current.weather[0].description
         // TODO definde c or f from shared preferences

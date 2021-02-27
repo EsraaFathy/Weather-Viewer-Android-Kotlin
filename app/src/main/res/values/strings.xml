@@ -38,4 +38,6 @@
     <string name="english">English</string>
     <string name="arabic">Arabic</string>
     <string name="save">Save</string>
+    <string name="sunset">Sunset</string>
+    <string name="sunrise">Sunrise</string>
 </resources>

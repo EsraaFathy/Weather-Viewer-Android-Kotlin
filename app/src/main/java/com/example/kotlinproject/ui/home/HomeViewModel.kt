@@ -11,6 +11,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
+import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -20,11 +21,9 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
 
-class HomeViewModel(var context: Context) : ViewModel() {
-    private var dateLiveData :MutableLiveData<String> =MutableLiveData<String>()
+class HomeViewModel(context: Context) : ViewModel() {
     private var progress :MutableLiveData<Int> =MutableLiveData<Int>()
     val locationHanding: LocationHanding = LocationHanding(context)
-    private var timeLiveData :MutableLiveData<String> =MutableLiveData<String>()
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(context)
 
 
@@ -34,24 +33,7 @@ class HomeViewModel(var context: Context) : ViewModel() {
         dataSourceViewModel.loadOneCall(lat,lon,lang,appid,exclude, units)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-     fun loadDate(){
-        val date= LocalDate.now()
-        dateLiveData.value= date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM))
-    }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-     fun loadTime(){
-        val currentTime = LocalTime.now()
-        timeLiveData.value= currentTime.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT))
-    }
-
-    fun getTime():LiveData<String>{
-        return timeLiveData
-    }
-    fun getDate():LiveData<String>{
-        return dateLiveData
-    }
     fun getProgress():LiveData<Int>{
         return progress
     }
@@ -61,12 +43,13 @@ class HomeViewModel(var context: Context) : ViewModel() {
         return locationHanding.getLocatin()
     }
 
-    fun getCurrentLocalStatue() :LiveData<Boolean>{
-        return locationHanding.getFromLoacl()
-    }
 
     fun getSetting():LiveData<SettingModel>{
         return dataSourceViewModel.getSetting()
+    }
+
+    fun getRoomData():LiveData<List<AllData>>?{
+        return dataSourceViewModel.getRoomDataBase()
     }
 
 

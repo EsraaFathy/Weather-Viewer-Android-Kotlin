@@ -13,6 +13,7 @@
         tools:context=".ui.home.Home">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/home_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -183,162 +184,237 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hoourlyCard" />
 
-            <LinearLayout
-                android:id="@+id/lanierdetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="10dp"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/details">
+           <ScrollView
+               android:layout_width="0dp"
+               android:layout_height="0dp"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/details">
+               <LinearLayout
+                   android:id="@+id/lanierdetails"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:paddingTop="10dp"
+                   android:visibility="visible">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="5dp">
+                   <androidx.cardview.widget.CardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       app:cardCornerRadius="5dp">
 
-                    <LinearLayout
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                       <LinearLayout
+                           android:padding="5dp"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/humidity"
-                            android:src="@drawable/ic_humidity" />
+                           <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:contentDescription="@string/humidity"
+                               android:src="@drawable/ic_humidity" />
 
-                        <TextView
-                            style="@style/textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="20dp"
-                            android:paddingEnd="20dp"
-                            android:text="@string/humidity" />
+                           <TextView
+                               style="@style/textView"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:paddingStart="20dp"
+                               android:paddingEnd="20dp"
+                               android:text="@string/humidity" />
 
-                        <TextView
-                            android:id="@+id/humidityPercentage"
-                            style="@style/textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:text="@string/_40" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                           <TextView
+                               android:id="@+id/humidityPercentage"
+                               style="@style/textView"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:gravity="end"
+                               android:text="@string/_40" />
+                       </LinearLayout>
+                   </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="5dp">
+                   <androidx.cardview.widget.CardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       app:cardCornerRadius="5dp">
 
-                    <LinearLayout
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                       <LinearLayout
+                           android:padding="5dp"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/wind_speed"
-                            android:src="@drawable/ic_wind" />
+                           <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:contentDescription="@string/wind_speed"
+                               android:src="@drawable/ic_wind" />
 
-                        <TextView
-                            style="@style/textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="20dp"
-                            android:paddingEnd="20dp"
-                            android:text="@string/wind_speed" />
+                           <TextView
+                               style="@style/textView"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:paddingStart="20dp"
+                               android:paddingEnd="20dp"
+                               android:text="@string/wind_speed" />
 
-                        <TextView
-                            android:id="@+id/wind_speedPercentage"
-                            style="@style/textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:text="@string/_40" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                           <TextView
+                               android:id="@+id/wind_speedPercentage"
+                               style="@style/textView"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:gravity="end"
+                               android:text="@string/_40" />
+                       </LinearLayout>
+                   </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="5dp">
+                   <androidx.cardview.widget.CardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       app:cardCornerRadius="5dp">
 
-                    <LinearLayout
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                       <LinearLayout
+                           android:padding="5dp"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/pressure"
-                            android:src="@drawable/ic_pressure" />
+                           <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:contentDescription="@string/pressure"
+                               android:src="@drawable/ic_pressure" />
 
-                        <TextView
-                            style="@style/textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="20dp"
-                            android:paddingEnd="20dp"
-                            android:text="@string/pressure" />
+                           <TextView
+                               style="@style/textView"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:paddingStart="20dp"
+                               android:paddingEnd="20dp"
+                               android:text="@string/pressure" />
 
-                        <TextView
-                            android:id="@+id/pressurePercentage"
-                            style="@style/textView"
+                           <TextView
+                               android:id="@+id/pressurePercentage"
+                               style="@style/textView"
 
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:text="@string/_40" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:gravity="end"
+                               android:text="@string/_40" />
+                       </LinearLayout>
+                   </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="5dp">
+                   <androidx.cardview.widget.CardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       app:cardCornerRadius="5dp">
 
-                    <LinearLayout
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                       <LinearLayout
+                           android:padding="5dp"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/clouds"
-                            android:src="@drawable/ic_cloud" />
+                           <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:contentDescription="@string/clouds"
+                               android:src="@drawable/ic_cloud" />
 
-                        <TextView
-                            style="@style/textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="20dp"
-                            android:paddingEnd="20dp"
-                            android:text="@string/clouds" />
+                           <TextView
+                               style="@style/textView"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:paddingStart="20dp"
+                               android:paddingEnd="20dp"
+                               android:text="@string/clouds" />
 
-                        <TextView
-                            android:id="@+id/cloudsPercentage"
-                            style="@style/textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:text="@string/_40" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
+                           <TextView
+                               android:id="@+id/cloudsPercentage"
+                               style="@style/textView"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:gravity="end"
+                               android:text="@string/_40" />
+                       </LinearLayout>
+                   </androidx.cardview.widget.CardView>
+                   <androidx.cardview.widget.CardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       app:cardCornerRadius="5dp">
+
+                       <LinearLayout
+                           android:padding="5dp"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal">
+
+                           <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:contentDescription="@string/clouds"
+                               android:src="@drawable/ic_sunrise" />
+
+                           <TextView
+                               style="@style/textView"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:paddingStart="20dp"
+                               android:paddingEnd="20dp"
+                               android:text="@string/sunrise" />
+
+                           <TextView
+                               android:id="@+id/sunrisetime"
+                               style="@style/textView"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:gravity="end"
+                               android:text="@string/_40" />
+                       </LinearLayout>
+                   </androidx.cardview.widget.CardView>
+                   <androidx.cardview.widget.CardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       app:cardCornerRadius="5dp">
+
+                       <LinearLayout
+                           android:padding="5dp"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal">
+
+                           <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:contentDescription="@string/clouds"
+                               android:src="@drawable/ic_sunset" />
+
+                           <TextView
+                               style="@style/textView"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:paddingStart="20dp"
+                               android:paddingEnd="20dp"
+                               android:text="@string/sunset" />
+
+                           <TextView
+                               android:id="@+id/sunsetdate"
+                               style="@style/textView"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:gravity="end"
+                               android:text="@string/_40" />
+                       </LinearLayout>
+                   </androidx.cardview.widget.CardView>
+               </LinearLayout>
+           </ScrollView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/hourlyList"

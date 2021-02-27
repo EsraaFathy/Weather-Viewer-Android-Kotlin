@@ -11,7 +11,7 @@ import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 interface WeatherDao {
 
     @Query("SELECT * FROM AllData")
-    fun getAllData(): LiveData<AllData>
+    fun getAllData(): LiveData<List<AllData>>?
 
     @Insert
     fun saveAllData(allData :AllData)
@@ -24,10 +24,4 @@ interface WeatherDao {
     fun saveFaveData(favData :FavData)
 
 
-
-//    @Query("SELECT * FROM Hourly")
-//    fun getHourly(): LiveData<List<Hourly>>
-//
-//    @Insert
-//    fun saveHourly(daily :List<Hourly>)
 }
