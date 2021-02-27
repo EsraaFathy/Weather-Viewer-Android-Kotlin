@@ -27,4 +27,15 @@
     <string name="title_activity_map">Map</string>
     <string name="api_key">517a14f849e519bb4fa84cdbd4755f56</string>
     <string name="minutely">minutely</string>
+    <string name="her_yoy_can_change_units_of_measurement_as_you_want">Her yoy can change units of measurement as you want</string>
+    <string name="standard">standard</string>
+    <string name="metric">Metric</string>
+    <string name="imperial">Imperial</string>
+    <string name="temperature_in_kelvin_and_wind_speed_in_meter_sec">Temperature in Kelvin and wind speed in meter/sec</string>
+    <string name="celsius_and_wind_speed_in_meter_sec">Celsius and wind speed in meter/sec</string>
+    <string name="temperature_in_fahrenheit_and_wind_speed_in_miles_hour">temperature in Fahrenheit and wind speed in miles/hour</string>
+    <string name="her_you_can_chose_language">Her you can chose language</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="save">Save</string>
 </resources>

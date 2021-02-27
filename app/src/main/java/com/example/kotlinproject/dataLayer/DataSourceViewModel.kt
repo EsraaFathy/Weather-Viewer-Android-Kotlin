@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
-import com.example.kotlinproject.dataLayer.local.curent.SettingModel
-import com.example.kotlinproject.dataLayer.local.curent.SharedPrefrencesReopsitory
+import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
+import com.example.kotlinproject.dataLayer.local.sharedprefrence.SharedPrefrencesReopsitory
 import com.example.kotlinproject.dataLayer.local.room.RoomRepositry
 import com.example.kotlinproject.dataLayer.online.ApiClient
 import com.example.kotlinproject.dataLayer.online.Repository
@@ -84,7 +84,9 @@ class DataSourceViewModel(context: Context) {
     fun getSetting(): LiveData<SettingModel> {
         return sharedPreferencesReopsitory.getSetting()
     }
-
+    fun setSetting(setttingModel:SettingModel) {
+        sharedPreferencesReopsitory.updateSetting(setttingModel)
+    }
 
     fun loadRoomData(){
         CoroutineScope(Dispatchers.Default).launch {

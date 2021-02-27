@@ -1,4 +1,4 @@
-package com.example.kotlinproject.dataLayer.local.curent
+package com.example.kotlinproject.dataLayer.local.sharedprefrence
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -15,9 +15,7 @@ class SettingSB(val context: Context) {
     }
     private val SettingData: MutableLiveData<SettingModel> = MutableLiveData<SettingModel>()
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences(fileName,Context.MODE_PRIVATE)
-//    standard, Temperature in Kelvin and wind speed in meter/sec
-//    metric     Celsius and wind speed in meter/sec,
-//    imperial  For temperature in Fahrenheit and wind speed in miles/hour, use
+
 
     fun saveSetting(settingModel: SettingModel){
         CoroutineScope(Dispatchers.IO).launch {

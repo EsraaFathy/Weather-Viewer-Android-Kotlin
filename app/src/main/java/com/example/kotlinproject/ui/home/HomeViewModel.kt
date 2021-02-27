@@ -11,9 +11,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Current
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
-import com.example.kotlinproject.dataLayer.local.curent.SettingModel
+import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.LocalDate

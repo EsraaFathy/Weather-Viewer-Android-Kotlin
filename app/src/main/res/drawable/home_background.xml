@@ -8,7 +8,7 @@
 <!--        android:color="#567"-->
 <!--        android:width="2dp"/>-->
     <solid
-        android:color="#8FA6BD"/>
+        android:color="@color/back_ground"/>
 
 
 </shape>
