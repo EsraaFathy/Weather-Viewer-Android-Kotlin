@@ -11,7 +11,7 @@ import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 interface WeatherDao {
 
     @Query("SELECT * FROM AllData")
-    fun getAllData(): LiveData<List<AllData>>?
+    suspend fun getAllData(): List<AllData>
 
     @Insert
     fun saveAllData(allData :AllData)

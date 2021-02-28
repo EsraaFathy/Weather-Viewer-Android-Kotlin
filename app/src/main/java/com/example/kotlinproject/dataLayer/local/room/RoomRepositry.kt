@@ -14,7 +14,7 @@ class RoomRepositry(application: Context) {
     fun saveAllData(allData : AllData){
         weatherDao.saveAllData(allData)
     }
-     fun getAllData(): LiveData<List<AllData>>?{
+     suspend fun getAllData(): List<AllData>?{
         return weatherDao.getAllData()
     }
      fun deleteAll(){

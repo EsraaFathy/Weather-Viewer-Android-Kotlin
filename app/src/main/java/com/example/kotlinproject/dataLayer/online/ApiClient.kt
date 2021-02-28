@@ -3,16 +3,18 @@ package com.example.kotlinproject.dataLayer.online
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 
 object ApiClient {
-    private const val BASE_URL = "http://api.openweathermap.org/"
+    private const val BASE_URL = "https://api.openweathermap.org/"
     var gson = GsonBuilder()
         .setLenient()
         .create()
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
+            .addConverterFactory(ScalarsConverterFactory.create()) //important
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }

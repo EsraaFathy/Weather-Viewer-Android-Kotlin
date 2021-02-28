@@ -27,7 +27,7 @@ class Home : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
-            Log.d("TAG","LOCATION_PERMISSION_REQUEST_CODE $requestCode")
+            Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE $requestCode")
             homeViewModel.gettingLocation()
         }
 
@@ -53,24 +53,18 @@ class Home : Fragment() {
 //https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=minutely&lang=ar&units=standard&appid=517a14f849e519bb4fa84cdbd4755f56
 
         homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
-            val location =it
-            Log.d("TAG","it.lang"+ location.latitude)
-            homeViewModel.getSetting().observe(this,{
-                Log.d("TAG","it.lang"+ it.lang)
-
+            val location = it
+            Log.d("TAG", "it.lang" + location.latitude)
+            homeViewModel.getSetting().observe(this, {
+                Log.d("TAG", "it.lang" + it.lang)
                 homeViewModel.loadOnlineData(
-                    lat="33.441792",
-                    lon = "-94.037689",
-                    lang = "ar",
-                    appid = "517a14f849e519bb4fa84cdbd4755f56",
-                    exclude="minutely",
-                    units = "standard")
-//homeViewModel.loadOnlineData(location.latitude.toString(),
-//                    location.longitude.toString(),
-//                    it.lang,
-//                    "517a14f849e519bb4fa84cdbd4755f56",
-//                    "minutely",
-//                    it.units)
+                    location.latitude.toString(),
+                    location.longitude.toString(),
+                    it.lang,
+                    "517a14f849e519bb4fa84cdbd4755f56",
+                    "minutely",
+                    it.units
+                )
             })
         })
 
@@ -79,47 +73,37 @@ class Home : Fragment() {
         })
 
 
-
-//        homeViewModel.getRoomData()?.observe(this,{
-//                Log.d("TAG",it[0].current.humidity.toString())
-//            initUI(it[0])
-//        })
+        homeViewModel.getRoomData().observe(this,{
+                Log.d("TAG",it.current.humidity.toString())
+            initUI(it)
+        })
 
     }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initUI(it: AllData) {
-//        loadImage(binding.currentModeImg, it.current.weather[0].icon)
+        loadImage(binding.currentModeImg, it.current.weather[0].icon)
+        Log.d("TAG","icon ${it.current.weather[0].icon}")
         binding.currentCity.text = it.timezone
         binding.description.text = it.current.weather[0].description
-        // TODO definde c or f from shared preferences
         binding.currentTemp.text = it.current.temp.toString()
         binding.humidityPercentage.text = it.current.humidity.toString()
         binding.windSpeedPercentage.text = it.current.wind_speed.toString()
         binding.pressurePercentage.text = it.current.pressure.toString()
         binding.cloudsPercentage.text = it.current.clouds.toString()
+        binding.currentTime.text= homeViewModel.getTime(it.current.dt)
+        binding.currentDate.text= homeViewModel.getDate(it.current.dt)
+        binding.sunrisetime.text=homeViewModel.getTime(it.current.sunrise)
+        binding.sunsetdate.text=homeViewModel.getTime(it.current.sunset)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun initUI(it: Current) {
-//        loadImage(binding.currentModeImg, it.current.weather[0].icon)
-        binding.currentCity.text = it.weather[0].main
-        binding.description.text = it.weather[0].description
-        // TODO definde c or f from shared preferences
-        binding.currentTemp.text = String.format("%.2f", it.temp)
-
-        binding.humidityPercentage.text = it.humidity.toString()
-        binding.windSpeedPercentage.text = String.format("%.2f", it.wind_speed)
-        binding.pressurePercentage.text = it.pressure.toString()
-        binding.cloudsPercentage.text = it.clouds.toString()
-    }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun loadImage(imageView: ImageView, string: String) {
         Glide.with(imageView)  //2
-            .load("http://openweathermap.org/img/wn/$string@2x.png") //3
+            .load("https://openweathermap.org/img/wn/$string@2x.png") //3
             .centerCrop() //4
             .into(imageView)
     }
