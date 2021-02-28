@@ -57,6 +57,14 @@ class DataSourceViewModel(context: Context) {
     }
 
 
+//    fun getRoomDataBase() : LiveData<List<AllData>>{
+//        CoroutineScope(Dispatchers.IO).launch{
+//            val data = async { roomRepositry.getAllData() }
+//            roomData.postValue(data.await().value)
+//        }
+//        return roomData
+//    }
+
     fun getRoomDataBase() : LiveData<AllData>{
         CoroutineScope(Dispatchers.IO).launch{
             val data = roomRepositry.getAllData()!![0]
@@ -64,7 +72,6 @@ class DataSourceViewModel(context: Context) {
         }
         return roomData
     }
-
 
 
 }

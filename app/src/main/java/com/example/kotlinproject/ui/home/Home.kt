@@ -68,18 +68,24 @@ class Home : Fragment() {
             })
         })
 
-        homeViewModel.getProgress().observe(this, {
-            binding.progressHome.visibility = it
-        })
 
+
+
+//        homeViewModel.getRoomData().observe(this,{
+//            initUI(it[0])
+//        })
 
         homeViewModel.getRoomData().observe(this,{
-                Log.d("TAG",it.current.humidity.toString())
+            Log.d("TAG",it.current.humidity.toString())
             initUI(it)
         })
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        homeViewModel.getRoomData()
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initUI(it: AllData) {
@@ -92,10 +98,10 @@ class Home : Fragment() {
         binding.windSpeedPercentage.text = it.current.wind_speed.toString()
         binding.pressurePercentage.text = it.current.pressure.toString()
         binding.cloudsPercentage.text = it.current.clouds.toString()
-        binding.currentTime.text= homeViewModel.getTime(it.current.dt)
-        binding.currentDate.text= homeViewModel.getDate(it.current.dt)
-        binding.sunrisetime.text=homeViewModel.getTime(it.current.sunrise)
-        binding.sunsetdate.text=homeViewModel.getTime(it.current.sunset)
+        binding.currentTime.text= homeViewModel.formateTime(it.current.dt)
+        binding.currentDate.text= homeViewModel.formateDate(it.current.dt)
+        binding.sunrisetime.text=homeViewModel.formateTime(it.current.sunrise)
+        binding.sunsetdate.text=homeViewModel.formateTime(it.current.sunset)
     }
 
 

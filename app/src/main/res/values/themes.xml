@@ -3,7 +3,7 @@
     <style name="Theme.KotlinProject" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/broun</item>
-        <item name="colorPrimaryVariant">@color/back_ground</item>
+        <item name="colorPrimaryVariant">@color/teal_7000</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/broun</item>

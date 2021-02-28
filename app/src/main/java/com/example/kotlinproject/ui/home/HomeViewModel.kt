@@ -18,9 +18,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeViewModel(context: Context) : ViewModel() {
-    private var progress :MutableLiveData<Int> =MutableLiveData<Int>()
     val locationHanding: LocationHanding = LocationHanding(context)
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(context)
+    private val data:MutableLiveData<AllData> = MutableLiveData<AllData>()
 
 
     fun loadOnlineData(
@@ -31,15 +31,11 @@ class HomeViewModel(context: Context) : ViewModel() {
         exclude: String,
         units: String
     ){
-        progress.value=View.INVISIBLE
         Log.d("TAG", "loadOnlineData: ")
         dataSourceViewModel.loadOneCall(lat, lon, lang, appid, exclude, units)
     }
 
 
-    fun getProgress():LiveData<Int>{
-        return progress
-    }
 
     fun gettingLocation() :LiveData<Location>{
         locationHanding.loadLocation()
@@ -51,33 +47,31 @@ class HomeViewModel(context: Context) : ViewModel() {
         return dataSourceViewModel.getSetting()
     }
 
-     fun getRoomData():LiveData<AllData>{
+//     fun getRoomData():LiveData<List<AllData>>{
+//        return dataSourceViewModel.getRoomDataBase()
+//    }
+
+    fun getRoomData():LiveData<AllData>{
         return dataSourceViewModel.getRoomDataBase()
     }
 
 
+
+
     @SuppressLint("SimpleDateFormat")
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getTime(dt: Int):String{
-        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-        val dd= dt.toLong()
-        val date = Date(dd * 1000)
-        sdf.format(date)
-       val time= "${date.hours}:${date.minutes}"
-        return time
-    }
+    fun formateDate(format: Int): String {
+            val dateFormat = SimpleDateFormat("EEE,dd MM yyyy")
+            val date = Date()
+            return dateFormat.format(date)
+        }
+
     @SuppressLint("SimpleDateFormat")
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getDate(dt: Int):String{
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
-        val dd= dt.toLong()
-        val date = Date(dd * 1000)
-        Log.d("TAG",date.toString())
-        sdf.format(date)
-        val calendar = Calendar.getInstance()
-        calendar.time = date
-       val time= "${date.year}-${date.month}-${date.day}"
-        return time
+    fun formateTime(format: Int): String {
+        val dateFormat = SimpleDateFormat("HH:mm a")
+        val date = Date()
+        date.time = format.toLong() * 1000
+        return dateFormat.format(date)
+
     }
 
 }
