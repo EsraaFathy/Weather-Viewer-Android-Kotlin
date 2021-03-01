@@ -8,12 +8,12 @@
     </data>
 
     <FrameLayout
+        android:background="@drawable/home_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.home.Home">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@drawable/home_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -129,16 +129,17 @@
                 android:layout_margin="10dp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="10dp"
+                android:backgroundTint="@color/broun"
                 app:layout_constraintEnd_toStartOf="@id/daialyCard"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/currentTemp">
 
                 <TextView
+                    android:id="@+id/currentext"
                     style="@style/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/broun"
                     android:gravity="center"
                     android:text="@string/current"
                     android:textColor="@color/white" />
@@ -150,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="5dp"
-                android:backgroundTint="@color/broun"
+                android:backgroundTint="@color/white"
                 app:cardElevation="10dp"
                 app:layout_constraintEnd_toStartOf="@id/hoourlyCard"
                 app:layout_constraintHorizontal_weight="1"
@@ -158,9 +159,10 @@
                 app:layout_constraintTop_toBottomOf="@id/currentTemp">
 
                 <TextView
+                    android:id="@+id/dailyText"
                     style="@style/textView"
                     android:gravity="center"
-                    android:textColor="@color/white"
+                    android:textColor="@color/broun"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -173,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="5dp"
-                android:backgroundTint="@color/broun"
+                android:backgroundTint="@color/white"
                 app:cardElevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_weight="1"
@@ -181,7 +183,8 @@
                 app:layout_constraintTop_toBottomOf="@id/currentTemp">
 
                 <TextView
-                    android:textColor="@color/white"
+                    android:id="@+id/hourlyText"
+                    android:textColor="@color/broun"
                     style="@style/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -212,6 +215,8 @@
            <ScrollView
                android:layout_width="0dp"
                android:layout_height="0dp"
+               android:visibility="visible"
+               android:id="@+id/currentList"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintBottom_toBottomOf="parent"
@@ -221,8 +226,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:orientation="vertical"
-                   android:paddingTop="10dp"
-                   android:visibility="visible">
+                   android:paddingTop="10dp">
 
                    <androidx.cardview.widget.CardView
                        android:layout_width="match_parent"
@@ -452,7 +456,7 @@
                 tools:listitem="@layout/hourly_item" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/DialyList"
+                android:id="@+id/dialyList"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:visibility="gone"

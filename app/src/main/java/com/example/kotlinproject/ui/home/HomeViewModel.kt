@@ -6,10 +6,12 @@ import android.location.Location
 import android.os.Build
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bumptech.glide.Glide
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
@@ -77,6 +79,14 @@ class HomeViewModel(context: Context) : ViewModel() {
         date.time = format.toLong() * 1000
         return dateFormat.format(date)
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+     fun loadImage(imageView: ImageView, string: String) {
+        Glide.with(imageView)  //2
+            .load("https://openweathermap.org/img/wn/$string@2x.png") //3
+            .centerCrop() //4
+            .into(imageView)
     }
 
 }
