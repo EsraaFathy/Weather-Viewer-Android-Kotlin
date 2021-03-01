@@ -96,6 +96,7 @@ class Home : Fragment() {
                 initUI(it[0])
                 loadHourly(it[0].hourly)
                 loadDaily(it[0].daily)
+                loadImage(binding.currentModeImg, it[0].current.weather[0].icon)
             }
         })
         return binding.root
@@ -110,7 +111,6 @@ class Home : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initUI(it: AllData) {
-        loadImage(binding.currentModeImg, it.current.weather[0].icon)
         Log.d("TAG", "icon ${it.current.weather[0].icon}")
         binding.currentCity.text = it.timezone
         binding.description.text = it.current.weather[0].description
@@ -148,7 +148,6 @@ class Home : Fragment() {
                     "minutely",
                     it.units
                 )
-//                homeViewModel.loadRoomData()
             })
         })
     }

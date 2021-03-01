@@ -225,20 +225,23 @@
                    android:id="@+id/lanierdetails"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:orientation="vertical"
+                   android:orientation="horizontal"
                    android:paddingTop="10dp">
-
-                   <androidx.cardview.widget.CardView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_margin="5dp"
-                       app:cardCornerRadius="5dp">
-
+                   <LinearLayout
+                       android:gravity="end"
+                       android:orientation="vertical"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:padding="5dp"
+                       android:layout_height="wrap_content">
                        <LinearLayout
-                           android:padding="5dp"
+                           android:paddingVertical="10dp"
+                           android:gravity="center"
+                           android:layout_margin="5dp"
+                           android:background="@drawable/current_humidity"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:orientation="horizontal">
+                           android:orientation="vertical">
 
                            <ImageView
                                android:layout_width="wrap_content"
@@ -257,24 +260,19 @@
                            <TextView
                                android:id="@+id/humidityPercentage"
                                style="@style/textView"
-                               android:layout_width="match_parent"
+                               android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:gravity="end"
                                android:text="@string/_40" />
                        </LinearLayout>
-                   </androidx.cardview.widget.CardView>
-
-                   <androidx.cardview.widget.CardView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_margin="5dp"
-                       app:cardCornerRadius="5dp">
-
                        <LinearLayout
-                           android:padding="5dp"
+                           android:paddingVertical="10dp"
+                           android:gravity="center"
+                           android:layout_margin="5dp"
+                           android:background="@drawable/current_wind"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:orientation="horizontal">
+                           android:orientation="vertical">
 
                            <ImageView
                                android:layout_width="wrap_content"
@@ -286,31 +284,23 @@
                                style="@style/textView"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:paddingStart="20dp"
-                               android:paddingEnd="20dp"
                                android:text="@string/wind_speed" />
 
                            <TextView
                                android:id="@+id/wind_speedPercentage"
                                style="@style/textView"
-                               android:layout_width="match_parent"
+                               android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:gravity="end"
                                android:text="@string/_40" />
                        </LinearLayout>
-                   </androidx.cardview.widget.CardView>
-
-                   <androidx.cardview.widget.CardView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_margin="5dp"
-                       app:cardCornerRadius="5dp">
-
                        <LinearLayout
-                           android:padding="5dp"
+                           android:paddingVertical="10dp"
+                           android:gravity="center"
+                           android:layout_margin="5dp"
+                           android:background="@drawable/current_pressure"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:orientation="horizontal">
+                           android:orientation="vertical">
 
                            <ImageView
                                android:layout_width="wrap_content"
@@ -329,25 +319,26 @@
                            <TextView
                                android:id="@+id/pressurePercentage"
                                style="@style/textView"
-
-                               android:layout_width="match_parent"
+                               android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:gravity="end"
                                android:text="@string/_40" />
                        </LinearLayout>
-                   </androidx.cardview.widget.CardView>
-
-                   <androidx.cardview.widget.CardView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_margin="5dp"
-                       app:cardCornerRadius="5dp">
-
+               </LinearLayout>
+                   <LinearLayout
+                       android:padding="5dp"
+                      android:gravity="end"
+                       android:orientation="vertical"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:layout_height="wrap_content">
                        <LinearLayout
-                           android:padding="5dp"
+                           android:paddingVertical="10dp"
+                           android:gravity="center"
+                           android:layout_margin="5dp"
+                           android:background="@drawable/current_cloud"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:orientation="horizontal">
+                           android:orientation="vertical">
 
                            <ImageView
                                android:layout_width="wrap_content"
@@ -357,32 +348,27 @@
 
                            <TextView
                                style="@style/textView"
-                               android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
                                android:paddingStart="20dp"
                                android:paddingEnd="20dp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
                                android:text="@string/clouds" />
 
                            <TextView
                                android:id="@+id/cloudsPercentage"
                                style="@style/textView"
-                               android:layout_width="match_parent"
+                               android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:gravity="end"
                                android:text="@string/_40" />
                        </LinearLayout>
-                   </androidx.cardview.widget.CardView>
-                   <androidx.cardview.widget.CardView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_margin="5dp"
-                       app:cardCornerRadius="5dp">
-
                        <LinearLayout
-                           android:padding="5dp"
+                           android:paddingVertical="10dp"
+                           android:gravity="center"
+                           android:layout_margin="5dp"
+                           android:background="@drawable/current_sunrise"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:orientation="horizontal">
+                           android:orientation="vertical">
 
                            <ImageView
                                android:layout_width="wrap_content"
@@ -392,32 +378,27 @@
 
                            <TextView
                                style="@style/textView"
-                               android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
                                android:paddingStart="20dp"
                                android:paddingEnd="20dp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
                                android:text="@string/sunrise" />
 
                            <TextView
                                android:id="@+id/sunrisetime"
                                style="@style/textView"
-                               android:layout_width="match_parent"
+                               android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:gravity="end"
                                android:text="@string/_40" />
                        </LinearLayout>
-                   </androidx.cardview.widget.CardView>
-                   <androidx.cardview.widget.CardView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_margin="5dp"
-                       app:cardCornerRadius="5dp">
-
                        <LinearLayout
-                           android:padding="5dp"
+                           android:paddingVertical="10dp"
+                           android:gravity="center"
+                           android:layout_margin="5dp"
+                           android:background="@drawable/current_sunsit"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:orientation="horizontal">
+                           android:orientation="vertical">
 
                            <ImageView
                                android:layout_width="wrap_content"
@@ -436,13 +417,13 @@
                            <TextView
                                android:id="@+id/sunsetdate"
                                style="@style/textView"
-                               android:layout_width="match_parent"
+                               android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:gravity="end"
                                android:text="@string/_40" />
                        </LinearLayout>
-                   </androidx.cardview.widget.CardView>
                </LinearLayout>
+               </LinearLayout>
+
            </ScrollView>
 
             <androidx.recyclerview.widget.RecyclerView

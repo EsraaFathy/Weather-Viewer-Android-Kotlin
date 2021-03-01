@@ -32,7 +32,7 @@
             app:layout_constraintBottom_toBottomOf="@id/guideline1"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/fragment"
-            class="com.example.kotlinproject.ui.home.Home"/>
+            android:name="com.example.kotlinproject.ui.home.Home"/>
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
             android:layout_width="wrap_content"

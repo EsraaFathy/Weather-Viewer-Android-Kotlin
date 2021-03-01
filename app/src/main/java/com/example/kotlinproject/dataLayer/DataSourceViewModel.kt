@@ -29,12 +29,24 @@ class DataSourceViewModel(context: Context) {
 
 
     fun loadOneCall(lat: String,lon: String,lang: String, appid: String,exclude :String,units :String) {
-        CoroutineScope(Dispatchers.IO).launch {
            val data =  repositoryonLine.getOneCall(lat,lon,lang,appid,exclude,units)
-            Log.d("tag",data.timezone)
-            roomRepositry.deleteAll()
-            roomRepositry.saveAllData(data)
-        }
+            data.enqueue(object : Callback<AllData?> {
+                override fun onResponse(call: Call<AllData?>, response: Response<AllData?>) {
+                    Log.d("tag", response.body().toString())
+                    CoroutineScope(Dispatchers.IO).launch {
+                        roomRepositry.deleteAll()
+                        roomRepositry.saveAllData(response.body()!!)
+                    }
+                }
+
+                override fun onFailure(call: Call<AllData?>, t: Throwable) {
+                    Log.d("tag", t.message.toString())
+                    t.printStackTrace()
+
+                }
+            })
+
+
     }
 
 
@@ -54,14 +66,6 @@ class DataSourceViewModel(context: Context) {
         sharedPreferencesReopsitory.updateSetting(setttingModel)
     }
 
-
-//    fun loadRoomDataBase(){
-//        CoroutineScope(Dispatchers.IO).launch{
-//                val data =async { roomRepositry.getAllData()!![0]}
-//                roomData.postValue(data.await())
-//            }
-//        }
-//    }
 
      fun getRoomDataBase() : LiveData<List<AllData>>{
         return roomRepositry.getAllData()
