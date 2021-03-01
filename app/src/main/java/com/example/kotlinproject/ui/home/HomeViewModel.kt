@@ -49,16 +49,6 @@ class HomeViewModel(context: Context) : ViewModel() {
         return dataSourceViewModel.getSetting()
     }
 
-//     fun getRoomData():LiveData<List<AllData>>{
-//        return dataSourceViewModel.getRoomDataBase()
-//    }
-
-//    fun getRoomData():LiveData<AllData>{
-//        return dataSourceViewModel.getRoomDataBase()
-//    }
-//    fun loadRoomData(){
-//        return dataSourceViewModel.loadRoomDataBase()
-//    }
 
      fun getRoomData():LiveData<List<AllData>>{
         return dataSourceViewModel.getRoomDataBase()
@@ -69,6 +59,7 @@ class HomeViewModel(context: Context) : ViewModel() {
     fun formateDate(format: Int): String {
             val dateFormat = SimpleDateFormat("EEE,dd MM yyyy")
             val date = Date()
+            val s=format.toLong()
             return dateFormat.format(date)
         }
 

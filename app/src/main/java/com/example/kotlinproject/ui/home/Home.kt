@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Current
+import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
 import com.example.kotlinproject.databinding.FragmentHomeBinding
 
@@ -26,6 +27,7 @@ class Home : Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var homeViewModel: HomeViewModel
     lateinit var adapter:HourlyAdabter
+    lateinit var dailyadapter:DailyAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -48,6 +50,7 @@ class Home : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         homeViewModel = HomeViewModel(activity!!)
          adapter=HourlyAdabter(activity!!)
+        dailyadapter= DailyAdapter(activity!!)
         relad()
 
         binding.cureentCard.setOnClickListener {
@@ -92,6 +95,7 @@ class Home : Fragment() {
             if (it.size==1) {
                 initUI(it[0])
                 loadHourly(it[0].hourly)
+                loadDaily(it[0].daily)
             }
         })
         return binding.root
@@ -154,6 +158,12 @@ class Home : Fragment() {
         binding.hourlyList.layoutManager=lay
         adapter.models=hourlyList
         binding.hourlyList.adapter=adapter
+    }
+    fun loadDaily(dailyList :List<Daily>){
+        val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
+        binding.dialyList.layoutManager=lay
+        dailyadapter.models=dailyList
+        binding.dialyList.adapter=dailyadapter
     }
 
 }
