@@ -100,9 +100,6 @@ class LocationHanding(val context: Context) {
     fun getLocatin() : LiveData<Location>{
         return locationLiveData
     }
-    fun getFromLoacl() : LiveData<Boolean>{
-        return loadLocal
-    }
 
 
 }

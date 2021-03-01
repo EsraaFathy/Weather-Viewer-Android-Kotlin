@@ -51,11 +51,16 @@ class HomeViewModel(context: Context) : ViewModel() {
 //        return dataSourceViewModel.getRoomDataBase()
 //    }
 
-    fun getRoomData():LiveData<AllData>{
+//    fun getRoomData():LiveData<AllData>{
+//        return dataSourceViewModel.getRoomDataBase()
+//    }
+//    fun loadRoomData(){
+//        return dataSourceViewModel.loadRoomDataBase()
+//    }
+
+     fun getRoomData():LiveData<List<AllData>>{
         return dataSourceViewModel.getRoomDataBase()
     }
-
-
 
 
     @SuppressLint("SimpleDateFormat")

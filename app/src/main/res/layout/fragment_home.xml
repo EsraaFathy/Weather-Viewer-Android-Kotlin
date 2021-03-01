@@ -66,8 +66,6 @@
                 android:id="@+id/currentModeImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="30dp"
                 android:contentDescription="@string/current_mode"
                 app:layout_constraintBottom_toBottomOf="@id/currentTime"
                 app:layout_constraintRight_toRightOf="parent"
@@ -78,14 +76,27 @@
                 android:id="@+id/currentTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="@string/_8_c"
+                android:text="@string/_1268"
                 android:textColor="@color/move"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/currentTime" />
+            <TextView
+                android:id="@+id/currentTempUnic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/_c"
+                android:textColor="@color/move"
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@id/currentTemp"
+                app:layout_constraintTop_toTopOf="@id/currentTemp"
+                app:layout_constraintBottom_toBottomOf="@id/currentTemp"/>
 
             <TextView
                 android:id="@+id/description"
@@ -101,6 +112,16 @@
                 app:layout_constraintStart_toEndOf="@id/currentTemp"
                 app:layout_constraintTop_toBottomOf="@id/currentTime" />
 
+            <ImageView
+                android:id="@+id/reload"
+                app:layout_constraintTop_toTopOf="@id/currentTime"
+                app:layout_constraintStart_toEndOf="@id/currentTime"
+                app:layout_constraintBottom_toBottomOf="@id/currentTime"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_reload_24"
+                android:contentDescription="@string/reload" />
             <androidx.cardview.widget.CardView
                 android:id="@+id/cureentCard"
                 android:layout_width="0dp"
@@ -129,6 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="5dp"
+                android:backgroundTint="@color/broun"
                 app:cardElevation="10dp"
                 app:layout_constraintEnd_toStartOf="@id/hoourlyCard"
                 app:layout_constraintHorizontal_weight="1"
@@ -137,7 +159,9 @@
 
                 <TextView
                     style="@style/textView"
-                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/daily" />
@@ -149,6 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="5dp"
+                android:backgroundTint="@color/broun"
                 app:cardElevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_weight="1"
@@ -156,6 +181,7 @@
                 app:layout_constraintTop_toBottomOf="@id/currentTemp">
 
                 <TextView
+                    android:textColor="@color/white"
                     style="@style/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

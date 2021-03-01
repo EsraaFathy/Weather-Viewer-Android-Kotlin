@@ -34,8 +34,6 @@ class DataSourceViewModel(context: Context) {
             Log.d("tag",data.timezone)
             roomRepositry.deleteAll()
             roomRepositry.saveAllData(data)
-
-
         }
     }
 
@@ -57,20 +55,16 @@ class DataSourceViewModel(context: Context) {
     }
 
 
-//    fun getRoomDataBase() : LiveData<List<AllData>>{
+//    fun loadRoomDataBase(){
 //        CoroutineScope(Dispatchers.IO).launch{
-//            val data = async { roomRepositry.getAllData() }
-//            roomData.postValue(data.await().value)
+//                val data =async { roomRepositry.getAllData()!![0]}
+//                roomData.postValue(data.await())
+//            }
 //        }
-//        return roomData
 //    }
 
-    fun getRoomDataBase() : LiveData<AllData>{
-        CoroutineScope(Dispatchers.IO).launch{
-            val data = roomRepositry.getAllData()!![0]
-            roomData.postValue(data)
-        }
-        return roomData
+     fun getRoomDataBase() : LiveData<List<AllData>>{
+        return roomRepositry.getAllData()
     }
 
 

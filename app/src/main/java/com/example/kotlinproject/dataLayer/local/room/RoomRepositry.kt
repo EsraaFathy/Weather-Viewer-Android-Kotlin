@@ -11,17 +11,17 @@ class RoomRepositry(context: Context) {
     val database :DataBaseWeather?=DataBaseWeather.getInstance(context)
     val weatherDao :WeatherDao= database!!.weatherDao()
 
-    fun saveAllData(allData : AllData){
+    suspend fun saveAllData(allData : AllData){
         weatherDao.saveAllData(allData)
     }
-//    fun getAllData(): LiveData<List<AllData>>{
-//        return weatherDao.getAllData()
-//    }
-
-
-    suspend fun getAllData(): List<AllData>?{
+     fun getAllData(): LiveData<List<AllData>>{
         return weatherDao.getAllData()
     }
+
+//
+//    suspend fun getAllData(): List<AllData>?{
+//        return weatherDao.getAllData()
+//    }
 
      fun deleteAll(){
         return weatherDao.deleteAll()
