@@ -1,7 +1,7 @@
 package com.example.kotlinproject.ui.home
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Current
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
 import com.example.kotlinproject.databinding.FragmentHomeBinding
@@ -33,14 +32,42 @@ class Home : Fragment() {
 
     }
 
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<out String>,
+//        grantResults: IntArray
+//    ) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//        Log.d("TAG","befor if")
+//        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
+//            Log.d("TAG","one if")
+//            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                Log.d("TAG","two if")
+//                homeViewModel.gettingLocation();
+//
+//            }
+//        }
+//    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
+        Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE lll$requestCode")
+
+        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
             Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE $requestCode")
             homeViewModel.gettingLocation()
         }
-
     }
+
+
+//    override fun onR(requestCode: Int, resultCode: Int, data: Intent?) {
+//        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
+//             homeViewModel.gettingLocation()
+//
+//        }
+//        super.onActivityResult(requestCode, resultCode, data)
+//    }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,45 +81,117 @@ class Home : Fragment() {
         relad()
 
         binding.cureentCard.setOnClickListener {
-            binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(activity!!, R.color.broun)
-            binding.daialyCard.backgroundTintList= ContextCompat.getColorStateList(activity!!, R.color.white)
-            binding.hoourlyCard.backgroundTintList= ContextCompat.getColorStateList(activity!!, R.color.white)
+            binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(
+                activity!!,
+                R.color.broun
+            )
+            binding.daialyCard.backgroundTintList= ContextCompat.getColorStateList(
+                activity!!,
+                R.color.white
+            )
+            binding.hoourlyCard.backgroundTintList= ContextCompat.getColorStateList(
+                activity!!,
+                R.color.white
+            )
             binding.currentList.visibility=View.VISIBLE
             binding.hourlyList.visibility=View.GONE
             binding.dialyList.visibility=View.GONE
-            binding.currentext.setTextColor(ContextCompat.getColorStateList(activity!!, R.color.white))
-            binding.dailyText.setTextColor(ContextCompat.getColorStateList(activity!!, R.color.broun))
-            binding.hourlyText.setTextColor(ContextCompat.getColorStateList(activity!!, R.color.broun))
+            binding.currentext.setTextColor(
+                ContextCompat.getColorStateList(
+                    activity!!,
+                    R.color.white
+                )
+            )
+            binding.dailyText.setTextColor(
+                ContextCompat.getColorStateList(
+                    activity!!,
+                    R.color.broun
+                )
+            )
+            binding.hourlyText.setTextColor(
+                ContextCompat.getColorStateList(
+                    activity!!,
+                    R.color.broun
+                )
+            )
         }
 
         binding.hoourlyCard.setOnClickListener {
-            binding.hoourlyCard.backgroundTintList= ContextCompat.getColorStateList(activity!!, R.color.broun)
-            binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(activity!!, R.color.white)
-            binding.daialyCard.backgroundTintList= ContextCompat.getColorStateList(activity!!, R.color.white)
+            binding.hoourlyCard.backgroundTintList= ContextCompat.getColorStateList(
+                activity!!,
+                R.color.broun
+            )
+            binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(
+                activity!!,
+                R.color.white
+            )
+            binding.daialyCard.backgroundTintList= ContextCompat.getColorStateList(
+                activity!!,
+                R.color.white
+            )
             binding.hourlyList.visibility=View.VISIBLE
             binding.dialyList.visibility=View.GONE
             binding.currentList.visibility=View.GONE
-            binding.hourlyText.setTextColor(ContextCompat.getColorStateList(activity!!, R.color.white))
-            binding.currentext.setTextColor(ContextCompat.getColorStateList(activity!!, R.color.broun))
-            binding.dailyText.setTextColor(ContextCompat.getColorStateList(activity!!, R.color.broun))
+            binding.hourlyText.setTextColor(
+                ContextCompat.getColorStateList(
+                    activity!!,
+                    R.color.white
+                )
+            )
+            binding.currentext.setTextColor(
+                ContextCompat.getColorStateList(
+                    activity!!,
+                    R.color.broun
+                )
+            )
+            binding.dailyText.setTextColor(
+                ContextCompat.getColorStateList(
+                    activity!!,
+                    R.color.broun
+                )
+            )
         }
 
         binding.daialyCard.setOnClickListener {
-            binding.daialyCard.backgroundTintList= ContextCompat.getColorStateList(activity!!, R.color.broun)
-            binding.hoourlyCard.backgroundTintList= ContextCompat.getColorStateList(activity!!, R.color.white)
-            binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(activity!!, R.color.white)
+            binding.daialyCard.backgroundTintList= ContextCompat.getColorStateList(
+                activity!!,
+                R.color.broun
+            )
+            binding.hoourlyCard.backgroundTintList= ContextCompat.getColorStateList(
+                activity!!,
+                R.color.white
+            )
+            binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(
+                activity!!,
+                R.color.white
+            )
             binding.dialyList.visibility=View.VISIBLE
             binding.hourlyList.visibility=View.GONE
             binding.currentList.visibility=View.GONE
-            binding.dailyText.setTextColor(ContextCompat.getColorStateList(activity!!, R.color.white))
-            binding.hourlyText.setTextColor(ContextCompat.getColorStateList(activity!!, R.color.broun))
-            binding.currentext.setTextColor(ContextCompat.getColorStateList(activity!!, R.color.broun))
+            binding.dailyText.setTextColor(
+                ContextCompat.getColorStateList(
+                    activity!!,
+                    R.color.white
+                )
+            )
+            binding.hourlyText.setTextColor(
+                ContextCompat.getColorStateList(
+                    activity!!,
+                    R.color.broun
+                )
+            )
+            binding.currentext.setTextColor(
+                ContextCompat.getColorStateList(
+                    activity!!,
+                    R.color.broun
+                )
+            )
         }
         binding.reload.setOnClickListener {
             relad()
         }
         homeViewModel.getRoomData().observe(this, {
-            if (it.size==1) {
+            if (it.size == 1) {
                 initUI(it[0])
                 loadHourly(it[0].hourly)
                 loadDaily(it[0].daily)
@@ -152,13 +251,13 @@ class Home : Fragment() {
         })
     }
 
-    fun loadHourly(hourlyList :List<Hourly>){
+    fun loadHourly(hourlyList: List<Hourly>){
         val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
         binding.hourlyList.layoutManager=lay
         adapter.models=hourlyList
         binding.hourlyList.adapter=adapter
     }
-    fun loadDaily(dailyList :List<Daily>){
+    fun loadDaily(dailyList: List<Daily>){
         val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
         binding.dialyList.layoutManager=lay
         dailyadapter.models=dailyList

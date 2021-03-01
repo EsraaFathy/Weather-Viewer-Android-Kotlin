@@ -21,7 +21,7 @@ import com.google.android.gms.location.LocationServices
 
 class LocationHanding(val context: Context) {
     companion object {
-        const val LOCATION_PERMISSION_REQUEST_CODE = 1234
+        const val LOCATION_PERMISSION_REQUEST_CODE = 1584
     }
     private var locationLiveData : MutableLiveData<Location> = MutableLiveData<Location>()
     private var loadLocal : MutableLiveData<Boolean> = MutableLiveData<Boolean>()
@@ -55,9 +55,8 @@ class LocationHanding(val context: Context) {
         alertDialogBuilder.setMessage("To load the current accurate temperature you have to enable location")
         alertDialogBuilder.setPositiveButton("Enable") { dialog, which ->
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-            startActivityForResult(context as Activity,intent, LOCATION_PERMISSION_REQUEST_CODE,
-                Bundle()
-            )
+            startActivityForResult(context as Activity,intent, LOCATION_PERMISSION_REQUEST_CODE, Bundle())
+            dialog.dismiss()
         }
         alertDialogBuilder.setNegativeButton("Load From Last Known") {dialog, which ->
             loadLocal.value=true
