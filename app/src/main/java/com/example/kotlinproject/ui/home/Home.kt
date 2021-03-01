@@ -229,7 +229,7 @@ class Home : Fragment() {
     private fun loadImage(imageView: ImageView, string: String) {
         Glide.with(imageView)  //2
             .load("https://openweathermap.org/img/wn/$string@2x.png") //3
-            .centerCrop() //4
+            .fitCenter() //4
             .into(imageView)
     }
 
