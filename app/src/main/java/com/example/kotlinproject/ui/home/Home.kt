@@ -243,8 +243,6 @@ class Home : Fragment() {
                     location.latitude.toString(),
                     location.longitude.toString(),
                     it.lang,
-                    "517a14f849e519bb4fa84cdbd4755f56",
-                    "minutely",
                     it.units
                 )
             })

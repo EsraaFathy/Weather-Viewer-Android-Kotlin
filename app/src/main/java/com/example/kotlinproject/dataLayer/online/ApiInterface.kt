@@ -16,10 +16,10 @@ interface ApiInterface {
                    @Query("units") units :String) :Call<AllData>
 
     @GET("/data/2.5/onecall?")
-   suspend fun getFavCall(@Query("lat") lat: String,
+    fun getFavCall(@Query("lat") lat: String,
                    @Query("lon") lon: String,
                    @Query("lang") lang: String,
                    @Query("appid") appid: String,
                    @Query("exclude") exclude :String,
-                   @Query("units") units :String) :FavData
+                   @Query("units") units :String) :Call<FavData>
 }

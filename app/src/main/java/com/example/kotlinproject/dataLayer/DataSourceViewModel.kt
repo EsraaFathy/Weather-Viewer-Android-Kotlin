@@ -25,11 +25,10 @@ class DataSourceViewModel(context: Context) {
         SharedPrefrencesReopsitory(context)
     private val repositoryonLine = Repository(ApiClient.apiService)
     private val roomRepositry: RoomRepositry = RoomRepositry(context)
-    private val roomData :MutableLiveData<AllData> = MutableLiveData<AllData>()
 
 
-    fun loadOneCall(lat: String,lon: String,lang: String, appid: String,exclude :String,units :String) {
-           val data =  repositoryonLine.getOneCall(lat,lon,lang,appid,exclude,units)
+    fun loadOneCall(lat: String,lon: String,lang: String,units :String) {
+           val data =  repositoryonLine.getOneCall(lat,lon,lang,"517a14f849e519bb4fa84cdbd4755f56","minutely",units)
             data.enqueue(object : Callback<AllData?> {
                 override fun onResponse(call: Call<AllData?>, response: Response<AllData?>) {
                     Log.d("tag", response.body().toString())
@@ -50,11 +49,20 @@ class DataSourceViewModel(context: Context) {
     }
 
 
-    fun saveFave(lat: String,lon: String,lang: String, appid: String,exclude :String,units :String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val data =repositoryonLine.getFavCall(lat,lon,lang,appid,exclude,units)
-            roomRepositry.saveFavData(data)
-        }
+    fun saveFave(lat: String,lon: String,lang: String,units :String) {
+        val data =  repositoryonLine.getFavCall(lat,lon,lang,"517a14f849e519bb4fa84cdbd4755f56","minutely",units)
+        data.enqueue(object : Callback<FavData?> {
+            override fun onResponse(call: Call<FavData?>, response: Response<FavData?>) {
+                Log.d("tag", response.body().toString())
+                CoroutineScope(Dispatchers.IO).launch {
+                    roomRepositry.saveFavData(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<FavData?>, t: Throwable) {
+               t.printStackTrace()
+            }
+        })
     }
 
 
@@ -69,6 +77,9 @@ class DataSourceViewModel(context: Context) {
 
      fun getRoomDataBase() : LiveData<List<AllData>>{
         return roomRepositry.getAllData()
+    }
+     fun getFavDataBase() : LiveData<List<FavData>>{
+        return roomRepositry.getFavData()
     }
 
 

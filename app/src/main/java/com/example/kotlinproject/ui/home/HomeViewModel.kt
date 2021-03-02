@@ -29,12 +29,10 @@ class HomeViewModel(context: Context) : ViewModel() {
         lat: String,
         lon: String,
         lang: String,
-        appid: String,
-        exclude: String,
         units: String
     ){
         Log.d("TAG", "loadOnlineData: ")
-        dataSourceViewModel.loadOneCall(lat, lon, lang, appid, exclude, units)
+        dataSourceViewModel.loadOneCall(lat, lon, lang, units)
     }
 
 

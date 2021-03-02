@@ -17,16 +17,15 @@ class RoomRepositry(context: Context) {
      fun getAllData(): LiveData<List<AllData>>{
         return weatherDao.getAllData()
     }
-
-//
-//    suspend fun getAllData(): List<AllData>?{
-//        return weatherDao.getAllData()
-//    }
-
      fun deleteAll(){
         return weatherDao.deleteAll()
     }
-     fun saveFavData(favData : FavData){
+
+    /////////////////fav\\\\\\\\\\\\\\\\\\\\\
+    suspend fun saveFavData(favData : FavData){
         weatherDao.saveFaveData(favData)
+    }
+    fun getFavData(): LiveData<List<FavData>>{
+        return weatherDao.getFavData()
     }
 }

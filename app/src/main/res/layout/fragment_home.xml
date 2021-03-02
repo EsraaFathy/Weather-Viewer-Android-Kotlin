@@ -65,12 +65,12 @@
             <ImageView
                 android:id="@+id/currentModeImg"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:contentDescription="@string/current_mode"
                 app:layout_constraintBottom_toBottomOf="@id/currentTime"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toEndOf="@id/currentCity"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/currentTemp"
@@ -102,7 +102,7 @@
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="184dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif-black"
                 android:text="@string/mostly_clear"
@@ -110,7 +110,8 @@
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/currentTemp"
                 app:layout_constraintStart_toEndOf="@id/currentTemp"
-                app:layout_constraintTop_toBottomOf="@id/currentTime" />
+                app:layout_constraintTop_toBottomOf="@id/currentTime"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/reload"

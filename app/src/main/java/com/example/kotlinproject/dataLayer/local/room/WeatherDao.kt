@@ -15,18 +15,18 @@ interface WeatherDao {
     @Query("SELECT * FROM AllData")
     fun getAllData(): LiveData<List<AllData>>
 
-//@Query("SELECT * FROM AllData")
-//suspend fun getAllData(): List<AllData>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveAllData(allData :AllData)
 
     @Query("DELETE FROM AllData")
     fun deleteAll()
 
+    //////////////////////fav\\\\\\\\\\\\\\\\\\\\\
 
-    @Insert
-    fun saveFaveData(favData :FavData)
+    @Query("SELECT * FROM FavData")
+    fun getFavData(): LiveData<List<FavData>>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveFaveData(favData :FavData)
 
 }
