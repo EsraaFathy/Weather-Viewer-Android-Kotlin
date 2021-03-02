@@ -48,4 +48,5 @@
     <string name="gps">Gps</string>
     <string name="add_custom_location">Add Custom Location</string>
     <string name="her_you_can_chose_your_location_setting">Her you can chose your location setting</string>
+    <string name="alert">Alert</string>
 </resources>

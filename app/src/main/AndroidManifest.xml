@@ -38,7 +38,7 @@
         <activity
             android:name=".ui.map.MapActivity"
             android:label="@string/title_activity_map" />
-        <activity android:name=".baseHome.MainActivity">
+        <activity android:name="com.example.kotlinproject.ui.baseHome.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
