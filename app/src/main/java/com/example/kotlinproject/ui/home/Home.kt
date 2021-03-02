@@ -19,14 +19,15 @@ import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
+import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.example.kotlinproject.databinding.FragmentHomeBinding
 
 
 class Home : Fragment() {
-    lateinit var binding: FragmentHomeBinding
-    lateinit var homeViewModel: HomeViewModel
-    lateinit var adapter:HourlyAdabter
-    lateinit var dailyadapter:DailyAdapter
+   private lateinit var binding: FragmentHomeBinding
+    private  lateinit var homeViewModel: HomeViewModel
+    private lateinit var adapter:HourlyAdabter
+    private lateinit var dailyadapter:DailyAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,14 +44,6 @@ class Home : Fragment() {
         }
     }
 
-
-//    override fun onR(requestCode: Int, resultCode: Int, data: Intent?) {
-//        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
-//             homeViewModel.gettingLocation()
-//
-//        }
-//        super.onActivityResult(requestCode, resultCode, data)
-//    }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -185,12 +178,6 @@ class Home : Fragment() {
     }
 
 
-
-    override fun onStart() {
-        super.onStart()
-
-    }
-
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initUI(it: AllData) {
         Log.d("TAG", "icon ${it.current.weather[0].icon}")
@@ -217,19 +204,35 @@ class Home : Fragment() {
     }
 
     private fun relad() {
-        homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
-            val location = it
-            Log.d("TAG", "it.lang" + location.latitude)
-            homeViewModel.getSetting().observe(this, {
-                Log.d("TAG", "it.lang" + it.lang)
-                homeViewModel.loadOnlineData(
-                    location.latitude.toString(),
-                    location.longitude.toString(),
-                    it.lang,
-                    it.units
-                )
-            })
+        lateinit var settingModel:SettingModel
+        homeViewModel.getSetting().observe(this, {
+            Log.d("TAG", "it.lang" + it.lang)
+            settingModel=it
+
+            if (settingModel.location=="gps"){
+                homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
+                    val location = it
+                    Log.d("TAG", "it.lang" + location.latitude)
+                    homeViewModel.loadOnlineData(
+                        location.latitude.toString(),
+                        location.longitude.toString(),
+                        settingModel.lang,
+                        settingModel.units
+                    )
+                })
+            }else {
+                homeViewModel.getLocationSettnig().observe(this,{
+                    homeViewModel.loadOnlineData(
+                        it.latitude.toString(),
+                        it.longitude.toString(),
+                        settingModel.lang,
+                        settingModel.units
+                    )
+                })
+            }
         })
+
+
     }
 
     fun loadHourly(hourlyList: List<Hourly>){

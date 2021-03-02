@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
+import com.google.android.gms.maps.model.LatLng
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,7 +42,9 @@ class HomeViewModel(context: Context) : ViewModel() {
         locationHanding.loadLocation()
         return locationHanding.getLocatin()
     }
-
+    fun getLocationSettnig():LiveData<LatLng>{
+        return dataSourceViewModel.getLocationSetting()
+    }
 
     fun getSetting():LiveData<SettingModel>{
         return dataSourceViewModel.getSetting()

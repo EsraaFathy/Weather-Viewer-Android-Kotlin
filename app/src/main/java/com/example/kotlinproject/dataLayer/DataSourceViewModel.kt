@@ -11,6 +11,7 @@ import com.example.kotlinproject.dataLayer.local.sharedprefrence.SharedPrefrence
 import com.example.kotlinproject.dataLayer.local.room.RoomRepositry
 import com.example.kotlinproject.dataLayer.online.ApiClient
 import com.example.kotlinproject.dataLayer.online.Repository
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -69,6 +70,12 @@ class DataSourceViewModel(context: Context) {
 
     fun getSetting(): LiveData<SettingModel> {
         return sharedPreferencesReopsitory.getSetting()
+    }
+
+    fun saveLocationSetting(latLng: LatLng)=sharedPreferencesReopsitory.saveLocationSetting(latLng)
+
+    fun getLocationSetting(): LiveData<LatLng> {
+        return sharedPreferencesReopsitory.getLocationSetting()
     }
     fun setSetting(setttingModel:SettingModel) {
         sharedPreferencesReopsitory.updateSetting(setttingModel)

@@ -1,5 +1,6 @@
 package com.example.kotlinproject.ui.setting
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,8 @@ import androidx.lifecycle.Observer
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.example.kotlinproject.databinding.FragmentSettingBinding
+import com.example.kotlinproject.ui.favouriteDetails.FavouriteDetails
+import com.example.kotlinproject.ui.map.MapActivity
 
 
 class Setting : Fragment() {
@@ -29,9 +32,15 @@ class Setting : Fragment() {
         binding = FragmentSettingBinding.inflate(inflater, container, false)
         settingViewModel = SettingViewModel(activity!!)
 
-        binding.saveButton.setOnClickListener(View.OnClickListener {
+        binding.saveButton.setOnClickListener{
             savedata()
-        })
+        }
+
+        binding.addLocationRadioButton.setOnClickListener{
+            val intent = Intent(activity, MapActivity::class.java)
+            intent.putExtra("type","setting")
+            startActivity(intent)
+        }
         getSetting()
 
         return binding.root
