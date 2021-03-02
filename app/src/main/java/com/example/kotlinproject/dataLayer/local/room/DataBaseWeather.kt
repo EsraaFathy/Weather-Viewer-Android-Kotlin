@@ -10,7 +10,7 @@ import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 
 @TypeConverters(Converter::class)
-@Database(entities = [AllData::class, FavData::class], version = 2,exportSchema = false)
+@Database(entities = [AllData::class, FavData::class], version = 1,exportSchema = false)
 abstract class DataBaseWeather : RoomDatabase() {
     companion object{
         @Volatile

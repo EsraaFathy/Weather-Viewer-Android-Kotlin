@@ -16,23 +16,10 @@
             android:paddingVertical="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/currentTime"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_height="wrap_content"
-                android:text="@string/_11_11"
-                android:textSize="18sp"
-                style="@style/textView"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
                 android:id="@+id/currentModeImg"
                 android:src="@drawable/ic_cloud"
@@ -42,9 +29,19 @@
                 android:contentDescription="@string/current_mode" />
 
             <TextView
+                android:id="@+id/time_zone"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_height="wrap_content"
+                android:text="@string/_c"
+                style="@style/textView"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <TextView
                 android:id="@+id/currentTemp"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
                 android:layout_height="wrap_content"
                 android:text="@string/_c"
@@ -52,11 +49,11 @@
                 android:textSize="30sp"
                 android:fontFamily="sans-serif-black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/currentTime" />
+                app:layout_constraintTop_toBottomOf="@id/time_zone"
+                app:layout_constraintBottom_toBottomOf="@id/currentModeImg"/>
             <TextView
                 android:id="@+id/tempUnit"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
                 android:layout_height="wrap_content"
                 android:text="@string/_c"
@@ -64,20 +61,20 @@
                 android:textSize="30sp"
                 android:fontFamily="sans-serif-black"
                 app:layout_constraintStart_toEndOf="@id/currentTemp"
-                app:layout_constraintTop_toBottomOf="@id/currentTime" />
+                app:layout_constraintTop_toTopOf="@id/currentTemp"
+                app:layout_constraintBottom_toBottomOf="@id/currentTemp"
+                />
             <TextView
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/mostly_clear"
                 android:textColor="@color/move"
                 android:textSize="20sp"
                 android:fontFamily="sans-serif-black"
-                app:layout_constraintBottom_toBottomOf="@id/currentTemp"
-                app:layout_constraintStart_toEndOf="@id/currentTemp"
-                app:layout_constraintTop_toBottomOf="@id/currentTime" />
+                app:layout_constraintTop_toTopOf="@id/tempUnit"
+                app:layout_constraintBottom_toBottomOf="@id/currentModeImg"                app:layout_constraintStart_toEndOf="@id/currentTemp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

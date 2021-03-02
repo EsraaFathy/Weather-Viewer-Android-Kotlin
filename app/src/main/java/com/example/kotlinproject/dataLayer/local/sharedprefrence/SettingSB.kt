@@ -22,6 +22,7 @@ class SettingSB(val context: Context) {
             val editor:SharedPreferences.Editor =  sharedPreferences.edit()
             editor.putString("units",settingModel.units)
             editor.putString("lang",settingModel.lang)
+            editor.putString("location",settingModel.location)
             editor.apply()
             editor.commit()
         }
@@ -31,7 +32,8 @@ class SettingSB(val context: Context) {
         CoroutineScope(Dispatchers.IO).launch {
             val units = sharedPreferences.getString("units","standard")
             val lang = sharedPreferences.getString("lang","ar")
-            SettingData.postValue(SettingModel(units!!, lang!!))
+            val location = sharedPreferences.getString("location","gps")
+            SettingData.postValue(SettingModel(units!!, lang!!, location!!))
         }
     }
     fun getSetting(): LiveData<SettingModel>{

@@ -39,8 +39,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMarkerDr
         mapActivityViewMode.save.observe(this,{
             if (it){
                 mapActivityViewMode.getSettnig().observe(this,{
-                    mapActivityViewMode.saveFav(latLng.latitude.toString(),latLng.longitude.toString(),
-                                                it.lang,it.units)
+                    mapActivityViewMode.saveFav(latLng.latitude.toString(),latLng.longitude.toString(), it.lang,it.units)
                 })
             }
         })
@@ -73,9 +72,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMarkerDr
     }
 
     override fun onMarkerDragEnd(p0: Marker?) {
-        val position: LatLng = p0!!.getPosition()
-
-        Log.d("TAG", "${position.latitude}.....${position.longitude}")
+        latLng = p0!!.getPosition()
+            mapActivityViewMode.showAlarm()
+        Log.d("TAG", "${latLng.latitude}.....${latLng.longitude}")
 
     }
 }

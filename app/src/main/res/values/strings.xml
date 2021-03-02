@@ -44,4 +44,8 @@
     <string name="reload">reload</string>
     <string name="_1268">1268</string>
     <string name="add_fav">add fav</string>
+    <string name="top">top</string>
+    <string name="gps">Gps</string>
+    <string name="add_custom_location">Add Custom Location</string>
+    <string name="her_you_can_chose_your_location_setting">Her you can chose your location setting</string>
 </resources>

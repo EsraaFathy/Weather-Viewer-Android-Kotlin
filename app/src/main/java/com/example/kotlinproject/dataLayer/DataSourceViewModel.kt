@@ -78,8 +78,12 @@ class DataSourceViewModel(context: Context) {
      fun getRoomDataBase() : LiveData<List<AllData>>{
         return roomRepositry.getAllData()
     }
+
      fun getFavDataBase() : LiveData<List<FavData>>{
         return roomRepositry.getFavData()
+    }
+    fun getOneFav(lat: String,lon: String):LiveData<FavData>{
+        return roomRepositry.getOneFav(lat,lon)
     }
 
 

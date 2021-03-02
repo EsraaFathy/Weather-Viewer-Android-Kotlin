@@ -28,4 +28,8 @@ class RoomRepositry(context: Context) {
     fun getFavData(): LiveData<List<FavData>>{
         return weatherDao.getFavData()
     }
+
+    fun getOneFav(lat: String,lon: String):LiveData<FavData>{
+        return weatherDao.getOneFav(lat,lon)
+    }
 }

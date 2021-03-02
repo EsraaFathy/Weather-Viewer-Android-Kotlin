@@ -32,23 +32,6 @@ class Home : Fragment() {
 
     }
 
-//    override fun onRequestPermissionsResult(
-//        requestCode: Int,
-//        permissions: Array<out String>,
-//        grantResults: IntArray
-//    ) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//        Log.d("TAG","befor if")
-//        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
-//            Log.d("TAG","one if")
-//            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                Log.d("TAG","two if")
-//                homeViewModel.gettingLocation();
-//
-//            }
-//        }
-//    }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
