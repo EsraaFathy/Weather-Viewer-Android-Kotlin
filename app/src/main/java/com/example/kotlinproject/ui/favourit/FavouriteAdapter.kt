@@ -1,6 +1,7 @@
 package com.example.kotlinproject.ui.favourit
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +13,10 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
+import com.example.kotlinproject.ui.favouriteDetails.FavouriteDetails
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class FavouriteAdapter(var context: Context) : RecyclerView.Adapter<FavouriteAdapter.MyViewHolder>() {
@@ -32,8 +37,15 @@ class FavouriteAdapter(var context: Context) : RecyclerView.Adapter<FavouriteAda
             temp.text = favData.current.temp.toString()
             time_Zone.text=favData.timezone
             itemView.setOnClickListener{
-                homeViewModel.clicked.value="${favData.lat}${favData.lon}"
-                Log.d("TAG","${homeViewModel.clicked.value}")
+                //"${favData.lat}${favData.lon}"
+                val intent = Intent(context, FavouriteDetails::class.java)
+                intent.putExtra("lat","${favData.lat}")
+                intent.putExtra("lon","${favData.lon}")
+                context.startActivity(intent)
+            }
+            itemView.setOnLongClickListener{
+                homeViewModel.showAlarm(favData.lat.toString(),favData.lon.toString())
+                true
             }
 
         }

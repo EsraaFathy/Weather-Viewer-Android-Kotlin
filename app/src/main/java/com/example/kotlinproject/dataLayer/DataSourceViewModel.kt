@@ -92,6 +92,9 @@ class DataSourceViewModel(context: Context) {
     fun getOneFav(lat: String,lon: String):LiveData<FavData>{
         return roomRepositry.getOneFav(lat,lon)
     }
+    fun deleteOneFav(lat: String,lon: String){
+        roomRepositry.deleteOneFav(lat,lon)
+    }
 
 
 }

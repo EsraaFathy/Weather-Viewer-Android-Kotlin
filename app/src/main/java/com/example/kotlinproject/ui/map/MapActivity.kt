@@ -9,7 +9,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
 
@@ -25,7 +24,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
         type=intent.getStringExtra("type").toString()
 
@@ -40,7 +38,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             }
             })
 
-        mapActivityViewMode.saveFav.observe(this,{
+        mapActivityViewMode.saveFav.observe(this,{ it ->
             if (it){
                 mapActivityViewMode.getSettnig().observe(this,{
                     mapActivityViewMode.saveFav(latLng.latitude.toString(),latLng.longitude.toString(), it.lang,it.units)
@@ -52,8 +50,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.mapType = GoogleMap.MAP_TYPE_HYBRID;
-        mMap.uiSettings.isZoomControlsEnabled = true;
+        mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+        mMap.uiSettings.isZoomControlsEnabled = true
 
         mMap.setOnMapClickListener {
             mMap.clear()
@@ -70,26 +68,4 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
     }
-
-
-
-//    override fun onMarkerDragStart(p0: Marker?) {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override fun onMarkerDrag(p0: Marker?) {
-//
-//    }
-
-//    override fun onMarkerDragEnd(p0: Marker?) {
-//        latLng = p0!!.getPosition()
-//        if (type=="setting"){
-//            mapActivityViewMode.showLocationSavingAlarm()
-//        }else {
-//            mapActivityViewMode.showAlarm()
-//        }
-//            Log.d("TAG", "${latLng.latitude}.....${type}")
-//        Log.d("TAG type","")
-//
-//    }
 }

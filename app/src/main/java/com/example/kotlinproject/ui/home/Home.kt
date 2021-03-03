@@ -163,6 +163,7 @@ class Home : Fragment() {
                 )
             )
         }
+
         binding.reload.setOnClickListener {
             relad()
         }
@@ -192,6 +193,18 @@ class Home : Fragment() {
         binding.currentDate.text = homeViewModel.formateDate(it.current.dt)
         binding.sunrisetime.text = homeViewModel.formateTime(it.current.sunrise)
         binding.sunsetdate.text = homeViewModel.formateTime(it.current.sunset)
+    }
+    fun loadHourly(hourlyList: List<Hourly>){
+        val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
+        binding.hourlyList.layoutManager=lay
+        adapter.models=hourlyList
+        binding.hourlyList.adapter=adapter
+    }
+    fun loadDaily(dailyList: List<Daily>){
+        val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
+        binding.dialyList.layoutManager=lay
+        dailyadapter.models=dailyList
+        binding.dialyList.adapter=dailyadapter
     }
 
 
@@ -235,17 +248,5 @@ class Home : Fragment() {
 
     }
 
-    fun loadHourly(hourlyList: List<Hourly>){
-        val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
-        binding.hourlyList.layoutManager=lay
-        adapter.models=hourlyList
-        binding.hourlyList.adapter=adapter
-    }
-    fun loadDaily(dailyList: List<Daily>){
-        val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
-        binding.dialyList.layoutManager=lay
-        dailyadapter.models=dailyList
-        binding.dialyList.adapter=dailyadapter
-    }
 
 }

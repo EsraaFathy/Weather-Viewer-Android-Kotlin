@@ -29,7 +29,10 @@ interface WeatherDao {
     suspend fun saveFaveData(favData: FavData)
 
 
-    @Query("SELECT * FROM FavData WHERE lat LIKE:lat OR lon LIKE:lon LIMIT 1")
-    fun getOneFav(lat: String,lon: String): LiveData<FavData>
+    @Query("SELECT * FROM FavData WHERE lat LIKE:lat AND lon LIKE:lon LIMIT 1")
+    fun getOneFav(lat: String, lon: String): LiveData<FavData>
+
+    @Query("DELETE FROM FavData WHERE lat LIKE:lat AND lon LIKE:lon")
+    fun deleteOneFav(lat: String, lon: String)
 
 }

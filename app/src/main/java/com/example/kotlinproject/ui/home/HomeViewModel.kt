@@ -58,10 +58,9 @@ class HomeViewModel(context: Context) : ViewModel() {
 
     @SuppressLint("SimpleDateFormat")
     fun formateDate(format: Int): String {
-            val dateFormat = SimpleDateFormat("EEE,dd MM yyyy")
-            val date = Date()
-            val s=format.toLong()
-            return dateFormat.format(date)
+        val sdf = SimpleDateFormat("MM/dd/yyyy")
+        val netDate = Date(format.toLong()* 1000)
+        return sdf.format(netDate)
         }
 
     @SuppressLint("SimpleDateFormat")

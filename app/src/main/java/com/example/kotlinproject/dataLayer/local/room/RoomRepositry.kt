@@ -32,4 +32,7 @@ class RoomRepositry(context: Context) {
     fun getOneFav(lat: String,lon: String):LiveData<FavData>{
         return weatherDao.getOneFav(lat,lon)
     }
+    fun deleteOneFav(lat: String,lon: String){
+        weatherDao.deleteOneFav(lat,lon)
+    }
 }

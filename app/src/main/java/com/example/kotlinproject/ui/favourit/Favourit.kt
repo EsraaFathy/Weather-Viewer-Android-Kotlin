@@ -45,17 +45,7 @@ class Favourit : Fragment() {
             }
         })
 
-//        favouriteViewModel.getClicked().observe(this,{
-//
-//
-//        })
 
-        favouriteViewModel.clicked.observe(this,{
-            Log.d("TAG","fffff + $it")
-            val intent = Intent(activity, FavouriteDetails::class.java)
-            intent.putExtra("ID",it)
-            startActivity(intent)
-        })
 
 
         return binding.root
