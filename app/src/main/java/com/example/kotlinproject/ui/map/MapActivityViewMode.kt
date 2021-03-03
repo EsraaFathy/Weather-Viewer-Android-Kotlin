@@ -1,22 +1,25 @@
 package com.example.kotlinproject.ui.map
 
+import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Context
 
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.google.android.gms.maps.model.LatLng
 
-class MapActivityViewMode(val context: Context) {
-
+class MapActivityViewMode(application: Application) : AndroidViewModel(application) {
+    private val mApplication: Application=application
     val saveFav :MutableLiveData<Boolean> =MutableLiveData<Boolean>()
     val saveLatLng :MutableLiveData<Boolean> =MutableLiveData<Boolean>()
-    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(context)
+    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(application.applicationContext)
 
      fun showAlarm() {
-        val alertDialogBuilder = AlertDialog.Builder(context)
+        val alertDialogBuilder = AlertDialog.Builder(mApplication.applicationContext)
         alertDialogBuilder.setTitle("Are you Sure")
         alertDialogBuilder.setMessage("you want to add this location to favourit places")
         alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
@@ -28,7 +31,7 @@ class MapActivityViewMode(val context: Context) {
         alertDialogBuilder.show()
     }
     fun showLocationSavingAlarm() {
-        val alertDialogBuilder = AlertDialog.Builder(context)
+        val alertDialogBuilder = AlertDialog.Builder(mApplication.applicationContext)
         alertDialogBuilder.setTitle("Are you Sure")
         alertDialogBuilder.setMessage("you want to add this location to store as your location")
         alertDialogBuilder.setPositiveButton("Yes") { _, _ ->

@@ -1,17 +1,20 @@
 package com.example.kotlinproject.ui.favouriteDetails
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.AndroidViewModel
 import com.bumptech.glide.Glide
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DetailsViewModel(val context: Context) {
-    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(context)
+class DetailsViewModel(application: Application) : AndroidViewModel(application) {
+    private val mApplication: Application=application
+    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication.applicationContext)
     fun getOneFav(lat: String,lon: String)= dataSourceViewModel.getOneFav(lat,lon)
     fun saveFave(lat: String,lon: String,lang: String,units :String){
         dataSourceViewModel.saveFave(lat,lon,lang,units)

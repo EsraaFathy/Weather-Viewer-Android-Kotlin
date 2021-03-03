@@ -1,5 +1,6 @@
 package com.example.kotlinproject.ui.home
 
+import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.view.LayoutInflater
@@ -13,7 +14,7 @@ import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
 
-class DailyAdapter (var context: Context) : RecyclerView.Adapter<DailyAdapter.MyViewHolder>() {
+class DailyAdapter (var context: Application) : RecyclerView.Adapter<DailyAdapter.MyViewHolder>() {
     lateinit var models: List<Daily>
     var homeViewModel: HomeViewModel = HomeViewModel(context)
 

@@ -9,6 +9,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
@@ -27,9 +28,10 @@ class FavouriteDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_favourite_details)
-        detailsViewModel= DetailsViewModel(this)
-        adapter= HourlyAdabter(this)
-        dailyadapter= DailyAdapter(this)
+        detailsViewModel=  ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[DetailsViewModel::class.java]
+
+        adapter= HourlyAdabter(application)
+        dailyadapter= DailyAdapter(application)
         val intent: Intent = intent
         val lat=intent.getStringExtra("lat")
         val lon=intent.getStringExtra("lon")

@@ -1,5 +1,6 @@
 package com.example.kotlinproject.ui.favouriteDetails
 
+import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.view.LayoutInflater
@@ -16,7 +17,7 @@ import com.example.kotlinproject.dataLayer.entity.favtable.Hourly
 
 //class HourlyAdabter {
 //}
-class HourlyAdabter(var context: Context) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
+class HourlyAdabter(var context: Application) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
     lateinit var models: List<Hourly>
     var homeViewModel: DetailsViewModel = DetailsViewModel(context)
 

@@ -12,6 +12,7 @@ import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -51,9 +52,10 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        homeViewModel = HomeViewModel(activity!!)
-         adapter=HourlyAdabter(activity!!)
-        dailyadapter= DailyAdapter(activity!!)
+        homeViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[HomeViewModel::class.java]
+
+        adapter=HourlyAdabter(requireActivity().application)
+        dailyadapter= DailyAdapter(requireActivity().application)
         relad()
 
         binding.cureentCard.setOnClickListener {

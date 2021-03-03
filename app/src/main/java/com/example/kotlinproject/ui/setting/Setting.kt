@@ -10,11 +10,13 @@ import android.view.ViewGroup
 import android.widget.Switch
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.example.kotlinproject.databinding.FragmentSettingBinding
 import com.example.kotlinproject.ui.favouriteDetails.FavouriteDetails
 import com.example.kotlinproject.ui.map.MapActivity
+import com.example.kotlinproject.ui.map.MapActivityViewMode
 
 
 class Setting : Fragment() {
@@ -30,7 +32,10 @@ class Setting : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSettingBinding.inflate(inflater, container, false)
-        settingViewModel = SettingViewModel(activity!!)
+        settingViewModel =  ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(
+            requireActivity().application
+        ))[SettingViewModel::class.java]
+
 
         binding.saveButton.setOnClickListener{
             savedata()

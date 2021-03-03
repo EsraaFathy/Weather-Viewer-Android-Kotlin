@@ -1,10 +1,12 @@
 package com.example.kotlinproject.ui.favourit
 
+import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
@@ -14,8 +16,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FavouriteViewModel(val context: Context) {
-    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(context)
+class FavouriteViewModel(application: Application) : AndroidViewModel(application) {
+    private val mApplication: Application=application
+    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication.applicationContext)
     fun deleteOneFav(lat: String,lon: String)= dataSourceViewModel.deleteOneFav(lat,lon)
 
     fun getFavDataBase(): LiveData<List<FavData>> {
@@ -31,7 +34,7 @@ class FavouriteViewModel(val context: Context) {
     }
 
     fun showAlarm(lat : String,lon: String) {
-        val alertDialogBuilder = AlertDialog.Builder(context)
+        val alertDialogBuilder = AlertDialog.Builder(mApplication.applicationContext)
         alertDialogBuilder.setTitle("Are you Sure")
         alertDialogBuilder.setMessage("you want to delete this city")
         alertDialogBuilder.setPositiveButton("Yes") { _, _ ->

@@ -1,6 +1,7 @@
 package com.example.kotlinproject.ui.home
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Context
 import android.location.Location
 import android.os.Build
@@ -8,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,9 +22,10 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HomeViewModel(context: Context) : ViewModel() {
-    val locationHanding: LocationHanding = LocationHanding(context)
-    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(context)
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
+    private val mApplication: Application=application
+    val locationHanding: LocationHanding = LocationHanding(mApplication.applicationContext)
+    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication.applicationContext)
     private val data:MutableLiveData<AllData> = MutableLiveData<AllData>()
 
 

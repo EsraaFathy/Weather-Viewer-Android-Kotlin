@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
@@ -32,8 +33,9 @@ class Favourit : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFavouritBinding.inflate(inflater, container, false)
-        favouriteViewModel= FavouriteViewModel(activity!!)
-        adapter= FavouriteAdapter(activity!!)
+        favouriteViewModel= ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[FavouriteViewModel::class.java]
+
+        adapter= FavouriteAdapter(requireActivity().application)
         binding.addButton.setOnClickListener{
             val intent = Intent(activity, MapActivity::class.java)
             startActivity(intent)

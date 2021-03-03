@@ -1,5 +1,6 @@
 package com.example.kotlinproject.ui.favourit
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -19,7 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class FavouriteAdapter(var context: Context) : RecyclerView.Adapter<FavouriteAdapter.MyViewHolder>() {
+class FavouriteAdapter(var context: Application) : RecyclerView.Adapter<FavouriteAdapter.MyViewHolder>() {
     lateinit var models: List<FavData>
     var homeViewModel: FavouriteViewModel = FavouriteViewModel(context)
 

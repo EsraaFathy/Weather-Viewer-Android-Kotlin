@@ -4,6 +4,7 @@ package com.example.kotlinproject.ui.map
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinproject.R
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -30,19 +31,30 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-        mapActivityViewMode= MapActivityViewMode(this)
+//        mapActivityViewMode= MapActivityViewMode(this)
+        mapActivityViewMode= ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[MapActivityViewMode::class.java]
 
-        mapActivityViewMode.saveLatLng.observe(this,{
-            if (it){
+
+        mapActivityViewMode.saveLatLng.observe(this, {
+            if (it) {
                 mapActivityViewMode.saveLocationSetting(latLng)
-            }
-            })
+                mapActivityViewMode.saveLatLng.value=false
 
-        mapActivityViewMode.saveFav.observe(this,{ it ->
-            if (it){
-                mapActivityViewMode.getSettnig().observe(this,{
-                    mapActivityViewMode.saveFav(latLng.latitude.toString(),latLng.longitude.toString(), it.lang,it.units)
+            }
+        })
+
+        mapActivityViewMode.saveFav.observe(this, { it ->
+            if (it) {
+                mapActivityViewMode.getSettnig().observe(this, {
+                    mapActivityViewMode.saveFav(
+                        latLng.latitude.toString(),
+                        latLng.longitude.toString(),
+                        it.lang,
+                        it.units
+                    )
                 })
+                mapActivityViewMode.saveFav.value=false
+
             }
         })
     }
@@ -64,7 +76,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 mapActivityViewMode.showAlarm()
             }
             Log.d("TAG", "${latLng.latitude}.....${type}")
-            Log.d("TAG type","")
+            Log.d("TAG type", "")
         }
 
     }

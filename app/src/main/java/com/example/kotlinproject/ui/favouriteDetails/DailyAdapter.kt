@@ -1,5 +1,6 @@
 package com.example.kotlinproject.ui.favouriteDetails
 
+import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.view.LayoutInflater
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.favtable.Daily
 
-class DailyAdapter (var context: Context) : RecyclerView.Adapter<DailyAdapter.MyViewHolder>() {
+class DailyAdapter (var context: Application) : RecyclerView.Adapter<DailyAdapter.MyViewHolder>() {
     lateinit var models: List<Daily>
     var homeViewModel: DetailsViewModel = DetailsViewModel(context)
 
