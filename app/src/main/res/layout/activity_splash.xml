@@ -19,7 +19,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/logo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/snow" />
+
+    <TextView
+        style="@style/textView"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:layout_below="@+id/logo"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="-108dp"
+        android:layout_marginBottom="191dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/text_color"
+        android:textSize="30sp" />
+
     <ImageView
         android:id="@+id/snow1"
         android:layout_width="67dp"
@@ -30,6 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="53dp"
         android:layout_marginTop="64dp"
+        android:contentDescription="@string/snow"
         android:layout_marginEnd="292dp"
         android:layout_marginBottom="513dp"
         android:src="@drawable/snow"
@@ -48,6 +64,7 @@
         android:layout_marginEnd="58dp"
         android:layout_marginBottom="505dp"
         android:src="@drawable/snow"
+        android:contentDescription="@string/snow"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -63,9 +80,11 @@
         android:layout_marginEnd="318dp"
         android:layout_marginBottom="270dp"
         android:src="@drawable/snow"
+        android:contentDescription="@string/snow"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:contentDescription="@string/snow"
         android:id="@+id/snow4"
         android:layout_width="67dp"
         android:layout_height="82dp"
@@ -81,6 +100,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:contentDescription="@string/snow"
         android:id="@+id/snow5"
         android:layout_width="25dp"
         android:layout_height="33dp"
@@ -103,14 +123,16 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginEnd="257dp"
-        android:layout_marginBottom="562dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="230dp"
+        android:layout_marginBottom="584dp"
+        android:contentDescription="@string/snow"
         android:src="@drawable/frost"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:contentDescription="@string/snow"
         android:id="@+id/snow8"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -128,6 +150,7 @@
     <ImageView
         android:id="@+id/snow9"
         android:layout_width="25dp"
+        android:contentDescription="@string/snow"
         android:layout_height="33dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -147,6 +170,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:contentDescription="@string/snow"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="175dp"
         android:layout_marginTop="447dp"
@@ -159,6 +183,7 @@
         android:id="@+id/snow11"
         android:layout_width="25dp"
         android:layout_height="33dp"
+        android:contentDescription="@string/snow"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -178,16 +203,18 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="243dp"
-        android:layout_marginTop="229dp"
-        android:layout_marginEnd="142dp"
-        android:layout_marginBottom="398dp"
+        android:layout_marginStart="209dp"
+        android:layout_marginTop="199dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="428dp"
+        android:contentDescription="@string/snow"
         android:src="@drawable/frost"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/snow6"
         android:layout_width="67dp"
+        android:contentDescription="@string/snow"
         android:layout_height="82dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"

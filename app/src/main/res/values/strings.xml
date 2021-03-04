@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KotlinProject</string>
+    <string name="app_name">Weather viewer</string>
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
     <string name="setting">Setting</string>
@@ -56,4 +56,5 @@
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="snow">snow</string>
 </resources>
