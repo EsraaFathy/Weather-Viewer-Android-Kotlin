@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class FavouriteViewModel(application: Application) : AndroidViewModel(application) {
     private val mApplication: Application=application
-    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication.applicationContext)
+    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication)
     fun deleteOneFav(lat: String,lon: String)= dataSourceViewModel.deleteOneFav(lat,lon)
 
     fun getFavDataBase(): LiveData<List<FavData>> {

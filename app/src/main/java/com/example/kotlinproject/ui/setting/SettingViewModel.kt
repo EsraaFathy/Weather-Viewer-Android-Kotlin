@@ -12,7 +12,7 @@ import com.example.kotlinproject.ui.home.LocationHanding
 
 class SettingViewModel(application: Application) : AndroidViewModel(application) {
     private val mApplication: Application =application
-    val dataSourceViewModel :DataSourceViewModel= DataSourceViewModel(mApplication.applicationContext)
+    val dataSourceViewModel :DataSourceViewModel= DataSourceViewModel(mApplication)
 
     fun getSetting():LiveData<SettingModel>{
         return dataSourceViewModel.getSetting()

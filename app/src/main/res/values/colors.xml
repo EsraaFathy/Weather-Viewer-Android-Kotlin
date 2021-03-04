@@ -9,8 +9,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="broun">#832D26</color>
+    <color name="brouna">#832D26</color>
     <color name="cafe">#E6BE9C</color>
+    <color name="cafe_navigation">#E6BE9C</color>
     <color name="babyBlue">#96C6D9</color>
     <color name="move">#A66D97</color>
     <color name="back_ground">#8FA6BD</color>
+    <color name="setting_color_base">#8F8F8F</color>
+    <color name="list_item">#EDE2E2</color>
+    <color name="text_color">#832D26</color>
 </resources>

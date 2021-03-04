@@ -212,8 +212,8 @@ class Home : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun loadImage(imageView: ImageView, string: String) {
-        Glide.with(imageView)  //2
-            .load("https://openweathermap.org/img/wn/$string@2x.png") //3
+        Glide.with(imageView)  //2http://openweathermap.org/img/w/10n.png
+            .load("https://openweathermap.org/img/w/$string.png") //3
             .fitCenter() //4
             .into(imageView)
     }

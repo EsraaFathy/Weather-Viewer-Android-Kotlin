@@ -1,10 +1,8 @@
 package com.example.kotlinproject.ui.favourit
 
 import android.app.Application
-import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.ui.favouriteDetails.FavouriteDetails
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class FavouriteAdapter(var context: Application) : RecyclerView.Adapter<FavouriteAdapter.MyViewHolder>() {
@@ -33,19 +28,20 @@ class FavouriteAdapter(var context: Application) : RecyclerView.Adapter<Favourit
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun binding(favData: FavData) {
-            homeViewModel.loadImage(icon,favData.current.weather[0].icon)
+            homeViewModel.loadImage(icon, favData.current.weather[0].icon)
             description.text = favData.current.weather[0].description
             temp.text = favData.current.temp.toString()
             time_Zone.text=favData.timezone
             itemView.setOnClickListener{
                 //"${favData.lat}${favData.lon}"
-                val intent = Intent(context, FavouriteDetails::class.java)
-                intent.putExtra("lat","${favData.lat}")
-                intent.putExtra("lon","${favData.lon}")
-                context.startActivity(intent)
+                val intent = Intent(context.applicationContext, FavouriteDetails::class.java)
+                intent.putExtra("lat", "${favData.lat}")
+                intent.putExtra("lon", "${favData.lon}")
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
+                context.applicationContext.startActivity(intent)
             }
             itemView.setOnLongClickListener{
-                homeViewModel.showAlarm(favData.lat.toString(),favData.lon.toString())
+                homeViewModel.showAlarm(favData.lat.toString(), favData.lon.toString())
                 true
             }
 

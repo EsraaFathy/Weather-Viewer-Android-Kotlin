@@ -16,10 +16,10 @@ class MapActivityViewMode(application: Application) : AndroidViewModel(applicati
     private val mApplication: Application=application
     val saveFav :MutableLiveData<Boolean> =MutableLiveData<Boolean>()
     val saveLatLng :MutableLiveData<Boolean> =MutableLiveData<Boolean>()
-    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(application.applicationContext)
+    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(application)
 
-     fun showAlarm() {
-        val alertDialogBuilder = AlertDialog.Builder(mApplication.applicationContext)
+     fun showAlarm(context: Context) {
+        val alertDialogBuilder = AlertDialog.Builder(context)
         alertDialogBuilder.setTitle("Are you Sure")
         alertDialogBuilder.setMessage("you want to add this location to favourit places")
         alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
@@ -30,8 +30,8 @@ class MapActivityViewMode(application: Application) : AndroidViewModel(applicati
         }
         alertDialogBuilder.show()
     }
-    fun showLocationSavingAlarm() {
-        val alertDialogBuilder = AlertDialog.Builder(mApplication.applicationContext)
+    fun showLocationSavingAlarm(context: Context) {
+        val alertDialogBuilder = AlertDialog.Builder(context)
         alertDialogBuilder.setTitle("Are you Sure")
         alertDialogBuilder.setMessage("you want to add this location to store as your location")
         alertDialogBuilder.setPositiveButton("Yes") { _, _ ->

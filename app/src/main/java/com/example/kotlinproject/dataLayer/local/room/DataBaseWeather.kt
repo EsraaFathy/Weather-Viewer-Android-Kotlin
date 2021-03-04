@@ -1,5 +1,6 @@
 package com.example.kotlinproject.dataLayer.local.room
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -16,7 +17,7 @@ abstract class DataBaseWeather : RoomDatabase() {
         @Volatile
         private var db :DataBaseWeather? =null
 
-        fun getInstance(application: Context): DataBaseWeather? {
+        fun getInstance(application: Application): DataBaseWeather? {
             synchronized(this) {
             if (db == null)
                 db = Room.databaseBuilder(

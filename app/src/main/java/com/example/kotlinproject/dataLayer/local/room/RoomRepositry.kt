@@ -2,12 +2,13 @@ package com.example.kotlinproject.dataLayer.local.room
 
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 
 
-class RoomRepositry(context: Context) {
+class RoomRepositry(context: Application) : AndroidViewModel(context) {
     val database :DataBaseWeather?=DataBaseWeather.getInstance(context)
     val weatherDao :WeatherDao= database!!.weatherDao()
 

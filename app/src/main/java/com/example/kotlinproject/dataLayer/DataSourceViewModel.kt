@@ -1,7 +1,9 @@
 package com.example.kotlinproject.dataLayer
 
+import android.app.Application
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
@@ -20,7 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DataSourceViewModel(context: Context) {
+class DataSourceViewModel(context: Application) : AndroidViewModel(context) {
 
     private val sharedPreferencesReopsitory: SharedPrefrencesReopsitory =
         SharedPrefrencesReopsitory(context)

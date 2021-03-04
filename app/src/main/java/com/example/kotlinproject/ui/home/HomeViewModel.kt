@@ -25,7 +25,7 @@ import java.util.*
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val mApplication: Application=application
     val locationHanding: LocationHanding = LocationHanding(mApplication.applicationContext)
-    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication.applicationContext)
+    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication)
     private val data:MutableLiveData<AllData> = MutableLiveData<AllData>()
 
 

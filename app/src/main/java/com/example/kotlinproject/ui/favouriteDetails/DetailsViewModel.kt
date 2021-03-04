@@ -14,7 +14,7 @@ import java.util.*
 
 class DetailsViewModel(application: Application) : AndroidViewModel(application) {
     private val mApplication: Application=application
-    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication.applicationContext)
+    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication)
     fun getOneFav(lat: String,lon: String)= dataSourceViewModel.getOneFav(lat,lon)
     fun saveFave(lat: String,lon: String,lang: String,units :String){
         dataSourceViewModel.saveFave(lat,lon,lang,units)

@@ -16,17 +16,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/sky"
+                android:background="@color/cafe_navigation"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:contentDescription="@string/image" />
-
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/cureentCard"/>
             <TextView
                 android:id="@+id/currentCity"
                 style="@style/textView"
@@ -35,6 +34,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/current_city"
+                android:textColor="@color/text_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,6 +46,7 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/_20_2_2021"
                 android:textSize="18sp"
+                android:textColor="@color/text_color"
                 app:layout_constraintEnd_toEndOf="@id/currentCity"
                 app:layout_constraintStart_toStartOf="@id/currentCity"
                 app:layout_constraintTop_toBottomOf="@id/currentCity" />
@@ -57,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/_11_11"
+                android:textColor="@color/text_color"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@id/currentDate"
                 app:layout_constraintStart_toStartOf="@id/currentDate"
@@ -119,7 +121,6 @@
                 app:layout_constraintStart_toEndOf="@id/currentTime"
                 app:layout_constraintBottom_toBottomOf="@id/currentTime"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_reload_24"
                 android:contentDescription="@string/reload" />
@@ -139,6 +140,7 @@
                 <TextView
                     android:id="@+id/currentext"
                     style="@style/textView"
+                    android:paddingVertical="25dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -163,6 +165,7 @@
                     android:id="@+id/dailyText"
                     style="@style/textView"
                     android:gravity="center"
+                    android:paddingVertical="25dp"
                     android:textColor="@color/broun"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -187,6 +190,7 @@
                     android:id="@+id/hourlyText"
                     android:textColor="@color/broun"
                     style="@style/textView"
+                    android:paddingVertical="25dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -213,18 +217,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hoourlyCard" />
 
-           <ScrollView
-               android:layout_width="0dp"
-               android:layout_height="0dp"
-               android:visibility="visible"
-               android:id="@+id/currentList"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/details">
+<!--           <ScrollView-->
+<!--               android:layout_width="0dp"-->
+<!--               android:layout_height="0dp"-->
+<!--                          android:id="@+id/lanierdetails"
+        android:visibility="visible"-->
+<!--               app:layout_constraintEnd_toEndOf="parent"-->
+<!--               app:layout_constraintStart_toStartOf="parent"-->
+<!--               app:layout_constraintBottom_toBottomOf="parent"-->
+<!--               app:layout_constraintTop_toBottomOf="@id/details">-->
                <LinearLayout
-                   android:id="@+id/lanierdetails"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/details"
                    android:layout_width="match_parent"
+                   android:id="@+id/currentList"
                    android:layout_height="wrap_content"
                    android:orientation="horizontal"
                    android:paddingTop="10dp">
@@ -425,13 +433,14 @@
                </LinearLayout>
                </LinearLayout>
 
-           </ScrollView>
+<!--           </ScrollView>-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/hourlyList"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
+                android:paddingBottom="60dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/details"
@@ -442,10 +451,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
+                android:paddingBottom="60dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/details"
                 tools:listitem="@layout/hourly_item" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

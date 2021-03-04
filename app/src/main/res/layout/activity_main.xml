@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cafe"
+        android:background="@color/cafe_navigation"
         tools:context=".ui.baseHome.MainActivity">
 
         <ImageView
@@ -45,7 +45,7 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/cafe"
+            android:background="@color/cafe_navigation"
             app:labelVisibilityMode="labeled"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

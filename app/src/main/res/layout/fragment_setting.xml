@@ -19,17 +19,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.setting.Setting"
     tools:ignore="ScrollViewSize">
-
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/top"
-        android:scaleType="fitXY"
-        android:src="@drawable/sky"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/sitteng"
         style="@style/textView"
@@ -37,7 +26,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/setting"
-        android:layout_marginTop="30dp"
+        android:paddingVertical="30dp"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -62,6 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:id="@+id/her"
+        android:textColor="@color/setting_color_base"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintBottom_toBottomOf="@id/unitsImage"
         android:fontFamily="sans-serif-condensed"
@@ -83,11 +73,14 @@
             android:id="@+id/standardRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="55dp"
+            android:textColor="@color/black"
             android:layout_gravity="start"
             android:checked="false"
             android:text="@string/standard"
             android:textSize="20sp"/>
         <RadioButton
+            android:textColor="@color/black"
+
             android:layout_marginBottom="20dp"
             android:id="@+id/metricRadioButton"
             android:layout_width="wrap_content"
@@ -97,6 +90,7 @@
             android:text="@string/metric"
             android:textSize="20sp" />
         <RadioButton
+            android:textColor="@color/black"
             android:layout_marginBottom="20dp"
             android:id="@+id/imperialRadioButton"
             android:layout_width="wrap_content"
@@ -178,6 +172,7 @@
         android:fontFamily="sans-serif-condensed"
         android:gravity="start"
         android:paddingHorizontal="10dp"
+        android:textColor="@color/setting_color_base"
         android:text="@string/her_you_can_chose_language"
         app:layout_constraintBottom_toBottomOf="@id/langImage"
         app:layout_constraintEnd_toEndOf="parent"
@@ -203,8 +198,10 @@
             android:layout_gravity="start"
             android:checked="false"
             android:text="@string/english"
+            android:textColor="@color/black"
             android:textSize="25sp"/>
         <RadioButton
+            android:textColor="@color/black"
             android:layout_marginBottom="20dp"
             android:id="@+id/ArabicRadioButton"
             android:layout_width="wrap_content"
@@ -246,6 +243,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
         android:gravity="start"
+        android:textColor="@color/setting_color_base"
         android:paddingHorizontal="10dp"
         app:layout_constraintStart_toEndOf="@id/locationImage"
         app:layout_constraintTop_toTopOf="@id/locationImage"
@@ -262,6 +260,7 @@
         app:layout_constraintTop_toBottomOf="@id/her3">
 
         <RadioButton
+            android:textColor="@color/black"
             android:layout_marginBottom="20dp"
             android:id="@+id/gpsRadioButton"
             android:layout_width="wrap_content"
@@ -271,6 +270,7 @@
             android:text="@string/gps"
             android:textSize="25sp"/>
         <RadioButton
+            android:textColor="@color/black"
             android:layout_marginBottom="20dp"
             android:id="@+id/addLocationRadioButton"
             android:layout_width="wrap_content"
@@ -288,6 +288,7 @@
         app:layout_constraintTop_toBottomOf="@id/locationRadioGroup"
         android:id="@+id/saveButton"
         android:text="@string/save"
+        android:backgroundTint="@color/cafe_navigation"
         android:textAllCaps="false"
         android:textSize="18sp"/>
 

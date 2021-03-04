@@ -71,9 +71,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             Log.d("TAG", "${it.latitude}.....${it.longitude}")
             latLng=it
             if (type=="setting"){
-                mapActivityViewMode.showLocationSavingAlarm()
+                mapActivityViewMode.showLocationSavingAlarm(this)
             }else {
-                mapActivityViewMode.showAlarm()
+                mapActivityViewMode.showAlarm(this)
             }
             Log.d("TAG", "${latLng.latitude}.....${type}")
             Log.d("TAG type", "")
