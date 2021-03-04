@@ -41,7 +41,7 @@ class Home : Fragment() {
 
         if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
             Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE $requestCode")
-            homeViewModel.gettingLocation()
+            homeViewModel.gettingLocation(activity!!)
         }
     }
 
@@ -225,7 +225,7 @@ class Home : Fragment() {
             settingModel=it
 
             if (settingModel.location=="gps"){
-                homeViewModel.gettingLocation().observe(this, androidx.lifecycle.Observer {
+                homeViewModel.gettingLocation(activity!!).observe(this, androidx.lifecycle.Observer {
                     val location = it
                     Log.d("TAG", "it.lang" + location.latitude)
                     homeViewModel.loadOnlineData(
@@ -238,12 +238,13 @@ class Home : Fragment() {
             }else {
                 homeViewModel.getLocationSettnig().observe(this,{
                     homeViewModel.loadOnlineData(
-                        it.latitude.toString(),
+                        it.toString(),
                         it.longitude.toString(),
                         settingModel.lang,
                         settingModel.units
                     )
                 })
+
             }
         })
 

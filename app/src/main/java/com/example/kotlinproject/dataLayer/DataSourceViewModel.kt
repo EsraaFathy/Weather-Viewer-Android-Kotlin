@@ -37,6 +37,7 @@ class DataSourceViewModel(context: Application) : AndroidViewModel(context) {
                     Log.d("tag", response.body().toString())
                     CoroutineScope(Dispatchers.IO).launch {
                         roomRepositry.deleteAll()
+                        if (response.body()!=null)
                         roomRepositry.saveAllData(response.body()!!)
                     }
                 }

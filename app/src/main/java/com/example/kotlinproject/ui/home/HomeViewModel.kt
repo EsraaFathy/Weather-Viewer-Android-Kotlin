@@ -41,8 +41,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    fun gettingLocation() :LiveData<Location>{
-        locationHanding.loadLocation()
+    fun gettingLocation(context: Context) :LiveData<Location>{
+        locationHanding.loadLocation(context)
         return locationHanding.getLocatin()
     }
     fun getLocationSettnig():LiveData<LatLng>{

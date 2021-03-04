@@ -30,7 +30,7 @@ class LocationHanding(val context: Context) {
     )
 
     @SuppressLint("MissingPermission")
-    fun loadLocation(){
+    fun loadLocation(context: Context){
         if (verifyLocationEnabled()){
             if (chickPermition()){
 
@@ -42,14 +42,14 @@ class LocationHanding(val context: Context) {
                     }
             }else{
                 requestPremition()
-                loadLocation()
+                loadLocation(context)
             }
         }else {
-            enableLocationSitting()
+            enableLocationSitting(context)
         }
     }
 
-    private fun enableLocationSitting() {
+    private fun enableLocationSitting(context: Context) {
         val alertDialogBuilder = AlertDialog.Builder(context)
         alertDialogBuilder.setTitle("Location Not enable")
         alertDialogBuilder.setMessage("To load the current accurate temperature you have to enable location")
