@@ -30,8 +30,8 @@ class FavouriteDetails : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_favourite_details)
         detailsViewModel=  ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[DetailsViewModel::class.java]
 
-        adapter= HourlyAdabter(application)
-        dailyadapter= DailyAdapter(application)
+        adapter= HourlyAdabter(detailsViewModel)
+        dailyadapter= DailyAdapter(detailsViewModel)
         val intent: Intent = intent
         val lat=intent.getStringExtra("lat")
         val lon=intent.getStringExtra("lon")
@@ -165,10 +165,10 @@ class FavouriteDetails : AppCompatActivity() {
         binding.windSpeedPercentage.text = it.current.wind_speed.toString()
         binding.pressurePercentage.text = it.current.pressure.toString()
         binding.cloudsPercentage.text = it.current.clouds.toString()
-        binding.currentTime.text = detailsViewModel.formateTime(it.current.dt)
-        binding.currentDate.text = detailsViewModel.formateDate(it.current.dt)
-        binding.sunrisetime.text = detailsViewModel.formateTime(it.current.sunrise)
-        binding.sunsetdate.text = detailsViewModel.formateTime(it.current.sunset)
+        binding.currentTime.text = detailsViewModel.fermatTime(it.current.dt)
+        binding.currentDate.text = detailsViewModel.formatDate(it.current.dt)
+        binding.sunrisetime.text = detailsViewModel.fermatTime(it.current.sunrise)
+        binding.sunsetdate.text = detailsViewModel.fermatTime(it.current.sunset)
     }
     fun loadHourly(hourlyList: List<Hourly>){
         val lay : RecyclerView.LayoutManager= LinearLayoutManager(this)

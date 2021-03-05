@@ -1,11 +1,9 @@
 package com.example.kotlinproject.dataLayer
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
@@ -16,25 +14,26 @@ import com.example.kotlinproject.dataLayer.online.Repository
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DataSourceViewModel(context: Application) : AndroidViewModel(context) {
+class DataSourceViewModel(application: Application) : AndroidViewModel(application) {
 
     private val sharedPreferencesReopsitory: SharedPrefrencesReopsitory =
-        SharedPrefrencesReopsitory(context)
+        SharedPrefrencesReopsitory(application)
     private val repositoryonLine = Repository(ApiClient.apiService)
-    private val roomRepositry: RoomRepositry = RoomRepositry(context)
+    private val roomRepositry: RoomRepositry = RoomRepositry(application)
 
 
     fun loadOneCall(lat: String,lon: String,lang: String,units :String) {
            val data =  repositoryonLine.getOneCall(lat,lon,lang,"517a14f849e519bb4fa84cdbd4755f56","minutely",units)
+        //
             data.enqueue(object : Callback<AllData?> {
                 override fun onResponse(call: Call<AllData?>, response: Response<AllData?>) {
                     Log.d("tag", response.body().toString())
+
                     CoroutineScope(Dispatchers.IO).launch {
                         roomRepositry.deleteAll()
                         if (response.body()!=null)

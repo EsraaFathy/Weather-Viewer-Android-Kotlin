@@ -2,44 +2,34 @@ package com.example.kotlinproject.ui.favouriteDetails
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.content.Context
 import android.os.Build
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
-import com.bumptech.glide.Glide
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.kotlinproject.ui.GeneralFunctions
 
 class DetailsViewModel(application: Application) : AndroidViewModel(application) {
     private val mApplication: Application=application
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication)
+    private val generalFunctions :GeneralFunctions= GeneralFunctions()
     fun getOneFav(lat: String,lon: String)= dataSourceViewModel.getOneFav(lat,lon)
+
     fun saveFave(lat: String,lon: String,lang: String,units :String){
         dataSourceViewModel.saveFave(lat,lon,lang,units)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun loadImage(imageView: ImageView, string: String) {
-        Glide.with(imageView)  //2
-            .load("https://openweathermap.org/img/wn/$string@2x.png") //3
-            .fitCenter() //4
-            .into(imageView)
+        generalFunctions.loadImage(imageView,string)
     }
     @SuppressLint("SimpleDateFormat")
-    fun formateTime(format: Int): String {
-        val dateFormat = SimpleDateFormat("HH:mm a")
-        val date = Date()
-        date.time = format.toLong() * 1000
-        return dateFormat.format(date)
+    fun fermatTime(format: Int): String {
+        return generalFunctions.formateTime(format)
 
     }
     @SuppressLint("SimpleDateFormat")
-    fun formateDate(format: Int): String {
-        val dateFormat = SimpleDateFormat("EEE,dd MM yyyy")
-        val sdf = SimpleDateFormat("MM/dd/yyyy")
-        val netDate = Date(format.toLong()* 1000)
-        return sdf.format(netDate)
+    fun formatDate(format: Int): String {
+        return generalFunctions.formateDate(format)
     }
 }

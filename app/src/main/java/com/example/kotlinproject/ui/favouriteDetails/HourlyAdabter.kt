@@ -1,10 +1,8 @@
 package com.example.kotlinproject.ui.favouriteDetails
 
-import android.app.Application
-import android.content.Context
+
 import android.os.Build
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -15,24 +13,21 @@ import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.favtable.Hourly
 
 
-//class HourlyAdabter {
-//}
-class HourlyAdabter(var context: Application) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
+class HourlyAdabter(var homeViewModel: DetailsViewModel) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
     lateinit var models: List<Hourly>
-    var homeViewModel: DetailsViewModel = DetailsViewModel(context)
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var time = itemView.findViewById<TextView>(R.id.currentTime)
-        var temp = itemView.findViewById<TextView>(R.id.currentTemp)
-        var description = itemView.findViewById<TextView>(R.id.description)
-        var icon = itemView.findViewById<ImageView>(R.id.currentModeImg)
+        private var time = itemView.findViewById<TextView>(R.id.currentTime)
+        private var temp = itemView.findViewById<TextView>(R.id.currentTemp)
+        private var description = itemView.findViewById<TextView>(R.id.description)
+        private var icon = itemView.findViewById<ImageView>(R.id.currentModeImg)
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun binding(hourly: Hourly) {
             homeViewModel.loadImage(icon,hourly.weather[0].icon)
             description.text = hourly.weather[0].description
             temp.text = hourly.temp.toString()
-            time.text = homeViewModel.formateTime(hourly.dt)
+            time.text = homeViewModel.fermatTime(hourly.dt)
 
         }
     }
@@ -45,7 +40,7 @@ class HourlyAdabter(var context: Application) : RecyclerView.Adapter<HourlyAdabt
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.binding(models.get(position))
+        holder.binding(models[position])
     }
 
     override fun getItemCount(): Int {

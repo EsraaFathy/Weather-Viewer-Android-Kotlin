@@ -17,7 +17,6 @@ import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
 //}
 class HourlyAdabter(var homeViewModel: HomeViewModel) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
     lateinit var models: List<Hourly>
-//    var homeViewModel: HomeViewModel = HomeViewModel(context)
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var time = itemView.findViewById<TextView>(R.id.currentTime)

@@ -19,7 +19,9 @@ import kotlinx.coroutines.launch
 class FavouriteViewModel(application: Application) : AndroidViewModel(application) {
     private val mApplication: Application=application
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication)
-    fun deleteOneFav(lat: String,lon: String)= dataSourceViewModel.deleteOneFav(lat,lon)
+    private val intentLiveData: MutableLiveData<Int> = MutableLiveData<Int>()
+    private val alertDialogLiveData: MutableLiveData<FavData> = MutableLiveData<FavData>()
+    fun deleteOneFav(lat: String, lon: String)= dataSourceViewModel.deleteOneFav(lat,lon)
 
     fun getFavDataBase(): LiveData<List<FavData>> {
         return dataSourceViewModel.getFavDataBase()
@@ -33,20 +35,19 @@ class FavouriteViewModel(application: Application) : AndroidViewModel(applicatio
             .into(imageView)
     }
 
-    fun showAlarm(lat : String,lon: String) {
-        val alertDialogBuilder = AlertDialog.Builder(mApplication.applicationContext)
-        alertDialogBuilder.setTitle("Are you Sure")
-        alertDialogBuilder.setMessage("you want to delete this city")
-        alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
-            CoroutineScope(Dispatchers.IO).launch {
-                deleteOneFav(lat,lon)
-            }
-        }
-        alertDialogBuilder.setNegativeButton("No") { _, _ ->
 
-        }
-        alertDialogBuilder.show()
+    fun intentLiveData(position : Int){
+        intentLiveData.value=position
     }
 
+    fun getIntent():LiveData<Int>{
+        return intentLiveData
+    }
+    fun setAlertDialogLiveData(position : FavData){
+        alertDialogLiveData.value=position
+    }
 
+    fun getAlertDialogLiveData():LiveData<FavData>{
+        return alertDialogLiveData
+    }
 }
