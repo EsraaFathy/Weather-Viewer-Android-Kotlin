@@ -19,9 +19,9 @@ import com.example.kotlinproject.databinding.HourlyItemBinding
 
 //class HourlyAdabter {
 //}
-class HourlyAdabter(var context: Application) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
+class HourlyAdabter(var context: Application,var homeViewModel: HomeViewModel) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
     lateinit var models: List<Hourly>
-    var homeViewModel: HomeViewModel = HomeViewModel(context)
+//    var homeViewModel: HomeViewModel = HomeViewModel(context)
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var time = itemView.findViewById<TextView>(R.id.currentTime)

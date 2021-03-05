@@ -53,4 +53,7 @@ class MapActivityViewMode(application: Application) : AndroidViewModel(applicati
 
     fun saveLocationSetting(latLng: LatLng)=dataSourceViewModel.saveLocationSetting(latLng)
 
+
+
+
 }

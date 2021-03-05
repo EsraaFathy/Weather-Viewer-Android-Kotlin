@@ -1,6 +1,7 @@
 package com.example.kotlinproject.ui.map
 
 
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +12,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-
-
 
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -32,13 +31,17 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 //        mapActivityViewMode= MapActivityViewMode(this)
-        mapActivityViewMode= ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[MapActivityViewMode::class.java]
+        mapActivityViewMode= ViewModelProvider(
+            this, ViewModelProvider.AndroidViewModelFactory.getInstance(
+                application
+            )
+        )[MapActivityViewMode::class.java]
 
 
         mapActivityViewMode.saveLatLng.observe(this, {
             if (it) {
                 mapActivityViewMode.saveLocationSetting(latLng)
-                mapActivityViewMode.saveLatLng.value=false
+                mapActivityViewMode.saveLatLng.value = false
 
             }
         })
@@ -53,7 +56,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                         it.units
                     )
                 })
-                mapActivityViewMode.saveFav.value=false
+                mapActivityViewMode.saveFav.value = false
 
             }
         })
@@ -80,4 +83,5 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
     }
+
 }

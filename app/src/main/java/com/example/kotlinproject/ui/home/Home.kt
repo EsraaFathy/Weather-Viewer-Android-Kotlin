@@ -1,21 +1,18 @@
 package com.example.kotlinproject.ui.home
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
@@ -29,10 +26,6 @@ class Home : Fragment() {
     private  lateinit var homeViewModel: HomeViewModel
     private lateinit var adapter:HourlyAdabter
     private lateinit var dailyadapter:DailyAdapter
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -50,12 +43,12 @@ class Home : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         homeViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[HomeViewModel::class.java]
 
-        adapter=HourlyAdabter(requireActivity().application)
-        dailyadapter= DailyAdapter(requireActivity().application)
+        adapter=HourlyAdabter(requireActivity().application,homeViewModel)
+        dailyadapter= DailyAdapter(requireActivity().application,homeViewModel)
         relad()
 
         binding.cureentCard.setOnClickListener {
@@ -174,7 +167,7 @@ class Home : Fragment() {
                 initUI(it[0])
                 loadHourly(it[0].hourly)
                 loadDaily(it[0].daily)
-                loadImage(binding.currentModeImg, it[0].current.weather[0].icon)
+                homeViewModel.loadImage(binding.currentModeImg,it[0].current.weather[0].icon)
             }
         })
         return binding.root
@@ -196,13 +189,13 @@ class Home : Fragment() {
         binding.sunrisetime.text = homeViewModel.formateTime(it.current.sunrise)
         binding.sunsetdate.text = homeViewModel.formateTime(it.current.sunset)
     }
-    fun loadHourly(hourlyList: List<Hourly>){
+    private fun loadHourly(hourlyList: List<Hourly>){
         val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
         binding.hourlyList.layoutManager=lay
         adapter.models=hourlyList
         binding.hourlyList.adapter=adapter
     }
-    fun loadDaily(dailyList: List<Daily>){
+    private fun loadDaily(dailyList: List<Daily>){
         val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
         binding.dialyList.layoutManager=lay
         dailyadapter.models=dailyList
@@ -210,29 +203,24 @@ class Home : Fragment() {
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun loadImage(imageView: ImageView, string: String) {
-        Glide.with(imageView)  //2http://openweathermap.org/img/w/10n.png
-            .load("https://openweathermap.org/img/w/$string.png") //3
-            .fitCenter() //4
-            .into(imageView)
-    }
 
-    private fun relad() {
+
+     private fun relad() {
         lateinit var settingModel:SettingModel
-        homeViewModel.getSetting().observe(this, {
+        homeViewModel.getSetting().observe(this, { it ->
             Log.d("TAG", "it.lang" + it.lang)
             settingModel=it
 
             if (settingModel.location=="gps"){
-                homeViewModel.gettingLocation(activity!!).observe(this, androidx.lifecycle.Observer {
+                homeViewModel.gettingLocation(activity!!).observe(this, {
                     val location = it
                     Log.d("TAG", "it.lang" + location.latitude)
                     homeViewModel.loadOnlineData(
                         location.latitude.toString(),
                         location.longitude.toString(),
                         settingModel.lang,
-                        settingModel.units
+                        settingModel.units,
+                        activity!!
                     )
                 })
             }else {
@@ -241,7 +229,8 @@ class Home : Fragment() {
                         it.toString(),
                         it.longitude.toString(),
                         settingModel.lang,
-                        settingModel.units
+                        settingModel.units,
+                        activity!!
                     )
                 })
 

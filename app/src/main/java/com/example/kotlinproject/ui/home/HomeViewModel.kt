@@ -6,37 +6,35 @@ import android.content.Context
 import android.location.Location
 import android.os.Build
 import android.util.Log
-import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
+import com.example.kotlinproject.ui.GeneralFunctions
 import com.google.android.gms.maps.model.LatLng
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val mApplication: Application=application
     val locationHanding: LocationHanding = LocationHanding(mApplication.applicationContext)
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication)
     private val data:MutableLiveData<AllData> = MutableLiveData<AllData>()
+    private val generalFunctions : GeneralFunctions= GeneralFunctions()
 
 
-    fun loadOnlineData(
-        lat: String,
-        lon: String,
-        lang: String,
-        units: String
-    ){
-        Log.d("TAG", "loadOnlineData: ")
-        dataSourceViewModel.loadOneCall(lat, lon, lang, units)
+    fun loadOnlineData(lat: String, lon: String, lang: String, units: String,context: Context)
+    {
+        if (generalFunctions.isOnline(context)) {
+            Log.d("TAG", "loadOnlineData: ")
+            dataSourceViewModel.loadOneCall(lat, lon, lang, units)
+        }else{
+            Toast.makeText(context,"You are offline",Toast.LENGTH_LONG).show()
+        }
     }
 
 
@@ -58,29 +56,23 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         return dataSourceViewModel.getRoomDataBase()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+     fun loadImage(imageView: ImageView, string: String) {
+        generalFunctions.loadImage(imageView,string)
+    }
+
 
     @SuppressLint("SimpleDateFormat")
     fun formateDate(format: Int): String {
-        val sdf = SimpleDateFormat("MM/dd/yyyy")
-        val netDate = Date(format.toLong()* 1000)
-        return sdf.format(netDate)
-        }
+        return generalFunctions.formateDate(format)
+    }
 
     @SuppressLint("SimpleDateFormat")
     fun formateTime(format: Int): String {
-        val dateFormat = SimpleDateFormat("HH:mm a")
-        val date = Date()
-        date.time = format.toLong() * 1000
-        return dateFormat.format(date)
+        return generalFunctions.formateTime(format)
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-     fun loadImage(imageView: ImageView, string: String) {
-        Glide.with(imageView)  //2
-            .load("https://openweathermap.org/img/wn/$string@2x.png") //3
-            .centerCrop() //4
-            .into(imageView)
-    }
+
 
 }
