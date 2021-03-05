@@ -1,12 +1,19 @@
 package com.example.kotlinproject.ui.alert
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.kotlinproject.R
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import com.example.kotlinproject.databinding.FragmentAlertBinding
+import com.example.kotlinproject.ui.baseHome.MainActivity
+import java.util.*
 
 
 class Alert : Fragment() {
@@ -21,13 +28,35 @@ class Alert : Fragment() {
         // Inflate the layout for this fragment
         fragmentAlertBinding= FragmentAlertBinding.inflate(inflater, container, false)
         notificationHelper= NotificationHelper(requireActivity())
-        for (  a in 1 .. 10){
-            val notificationBuilder=notificationHelper.getChanelNotification("testTitle $a","TestBody $a")
-            notificationHelper.getManger()!!.notify(a,notificationBuilder.build())
-        }
+
+
+        startAlert()
+
+
 
 
         return fragmentAlertBinding.root
+    }
+
+    fun startAlert(){
+
+        val myIntent = Intent(activity, AlermRecever::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(activity, 1, myIntent, 0)
+        val alarmManager: AlarmManager = activity!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.timeInMillis = System.currentTimeMillis()
+        calendar.add(Calendar.SECOND, 400)
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, 1000, pendingIntent)
+
+    }
+
+    fun cancelAlarm(){
+        val myIntent = Intent(activity, AlermRecever::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(activity, 1, myIntent, 0)
+        val alarmManager: AlarmManager = activity!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.cancel(pendingIntent)
+
     }
 
 }
