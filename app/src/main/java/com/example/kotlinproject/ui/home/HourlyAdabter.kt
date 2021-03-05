@@ -1,33 +1,29 @@
 package com.example.kotlinproject.ui.home
 
-import android.app.Application
-import android.content.Context
+
 import android.os.Build
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
-import com.example.kotlinproject.databinding.FragmentHomeBinding
-import com.example.kotlinproject.databinding.HourlyItemBinding
+
 
 //class HourlyAdabter {
 //}
-class HourlyAdabter(var context: Application,var homeViewModel: HomeViewModel) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
+class HourlyAdabter(var homeViewModel: HomeViewModel) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
     lateinit var models: List<Hourly>
 //    var homeViewModel: HomeViewModel = HomeViewModel(context)
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var time = itemView.findViewById<TextView>(R.id.currentTime)
-        var temp = itemView.findViewById<TextView>(R.id.currentTemp)
-        var description = itemView.findViewById<TextView>(R.id.description)
-        var icon = itemView.findViewById<ImageView>(R.id.currentModeImg)
+        private var time = itemView.findViewById<TextView>(R.id.currentTime)
+        private var temp = itemView.findViewById<TextView>(R.id.currentTemp)
+        private var description = itemView.findViewById<TextView>(R.id.description)
+        private var icon = itemView.findViewById<ImageView>(R.id.currentModeImg)
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun binding(hourly: Hourly) {
@@ -47,7 +43,7 @@ class HourlyAdabter(var context: Application,var homeViewModel: HomeViewModel) :
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.binding(models.get(position))
+        holder.binding(models[position])
     }
 
     override fun getItemCount(): Int {

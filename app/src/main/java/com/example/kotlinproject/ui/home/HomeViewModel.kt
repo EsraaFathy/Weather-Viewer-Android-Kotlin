@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
@@ -21,9 +20,8 @@ import com.google.android.gms.maps.model.LatLng
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val mApplication: Application=application
-    val locationHanding: LocationHanding = LocationHanding(mApplication.applicationContext)
+    private val locationHanding: LocationHanding = LocationHanding(mApplication.applicationContext)
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication)
-    private val data:MutableLiveData<AllData> = MutableLiveData<AllData>()
     private val generalFunctions : GeneralFunctions= GeneralFunctions()
 
 

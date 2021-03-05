@@ -47,8 +47,8 @@ class Home : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         homeViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[HomeViewModel::class.java]
 
-        adapter=HourlyAdabter(requireActivity().application,homeViewModel)
-        dailyadapter= DailyAdapter(requireActivity().application,homeViewModel)
+        adapter=HourlyAdabter(homeViewModel)
+        dailyadapter= DailyAdapter(homeViewModel)
         relad()
 
         binding.cureentCard.setOnClickListener {
