@@ -11,6 +11,9 @@ import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
+import kotlin.time.ExperimentalTime
+import kotlin.time.seconds
 
 
 class GeneralFunctions {
@@ -62,6 +65,12 @@ class GeneralFunctions {
         val date = Date()
         date.time = format.toLong() * 1000
         return dateFormat.format(date)
+    }
 
+    fun test(format : Int){
+        val period = String.format("%02d", TimeUnit.MILLISECONDS.toSeconds(format.toLong()))
+        Log.d("TAG sec", period)
+        val a :Long =period.toLong()+2
+        Log.d("TAG sec", "$a")
     }
 }

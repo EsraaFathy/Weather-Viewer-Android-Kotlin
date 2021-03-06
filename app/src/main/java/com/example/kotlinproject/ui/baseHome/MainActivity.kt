@@ -13,12 +13,13 @@ import com.example.kotlinproject.ui.alert.Alert
 import com.example.kotlinproject.ui.favourit.Favourit
 import com.example.kotlinproject.ui.home.Home
 import com.example.kotlinproject.ui.setting.Setting
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var fragment: Fragment
-
+    lateinit var bottomNavigationView : BottomNavigationView
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

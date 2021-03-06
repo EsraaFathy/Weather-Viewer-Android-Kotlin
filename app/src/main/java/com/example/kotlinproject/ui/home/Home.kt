@@ -22,10 +22,10 @@ import com.example.kotlinproject.databinding.FragmentHomeBinding
 
 
 class Home : Fragment() {
-   private lateinit var binding: FragmentHomeBinding
-    private  lateinit var homeViewModel: HomeViewModel
-    private lateinit var adapter:HourlyAdabter
-    private lateinit var dailyadapter:DailyAdapter
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var adapter: HourlyAdabter
+    private lateinit var dailyadapter: DailyAdapter
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -45,28 +45,31 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        homeViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[HomeViewModel::class.java]
+        homeViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+        )[HomeViewModel::class.java]
 
-        adapter=HourlyAdabter(homeViewModel)
-        dailyadapter= DailyAdapter(homeViewModel)
+        adapter = HourlyAdabter(homeViewModel)
+        dailyadapter = DailyAdapter(homeViewModel)
         relad()
 
         binding.cureentCard.setOnClickListener {
-            binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(
+            binding.cureentCard.backgroundTintList = ContextCompat.getColorStateList(
                 activity!!,
                 R.color.broun
             )
-            binding.daialyCard.backgroundTintList= ContextCompat.getColorStateList(
+            binding.daialyCard.backgroundTintList = ContextCompat.getColorStateList(
                 activity!!,
                 R.color.white
             )
-            binding.hoourlyCard.backgroundTintList= ContextCompat.getColorStateList(
+            binding.hoourlyCard.backgroundTintList = ContextCompat.getColorStateList(
                 activity!!,
                 R.color.white
             )
-            binding.currentList.visibility=View.VISIBLE
-            binding.hourlyList.visibility=View.GONE
-            binding.dialyList.visibility=View.GONE
+            binding.currentList.visibility = View.VISIBLE
+            binding.hourlyList.visibility = View.GONE
+            binding.dialyList.visibility = View.GONE
             binding.currentext.setTextColor(
                 ContextCompat.getColorStateList(
                     activity!!,
@@ -88,21 +91,21 @@ class Home : Fragment() {
         }
 
         binding.hoourlyCard.setOnClickListener {
-            binding.hoourlyCard.backgroundTintList= ContextCompat.getColorStateList(
+            binding.hoourlyCard.backgroundTintList = ContextCompat.getColorStateList(
                 activity!!,
                 R.color.broun
             )
-            binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(
+            binding.cureentCard.backgroundTintList = ContextCompat.getColorStateList(
                 activity!!,
                 R.color.white
             )
-            binding.daialyCard.backgroundTintList= ContextCompat.getColorStateList(
+            binding.daialyCard.backgroundTintList = ContextCompat.getColorStateList(
                 activity!!,
                 R.color.white
             )
-            binding.hourlyList.visibility=View.VISIBLE
-            binding.dialyList.visibility=View.GONE
-            binding.currentList.visibility=View.GONE
+            binding.hourlyList.visibility = View.VISIBLE
+            binding.dialyList.visibility = View.GONE
+            binding.currentList.visibility = View.GONE
             binding.hourlyText.setTextColor(
                 ContextCompat.getColorStateList(
                     activity!!,
@@ -124,21 +127,21 @@ class Home : Fragment() {
         }
 
         binding.daialyCard.setOnClickListener {
-            binding.daialyCard.backgroundTintList= ContextCompat.getColorStateList(
+            binding.daialyCard.backgroundTintList = ContextCompat.getColorStateList(
                 activity!!,
                 R.color.broun
             )
-            binding.hoourlyCard.backgroundTintList= ContextCompat.getColorStateList(
+            binding.hoourlyCard.backgroundTintList = ContextCompat.getColorStateList(
                 activity!!,
                 R.color.white
             )
-            binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(
+            binding.cureentCard.backgroundTintList = ContextCompat.getColorStateList(
                 activity!!,
                 R.color.white
             )
-            binding.dialyList.visibility=View.VISIBLE
-            binding.hourlyList.visibility=View.GONE
-            binding.currentList.visibility=View.GONE
+            binding.dialyList.visibility = View.VISIBLE
+            binding.hourlyList.visibility = View.GONE
+            binding.currentList.visibility = View.GONE
             binding.dailyText.setTextColor(
                 ContextCompat.getColorStateList(
                     activity!!,
@@ -167,7 +170,7 @@ class Home : Fragment() {
                 initUI(it[0])
                 loadHourly(it[0].hourly)
                 loadDaily(it[0].daily)
-                homeViewModel.loadImage(binding.currentModeImg,it[0].current.weather[0].icon)
+                homeViewModel.loadImage(binding.currentModeImg, it[0].current.weather[0].icon)
             }
         })
         return binding.root
@@ -189,32 +192,32 @@ class Home : Fragment() {
         binding.sunrisetime.text = homeViewModel.formateTime(it.current.sunrise)
         binding.sunsetdate.text = homeViewModel.formateTime(it.current.sunset)
     }
-    private fun loadHourly(hourlyList: List<Hourly>){
-        val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
-        binding.hourlyList.layoutManager=lay
-        adapter.models=hourlyList
-        binding.hourlyList.adapter=adapter
-    }
-    private fun loadDaily(dailyList: List<Daily>){
-        val lay : RecyclerView.LayoutManager= LinearLayoutManager(activity)
-        binding.dialyList.layoutManager=lay
-        dailyadapter.models=dailyList
-        binding.dialyList.adapter=dailyadapter
+
+    private fun loadHourly(hourlyList: List<Hourly>) {
+        val lay: RecyclerView.LayoutManager = LinearLayoutManager(activity)
+        binding.hourlyList.layoutManager = lay
+        adapter.models = hourlyList
+        binding.hourlyList.adapter = adapter
     }
 
+    private fun loadDaily(dailyList: List<Daily>) {
+        val lay: RecyclerView.LayoutManager = LinearLayoutManager(activity)
+        binding.dialyList.layoutManager = lay
+        dailyadapter.models = dailyList
+        binding.dialyList.adapter = dailyadapter
+    }
 
 
-
-     private fun relad() {
-        lateinit var settingModel:SettingModel
+    private fun relad() {
+        lateinit var settingModel: SettingModel
         homeViewModel.getSetting().observe(this, { it ->
             Log.d("TAG", "it.lang" + it.lang)
-            settingModel=it
+            settingModel = it
 
-            if (settingModel.location=="gps"){
+            if (settingModel.location == "gps") {
                 homeViewModel.gettingLocation(activity!!).observe(this, {
                     val location = it
-                    Log.d("TAG", "it.lang" + location.latitude)
+                    Log.d("TAG", "it.location" + location.latitude)
                     homeViewModel.loadOnlineData(
                         location.latitude.toString(),
                         location.longitude.toString(),
@@ -223,10 +226,13 @@ class Home : Fragment() {
                         activity!!
                     )
                 })
-            }else {
-                homeViewModel.getLocationSettnig().observe(this,{
+            } else {
+                homeViewModel.getLocationSettnig().observe(this, {
+                    Log.d("TAG", "it.latitude" + it.latitude)
+                    Log.d("TAG", "it.latitude" + it.longitude)
+
                     homeViewModel.loadOnlineData(
-                        it.toString(),
+                        it.latitude.toString(),
                         it.longitude.toString(),
                         settingModel.lang,
                         settingModel.units,
