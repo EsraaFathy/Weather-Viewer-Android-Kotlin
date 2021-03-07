@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
+import com.example.kotlinproject.dataLayer.entity.favtable.Alert
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 
 @Dao
@@ -19,6 +20,7 @@ interface WeatherDao {
 
     @Query("DELETE FROM AllData")
     fun deleteAll()
+
 
     //////////////////////fav\\\\\\\\\\\\\\\\\\\\\
 
@@ -35,4 +37,9 @@ interface WeatherDao {
     @Query("DELETE FROM FavData WHERE lat LIKE:lat AND lon LIKE:lon")
     fun deleteOneFav(lat: String, lon: String)
 
+    @Query("SELECT timezone FROM FavData")
+    fun getTimezones(): LiveData<List<String>>
+
+    @Query("SELECT * FROM FavData WHERE timezone LIKE:timezone LIMIT 1")
+    fun getOAlerts(timezone : String): LiveData<FavData>?
 }

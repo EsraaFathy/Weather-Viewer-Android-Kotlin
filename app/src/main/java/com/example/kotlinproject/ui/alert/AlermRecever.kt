@@ -12,7 +12,7 @@ class AlermRecever: BroadcastReceiver() {
         notificationHelper= NotificationHelper(context!!)
 
         d("TAG","Receved")
-        val notificationBuilder=notificationHelper.getChanelNotification("testTitle $","TestBody $")
+        val notificationBuilder=notificationHelper.getChanelNotification("Alert","There is some Weather changes")
         notificationHelper.getManger()!!.notify(1,notificationBuilder.build())
     }
 }

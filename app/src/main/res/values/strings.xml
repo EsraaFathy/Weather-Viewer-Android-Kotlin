@@ -62,4 +62,11 @@
     <string name="start">Start</string>
     <string name="end">End</string>
     <string name="description">Description</string>
+    <string name="no_data_available">No Data Available</string>
+    <string name="logo">logo</string>
+
+    <string-array name="alert">
+        <item>Current Location Alerts</item>
+        <item>Favourite Locations Alerts</item>
+    </string-array>
 </resources>

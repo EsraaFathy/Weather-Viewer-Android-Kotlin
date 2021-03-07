@@ -30,7 +30,7 @@ class LocationHanding(val context: Context) {
     )
 
     @SuppressLint("MissingPermission")
-    fun loadLocation(context: Context){
+    fun loadLocation(context: Context,activity: Activity){
         if (verifyLocationEnabled()){
             if (chickPermition()){
 
@@ -41,8 +41,8 @@ class LocationHanding(val context: Context) {
                        // Toast.makeText(context,location.toString(),Toast.LENGTH_SHORT).show()
                     }
             }else{
-                requestPremition()
-                loadLocation(context)
+                requestPremition(activity)
+                loadLocation(context,activity)
             }
         }else {
             enableLocationSitting(context)
@@ -85,9 +85,9 @@ class LocationHanding(val context: Context) {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
 
-    private fun requestPremition() {
+    private fun requestPremition(activity: Activity) {
         ActivityCompat.requestPermissions(
-            (context as Activity),
+            activity,
             arrayOf(
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION

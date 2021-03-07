@@ -20,4 +20,11 @@ class SharedPrefrencesReopsitory(context: Application) : AndroidViewModel(contex
         setting.loadLocationSetting()
         return setting.getLocationSetting()
     }
+
+    fun saveAlertSetting(alert: String)=setting.saveAlertSetting(alert)
+
+    fun getAlertSetting(): LiveData<String>{
+        setting.loadAlertSetting()
+        return setting.getAlertSetting()
+    }
 }

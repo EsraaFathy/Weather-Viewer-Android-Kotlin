@@ -21,16 +21,54 @@
             android:layout_height="70dp"
             />
         <ToggleButton
+            android:id="@+id/enableOrNot"
             android:layout_gravity="end"
             android:background="@drawable/toggle_selector"
             android:layout_width="200dp"
             android:textColor="@color/cafe"
             android:layout_height="70dp"
             />
+        <Spinner
+            android:id="@+id/alert_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="120dp"
+            android:id="@+id/list_current"
+            tools:listitem="@layout/alarm_item"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="120dp"
+            tools:listitem="@layout/alarm_item"
+            android:id="@+id/list_Fav"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/empty"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"
+                android:contentDescription="@string/logo" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/no_data_available"
+                style="@style/textView"
+                />
+        </LinearLayout>
 
     </FrameLayout>
 </layout>

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
+import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Alert
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SharedPrefrencesReopsitory
@@ -98,5 +99,12 @@ class DataSourceViewModel(application: Application) : AndroidViewModel(applicati
         roomRepositry.deleteOneFav(lat,lon)
     }
 
+    fun getTimezones():LiveData<List<String>>{
+        return roomRepositry.getTimezones()
+    }
+
+    fun getAlertFav(timeZone :String): LiveData<FavData>?{
+        return roomRepositry.getAlertFav(timeZone)
+    }
 
 }

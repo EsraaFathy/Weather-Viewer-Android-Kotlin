@@ -16,6 +16,7 @@ class SettingSB(val context: Context) {
     }
     private val SettingData: MutableLiveData<SettingModel> = MutableLiveData<SettingModel>()
     private val latlon: MutableLiveData<LatLng> = MutableLiveData<LatLng>()
+    private val alert: MutableLiveData<String> = MutableLiveData<String>()
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences(fileName,Context.MODE_PRIVATE)
 
 
@@ -45,6 +46,12 @@ class SettingSB(val context: Context) {
             latlon.postValue(LatLng(lat.toDouble(), lon.toDouble()))
         }
     }
+    fun loadAlertSetting(){
+        CoroutineScope(Dispatchers.IO).launch {
+            val alertl = sharedPreferences.getString("alert", "off")
+            alert.postValue(alertl!!)
+        }
+    }
 
     fun saveLocationSetting(latLng: LatLng){
         CoroutineScope(Dispatchers.IO).launch {
@@ -55,10 +62,23 @@ class SettingSB(val context: Context) {
             editor.commit()
         }
     }
+    fun saveAlertSetting(alert: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+            editor.putString("alert", alert)
+            editor.apply()
+            editor.commit()
+        }
+    }
+
+
     fun getSetting(): LiveData<SettingModel>{
         return SettingData
     }
     fun getLocationSetting(): LiveData<LatLng>{
         return latlon
+    }
+    fun getAlertSetting(): LiveData<String>{
+        return alert
     }
 }

@@ -1,6 +1,7 @@
 package com.example.kotlinproject.ui.home
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.location.Location
@@ -37,8 +38,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    fun gettingLocation(context: Context) :LiveData<Location>{
-        locationHanding.loadLocation(context)
+    fun gettingLocation(context: Context,activity: Activity) :LiveData<Location>{
+        locationHanding.loadLocation(context,activity)
         return locationHanding.getLocatin()
     }
     fun getLocationSettnig():LiveData<LatLng>{

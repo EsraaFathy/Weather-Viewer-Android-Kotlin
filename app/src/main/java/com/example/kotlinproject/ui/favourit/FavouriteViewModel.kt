@@ -17,8 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FavouriteViewModel(application: Application) : AndroidViewModel(application) {
-    private val mApplication: Application=application
-    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(mApplication)
+    private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(application)
     private val intentLiveData: MutableLiveData<Int> = MutableLiveData<Int>()
     private val alertDialogLiveData: MutableLiveData<FavData> = MutableLiveData<FavData>()
     fun deleteOneFav(lat: String, lon: String)= dataSourceViewModel.deleteOneFav(lat,lon)

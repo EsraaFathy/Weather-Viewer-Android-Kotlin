@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
+import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Alert
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 
 
@@ -22,6 +23,7 @@ class RoomRepositry(context: Application) : AndroidViewModel(context) {
         return weatherDao.deleteAll()
     }
 
+
     /////////////////fav\\\\\\\\\\\\\\\\\\\\\
     suspend fun saveFavData(favData : FavData){
         weatherDao.saveFaveData(favData)
@@ -35,5 +37,13 @@ class RoomRepositry(context: Application) : AndroidViewModel(context) {
     }
     fun deleteOneFav(lat: String,lon: String){
         weatherDao.deleteOneFav(lat,lon)
+    }
+
+    fun getAlertFav(timeZone :String): LiveData<FavData>?{
+        return weatherDao.getOAlerts(timeZone)
+    }
+
+    fun getTimezones():LiveData<List<String>>{
+        return weatherDao.getTimezones()
     }
 }
