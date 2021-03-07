@@ -69,6 +69,16 @@ class Alert : Fragment() {
             }
         })
 
+        alertViewModel.getAlertSetting().observe(this,{
+            if (it == "OFF"){
+                fragmentAlertBinding.enableOrNot.isChecked=false
+                Log.d("TAG", "offff    $it")
+            }else{
+                fragmentAlertBinding.enableOrNot.isChecked=true
+                Log.d("TAG","onnnn    $it")
+            }
+        })
+
 
         fragmentAlertBinding.alertSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -88,7 +98,7 @@ class Alert : Fragment() {
             }
 
         fragmentAlertBinding.enableOrNot.setOnClickListener {
-
+            alertViewModel.saveAlertSetting(fragmentAlertBinding.enableOrNot.text.toString())
             Log.d("TAG",fragmentAlertBinding.enableOrNot.text.toString())
         }
 

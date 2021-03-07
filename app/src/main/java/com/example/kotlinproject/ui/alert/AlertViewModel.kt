@@ -25,4 +25,10 @@ class AlertViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
+    fun saveAlertSetting(alert: String)=dataSourceViewModel.saveAlertSetting(alert)
+
+    fun getAlertSetting(): LiveData<String>{
+        return dataSourceViewModel.getAlertSetting()
+    }
+
 }

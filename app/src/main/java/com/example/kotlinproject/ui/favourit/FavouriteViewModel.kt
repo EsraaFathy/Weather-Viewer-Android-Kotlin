@@ -12,6 +12,7 @@ import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
+import com.example.kotlinproject.ui.GeneralFunctions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,6 +21,7 @@ class FavouriteViewModel(application: Application) : AndroidViewModel(applicatio
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(application)
     private val intentLiveData: MutableLiveData<Int> = MutableLiveData<Int>()
     private val alertDialogLiveData: MutableLiveData<FavData> = MutableLiveData<FavData>()
+    private val generalFunctions :GeneralFunctions= GeneralFunctions()
     fun deleteOneFav(lat: String, lon: String)= dataSourceViewModel.deleteOneFav(lat,lon)
 
     fun getFavDataBase(): LiveData<List<FavData>> {
@@ -48,5 +50,8 @@ class FavouriteViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun getAlertDialogLiveData():LiveData<FavData>{
         return alertDialogLiveData
+    }
+    fun getOnline(context: Context) : Boolean{
+        return generalFunctions.isOnline(context)
     }
 }

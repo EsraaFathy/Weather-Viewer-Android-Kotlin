@@ -107,4 +107,10 @@ class DataSourceViewModel(application: Application) : AndroidViewModel(applicati
         return roomRepositry.getAlertFav(timeZone)
     }
 
+    fun saveAlertSetting(alert: String)=sharedPreferencesReopsitory.saveAlertSetting(alert)
+
+    fun getAlertSetting(): LiveData<String>{
+        return sharedPreferencesReopsitory.getAlertSetting()
+    }
+
 }

@@ -48,7 +48,7 @@ class SettingSB(val context: Context) {
     }
     fun loadAlertSetting(){
         CoroutineScope(Dispatchers.IO).launch {
-            val alertl = sharedPreferences.getString("alert", "off")
+            val alertl = sharedPreferences.getString("alert", "OFF")
             alert.postValue(alertl!!)
         }
     }

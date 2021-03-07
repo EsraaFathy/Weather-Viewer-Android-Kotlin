@@ -1,29 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Weather viewer</string>
-    <string name="home">Home</string>
-    <string name="favorite">Favorite</string>
-    <string name="setting">Setting</string>
-    <string name="shape">shape</string>
-    <string name="current_city">Current City</string>
+    <string name="home">الرئيسية</string>
+    <string name="favorite">المفضلة</string>
+    <string name="setting">الاعدادات</string>
+    <string name="shape">الشكل</string>
+    <string name="current_city">المدينة الحالية</string>
     <string name="_20_2_2021">20-2-2021</string>
     <string name="_11_11">11:11</string>
-    <string name="current_mode">current mode</string>
+    <string name="current_mode">الوضع الحالى</string>
     <string name="_c">ْ C</string>
     <string name="mostly_clear">Mostly Clear</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="arrow">arrow</string>
-    <string name="current">Current</string>
-    <string name="daily">Daily</string>
-    <string name="hourly">Hourly</string>
+    <string name="current">الحالى</string>
+    <string name="daily">يومى</string>
+    <string name="hourly">على مدار الساعة</string>
     <string name="humidity">Humidity</string>
     <string name="_40">40%</string>
-    <string name="wind_speed">Wind speed</string>
-    <string name="pressure">Pressure</string>
-    <string name="clouds">Clouds</string>
-    <string name="more_details">More Details</string>
-    <string name="down">down</string>
-    <string name="title_activity_map">Map</string>
+    <string name="wind_speed">سرعة الرياح</string>
+    <string name="pressure">الضغط</string>
+    <string name="clouds">السحب</string>
+    <string name="more_details">المزيد من التفاصيل</string>
+    <string name="down">اسفل</string>
+    <string name="title_activity_map">خريطه</string>
     <string name="api_key">517a14f849e519bb4fa84cdbd4755f56</string>
     <string name="minutely">minutely</string>
     <string name="her_yoy_can_change_units_of_measurement_as_you_want">Her yoy can change units of measurement as you want</string>

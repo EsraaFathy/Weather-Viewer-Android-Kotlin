@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.databinding.FragmentFavouritBinding
 import com.example.kotlinproject.ui.favouriteDetails.FavouriteDetails
@@ -35,14 +37,21 @@ class Favourit : Fragment() {
 
         adapter= FavouriteAdapter(favouriteViewModel)
         binding.addButton.setOnClickListener{
+            if (favouriteViewModel.getOnline(activity!!)) {
             val intent = Intent(activity, MapActivity::class.java)
             startActivity(intent)
+            }else{
+                Toast.makeText(requireActivity(),getString(R.string.you_are_offline),Toast.LENGTH_SHORT).show()
+            }
         }
 
         favouriteViewModel.getFavDataBase().observe(this,{
             if (it.isNotEmpty()){
+                binding.empty.visibility=View.GONE
                 loadFavourite(it)
                 dataList=it
+            }else{
+                binding.empty.visibility=View.VISIBLE
             }
         })
 
