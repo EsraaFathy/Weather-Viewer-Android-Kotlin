@@ -11,18 +11,25 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ActivitySplashBinding
 import com.example.kotlinproject.ui.baseHome.MainActivity
+import com.example.kotlinproject.ui.home.HomeViewModel
 import java.util.*
 
 
 class Splash : AppCompatActivity() {
     lateinit var binding:ActivitySplashBinding
+    private lateinit var splashViewModel: SplashViewModel
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
+        splashViewModel= ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(this.application)
+        )[SplashViewModel::class.java]
         val down=AnimationUtils.loadAnimation(this, R.animator.move_down)
         val animation :Animation=AnimationUtils.loadAnimation(this, R.anim.wave)
         binding.snow1.startAnimation(animation)
@@ -50,7 +57,9 @@ class Splash : AppCompatActivity() {
         binding.snow12.startAnimation(animation)
         binding.snow12.startAnimation(down)
 
-        setLocale(this,"ar")
+        splashViewModel.getSetting().observe(this,{
+            splashViewModel.enableLocalization(this,it.lang)
+        })
         val handler = Handler()
 
         handler.postDelayed(Runnable {
@@ -60,13 +69,5 @@ class Splash : AppCompatActivity() {
         }, 4000)
     }
 
-    fun setLocale(activity: Activity, languageCode: String?) {
-        val locale = Locale(languageCode)
-        Locale.setDefault(locale)
-        val resources: Resources = activity.resources
-        val config: Configuration = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-    }
 
 }
