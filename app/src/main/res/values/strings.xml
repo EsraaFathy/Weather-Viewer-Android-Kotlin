@@ -57,4 +57,5 @@
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="snow">snow</string>
+    <string name="enable_alarm">Enable Alarm</string>
 </resources>
