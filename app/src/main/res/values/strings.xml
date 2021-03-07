@@ -58,4 +58,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="snow">snow</string>
     <string name="enable_alarm">Enable Alarm</string>
+    <string name="event">Event</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="description">Description</string>
 </resources>
