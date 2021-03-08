@@ -19,6 +19,7 @@ class CreateAlerm : AppCompatActivity() {
     lateinit var pickerDate: DatePickerDialog
     lateinit var activityCreateAlermBinding: ActivityCreateAlermBinding
     lateinit var createAlermViewModel: CreateAlermViewModel
+    private val startCalendar : Calendar = Calendar.getInstance()
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +38,21 @@ class CreateAlerm : AppCompatActivity() {
             val cldr: Calendar = Calendar.getInstance()
             val hour: Int = cldr.get(Calendar.HOUR_OF_DAY)
             val minutes: Int = cldr.get(Calendar.MINUTE)
+            cldr.set(Calendar.SECOND, 0)
 
             picker = TimePickerDialog(
                 this,
                 { clr, sHour, sMinute ->
                     activityCreateAlermBinding.startTimeText.text = "$sHour : $sMinute"
-                    secondsTimeStarts=cldr.timeInMillis
-                    Log.d("TAG HI","$secondsTimeStarts")
+
+                    secondsTimeStarts = cldr.timeInMillis
+                    startCalendar.set(Calendar.HOUR,sHour)
+                    startCalendar.set(Calendar.MINUTE,sMinute)
+                    startCalendar.set(Calendar.SECOND,0)
+
+                    Log.d("TAG HI", "$secondsTimeStarts")
                     picker.dismiss()
-                            }, hour, minutes, true
+                }, hour, minutes, true
             )
             picker.show()
         }
@@ -59,7 +66,10 @@ class CreateAlerm : AppCompatActivity() {
                 this,
                 { tp, sHour, sMinute ->
                     activityCreateAlermBinding.endTimeText.text = "$sHour : $sMinute"
-                    secondsDateStart=cldr.timeInMillis
+                    secondsDateStart = cldr.timeInMillis
+//                    startCalendar.set(Calendar.HOUR,sHour)
+//                    startCalendar.set(Calendar.MINUTE,sMinute)
+//                    startCalendar.set(Calendar.SECOND,0)
 
                     picker.dismiss()
                 }, hour, minutes, true
@@ -74,7 +84,13 @@ class CreateAlerm : AppCompatActivity() {
             val year: Int = cldr.get(Calendar.YEAR)
             pickerDate = DatePickerDialog(this, { _, year, month, day ->
                 activityCreateAlermBinding.startDateText.text = "$day - $month - $year"
-                secondsTimeEnd=cldr.timeInMillis
+
+                startCalendar.set(Calendar.DAY_OF_WEEK,day)
+                startCalendar.set(Calendar.MONTH,month)
+                startCalendar.set(Calendar.YEAR,year)
+
+
+                secondsTimeEnd = cldr.timeInMillis
 
             }, year, month, day)
             pickerDate.show()
@@ -88,7 +104,7 @@ class CreateAlerm : AppCompatActivity() {
             val year: Int = cldr.get(Calendar.YEAR)
             pickerDate = DatePickerDialog(this, { _, year, month, day ->
                 activityCreateAlermBinding.endDateText.text = "$day - $month - $year"
-                secondsDateEnd=cldr.timeInMillis
+                secondsDateEnd = cldr.timeInMillis
 
             }, year, month, day)
             pickerDate.show()
@@ -103,21 +119,27 @@ class CreateAlerm : AppCompatActivity() {
                 endDate = secondsDateEnd,
                 reputation = activityCreateAlermBinding.checkboxReputation.isChecked
             )
-            createAlerm()
         }
 
-        createAlermViewModel.getDataSavedOrNot().observe(this,{
-            if (it){
-                Toast.makeText(this,getString(R.string.data_saaved),Toast.LENGTH_SHORT).show()
+        createAlermViewModel.getDataSavedOrNot().observe(this, {
+            if (it) {
+                createAlerm(startCalendar.timeInMillis)
+                Toast.makeText(this, getString(R.string.data_saaved), Toast.LENGTH_SHORT).show()
                 finish()
-            }else{
-                Toast.makeText(this,getString(R.string.there_is_missed_data),Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, getString(R.string.there_is_missed_data), Toast.LENGTH_SHORT)
+                    .show()
 
             }
         })
     }
 
-    private fun createAlerm() {
-        TODO("Not yet implemented")
+    private fun createAlerm(secondsTimeStarts: Long) {
+        Log.d("TAG","${startCalendar.timeInMillis}")
+        Log.d("TAG  Calendar.MINUTE","${startCalendar.get(Calendar.MINUTE)}")
+        Log.d("TAG  Calendar.HOUR","${startCalendar.get(Calendar.HOUR)}")
+        createAlermViewModel.startAlert(this, secondsTimeStarts)
     }
 }
+
+

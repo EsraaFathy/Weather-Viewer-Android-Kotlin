@@ -1,11 +1,17 @@
 package com.example.kotlinproject.ui.createAlerm
 
+import android.app.Activity
+import android.app.AlarmManager
 import android.app.Application
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.AlertTable
+import java.util.*
 
 class CreateAlermViewModel(application: Application) : AndroidViewModel(application) {
     val dataSourceViewModel=DataSourceViewModel(application)
@@ -36,5 +42,18 @@ class CreateAlermViewModel(application: Application) : AndroidViewModel(applicat
 
     fun getDataSavedOrNot():LiveData<Boolean>{
         return dataSavedOrNot
+    }
+
+    fun startAlert(activity: Activity,amount :Long) {
+
+        val myIntent = Intent(activity, AlermRecever::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(activity, 1, myIntent, 0)
+        val alarmManager: AlarmManager = activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        val calendar: Calendar = Calendar.getInstance()
+//        calendar.timeInMillis = System.currentTimeMillis()
+//        calendar.add(Calendar.SECOND, 400)
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, amount, pendingIntent)
+
     }
 }
