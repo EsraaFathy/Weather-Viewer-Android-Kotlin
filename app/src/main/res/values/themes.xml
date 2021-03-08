@@ -19,4 +19,7 @@
         <item name="android:textSize">20sp</item>
         <item name="fontFamily">sans-serif-condensed</item>
     </style>
+    <style name="mySpinnerItemStyle" parent="Base.Widget.AppCompat.Spinner">
+        <item name="android:textColor">@color/broun</item>
+    </style>
 </resources>

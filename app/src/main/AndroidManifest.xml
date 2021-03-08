@@ -22,7 +22,10 @@
         android:theme="@style/Theme.KotlinProject"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".ui.favouriteDetails.FavouriteDetails"/>
+        <activity android:name=".ui.createAlerm.CreateAlerm"
+            android:label="@string/add_alert"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity android:name=".ui.favouriteDetails.FavouriteDetails" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -38,8 +41,8 @@
         <activity
             android:name=".ui.map.MapActivity"
             android:label="@string/title_activity_map" />
-        <activity android:name="com.example.kotlinproject.ui.baseHome.MainActivity"/>
-        <activity android:name="com.example.kotlinproject.ui.splash.Splash">
+        <activity android:name=".ui.baseHome.MainActivity" />
+        <activity android:name=".ui.splash.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,7 +50,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ui.alert.AlermRecever"/>
+        <receiver android:name=".ui.alert.AlermRecever" />
     </application>
 
 </manifest>

@@ -59,15 +59,26 @@
     <string name="snow">snow</string>
     <string name="enable_alarm">Enable Alarm</string>
     <string name="event">Event</string>
-    <string name="start">Start</string>
-    <string name="end">End</string>
+
     <string name="description">Description</string>
     <string name="no_data_available">No Data Available</string>
     <string name="logo">logo</string>
     <string name="you_are_offline">You Are Offline</string>
+    <string name="alert_name">Alert Name</string>
+    <string name="untitled">UnTitled</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="reputation">Reputation</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_alert">Add Alert</string>
 
     <string-array name="alert">
-        <item>Current Location Alerts</item>
-        <item>Favourite Locations Alerts</item>
+        <item>thunderstorm</item>
+        <item>drizzle</item>
+        <item>rain</item>
+        <item>snow</item>
+        <item>clouds</item>
     </string-array>
 </resources>

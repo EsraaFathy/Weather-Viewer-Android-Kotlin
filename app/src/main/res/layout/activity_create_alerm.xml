@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_background"
+        android:padding="10dp"
+        tools:context=".ui.createAlerm.CreateAlerm">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=".5" />
+
+        <TextView
+            android:id="@+id/alertNameText"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/alertTitle"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="textShortMessage"
+            android:labelFor="@id/alertNameText"
+            android:text="@string/untitled"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/alertNameText"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="LabelFor" />
+
+        <Spinner
+            android:id="@+id/alert_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTintMode="src_in"
+            android:backgroundTint="@color/cafe"
+            style="@style/mySpinnerItemStyle"
+            android:background="@color/broun"
+            android:popupBackground="@color/broun"
+            android:entries="@array/alert"
+            android:paddingVertical="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alertTitle" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/alert_spinner"
+            app:layout_constraintBottom_toBottomOf="@id/alert_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_arrow_down_24"
+            android:contentDescription="@string/down" />
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginVertical="20dp"
+            android:background="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alert_spinner"
+            tools:ignore="Orientation" />
+
+        <TextView
+            android:id="@+id/startText"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:text="@string/from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear1" />
+
+        <ImageView
+            android:id="@+id/timePickerStart"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/start"
+            android:src="@drawable/ic__time_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/startText" />
+
+        <TextView
+            android:id="@+id/startTime"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
+            app:layout_constraintStart_toEndOf="@id/timePickerStart"
+            app:layout_constraintTop_toTopOf="@id/timePickerStart" />
+
+
+        <ImageView
+            android:id="@+id/datePickerStart"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/start"
+            android:src="@drawable/ic_date_24"
+            app:layout_constraintStart_toStartOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/startText" />
+
+        <TextView
+            android:id="@+id/startTDateText"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
+            app:layout_constraintStart_toEndOf="@id/datePickerStart"
+            app:layout_constraintTop_toTopOf="@id/datePickerStart" />
+
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginVertical="20dp"
+            android:background="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timePickerStart"
+            tools:ignore="Orientation" />
+
+        <TextView
+            android:id="@+id/endText"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:text="@string/to"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear2" />
+
+
+        <ImageView
+            android:id="@+id/timePickerend"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/start"
+            android:src="@drawable/ic__time_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/endText" />
+
+        <TextView
+            android:id="@+id/endTime"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
+            app:layout_constraintStart_toEndOf="@id/timePickerend"
+            app:layout_constraintTop_toTopOf="@id/timePickerend" />
+
+
+        <ImageView
+            android:id="@+id/datePickerEnd"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/start"
+            android:src="@drawable/ic_date_24"
+            app:layout_constraintStart_toStartOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/endText" />
+
+        <TextView
+            android:id="@+id/endDateText"
+            style="@style/textView"
+            android:text="@string/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
+            app:layout_constraintStart_toEndOf="@id/datePickerEnd"
+            app:layout_constraintTop_toTopOf="@id/datePickerEnd" />
+
+
+        <LinearLayout
+            android:id="@+id/linear3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginVertical="30dp"
+            android:background="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/endTime"
+            tools:ignore="Orientation" />
+
+        <CheckBox
+            android:id="@+id/checkboxReputation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/text_color"
+            android:checked="true"
+            app:layout_constraintTop_toBottomOf="@id/linear3"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/reputationText"
+            android:layout_marginVertical="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/checkboxReputation"
+            app:layout_constraintBottom_toBottomOf="@id/checkboxReputation"
+            app:layout_constraintStart_toEndOf="@id/checkboxReputation"
+            android:text="@string/reputation"
+            style="@style/textView"/>
+        <Button
+            android:id="@+id/saveButton"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/reputationText"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="40dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <Button
+            android:textAllCaps="false"
+            android:id="@+id/cancel_button"
+            android:text="@string/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reputationText"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="40dp"
+            app:layout_constraintStart_toEndOf="@id/guideline2"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

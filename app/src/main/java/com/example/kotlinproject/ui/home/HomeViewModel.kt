@@ -32,7 +32,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             Log.d("TAG", "loadOnlineData: ")
             dataSourceViewModel.loadOneCall(lat, lon, lang, units)
         }else{
-            Toast.makeText(context,"You are offline",Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"You are offline",Toast.LENGTH_SHORT).show()
         }
     }
 
