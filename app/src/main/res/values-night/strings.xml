@@ -1,4 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello_world">Hello Round World!</string>
     <string name="there_is_missed_data">There is Missed Data</string>
 </resources>

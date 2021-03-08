@@ -66,9 +66,13 @@
     <string name="no_data_available">No Data Available</string>
     <string name="logo">logo</string>
     <string name="you_are_offline">You Are Offline</string>
+    <string name="there_is_missed_data">There is Missed Data</string>
 
     <string-array name="alert">
-        <item>Current Location Alerts</item>
-        <item>Favourite Locations Alerts</item>
+        <item>thunderstorm</item>
+        <item>drizzle</item>
+        <item>rain</item>
+        <item>snow</item>
+        <item>clouds</item>
     </string-array>
 </resources>

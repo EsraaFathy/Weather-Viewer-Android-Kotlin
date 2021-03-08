@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -41,7 +42,7 @@ class CreateAlerm : AppCompatActivity() {
                 this,
                 { clr, sHour, sMinute ->
                     activityCreateAlermBinding.startTimeText.text = "$sHour : $sMinute"
-                    secondsTimeStarts=cldr.timeInMillis - System.currentTimeMillis()
+                    secondsTimeStarts=cldr.timeInMillis
                     Log.d("TAG HI","$secondsTimeStarts")
                     picker.dismiss()
                             }, hour, minutes, true
@@ -58,7 +59,7 @@ class CreateAlerm : AppCompatActivity() {
                 this,
                 { tp, sHour, sMinute ->
                     activityCreateAlermBinding.endTimeText.text = "$sHour : $sMinute"
-                    secondsDateStart=cldr.timeInMillis - System.currentTimeMillis()
+                    secondsDateStart=cldr.timeInMillis
 
                     picker.dismiss()
                 }, hour, minutes, true
@@ -73,7 +74,7 @@ class CreateAlerm : AppCompatActivity() {
             val year: Int = cldr.get(Calendar.YEAR)
             pickerDate = DatePickerDialog(this, { _, year, month, day ->
                 activityCreateAlermBinding.startDateText.text = "$day - $month - $year"
-                secondsTimeEnd=cldr.timeInMillis - System.currentTimeMillis()
+                secondsTimeEnd=cldr.timeInMillis
 
             }, year, month, day)
             pickerDate.show()
@@ -87,7 +88,7 @@ class CreateAlerm : AppCompatActivity() {
             val year: Int = cldr.get(Calendar.YEAR)
             pickerDate = DatePickerDialog(this, { _, year, month, day ->
                 activityCreateAlermBinding.endDateText.text = "$day - $month - $year"
-                secondsDateEnd=cldr.timeInMillis - System.currentTimeMillis()
+                secondsDateEnd=cldr.timeInMillis
 
             }, year, month, day)
             pickerDate.show()
@@ -102,7 +103,21 @@ class CreateAlerm : AppCompatActivity() {
                 endDate = secondsDateEnd,
                 reputation = activityCreateAlermBinding.checkboxReputation.isChecked
             )
-
+            createAlerm()
         }
+
+        createAlermViewModel.getDataSavedOrNot().observe(this,{
+            if (it){
+                Toast.makeText(this,getString(R.string.data_saaved),Toast.LENGTH_SHORT).show()
+                finish()
+            }else{
+                Toast.makeText(this,getString(R.string.there_is_missed_data),Toast.LENGTH_SHORT).show()
+
+            }
+        })
+    }
+
+    private fun createAlerm() {
+        TODO("Not yet implemented")
     }
 }

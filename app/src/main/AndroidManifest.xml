@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ui.alert.AlermRecever" />
+        <receiver android:name=".ui.createAlerm.AlermRecever" />
     </application>
 
 </manifest>

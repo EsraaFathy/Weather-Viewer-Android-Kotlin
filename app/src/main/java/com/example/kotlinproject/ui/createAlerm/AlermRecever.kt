@@ -1,4 +1,4 @@
-package com.example.kotlinproject.ui.alert
+package com.example.kotlinproject.ui.createAlerm
 
 import android.content.BroadcastReceiver
 import android.content.Context

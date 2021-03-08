@@ -12,17 +12,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Alert
 import com.example.kotlinproject.databinding.FragmentAlertBinding
+import com.example.kotlinproject.ui.createAlerm.AlermRecever
 import com.example.kotlinproject.ui.createAlerm.CreateAlerm
-import com.example.kotlinproject.ui.favourit.FavouriteViewModel
 import java.util.*
 
 
