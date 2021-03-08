@@ -20,6 +20,9 @@ class RoomRepositry(context: Application) : AndroidViewModel(context) {
      fun getAllData(): LiveData<List<AllData>>{
         return weatherDao.getAllData()
     }
+    fun getData(): List<AllData>{
+        return weatherDao.getData()
+    }
      fun deleteAll(){
         return weatherDao.deleteAll()
     }
@@ -47,8 +50,8 @@ class RoomRepositry(context: Application) : AndroidViewModel(context) {
     fun getTimezones():LiveData<List<String>>{
         return weatherDao.getTimezones()
     }
-    suspend fun saveAlert(alertTable: AlertTable){
-        weatherDao.saveAlert(alertTable)
+     fun saveAlert(alertTable: AlertTable):Long{
+       return weatherDao.saveAlert(alertTable)
     }
     fun getAllAlerts():LiveData<List<AlertTable>>{
         return weatherDao.getAllAlerts()

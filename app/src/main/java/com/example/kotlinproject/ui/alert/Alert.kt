@@ -14,6 +14,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinproject.dataLayer.entity.AlertTable
 import com.example.kotlinproject.databinding.FragmentAlertBinding
 import com.example.kotlinproject.ui.createAlerm.AlermRecever
 import com.example.kotlinproject.ui.createAlerm.CreateAlerm
@@ -25,7 +28,6 @@ class Alert : Fragment() {
     lateinit var fragmentAlertBinding: FragmentAlertBinding
     lateinit var alertViewModel: AlertViewModel
     lateinit var currentAlertAdaapter: CurrentAlertAdaapter
-    lateinit var favAlertAdaapter: FavAlertAdapter
 
 
     override fun onCreateView(
@@ -38,36 +40,18 @@ class Alert : Fragment() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[AlertViewModel::class.java]
         val spinnerArray = ArrayList<String>()
-//        currentAlertAdaapter = CurrentAlertAdaapter(alertViewModel)
-//        favAlertAdaapter = FavAlertAdapter(alertViewModel)
-//        val lay: RecyclerView.LayoutManager = LinearLayoutManager(activity)
-//        val lay2: RecyclerView.LayoutManager = LinearLayoutManager(activity)
-//        fragmentAlertBinding.listCurrent.layoutManager = lay
-//        fragmentAlertBinding.listFav.layoutManager = lay2
-//
-//        fragmentAlertBinding.listFav.adapter = favAlertAdaapter
-//        fragmentAlertBinding.listCurrent.adapter = currentAlertAdaapter
-
+        currentAlertAdaapter = CurrentAlertAdaapter(alertViewModel)
+        val lay: RecyclerView.LayoutManager = LinearLayoutManager(activity)
+        fragmentAlertBinding.listCurrent.layoutManager = lay
+        fragmentAlertBinding.listCurrent.adapter=currentAlertAdaapter
 
         fragmentAlertBinding.addAlertButton.setOnClickListener {
             val intent =Intent(activity,CreateAlerm::class.java)
             startActivity(intent)
         }
 
-        alertViewModel.getTimezones().observe(this, {
-            spinnerArray.add("Current City Alerts")
-            if (it != null) {
-                for (a in it) {
-                    spinnerArray.add(a)
-                }
-                val spinnerArrayAdapter: ArrayAdapter<String> =
-                    ArrayAdapter<String>(
-                        requireContext(),
-                        R.layout.simple_spinner_dropdown_item,
-                        spinnerArray
-                    )
-                fragmentAlertBinding.alertSpinner.adapter = spinnerArrayAdapter
-            }
+        alertViewModel.gerAlertTable().observe(this,{
+            showRecyclel(it)
         })
 
         alertViewModel.getAlertSetting().observe(this,{
@@ -81,47 +65,16 @@ class Alert : Fragment() {
         })
 
 
-        fragmentAlertBinding.alertSpinner.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                }
-
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-//                    loadData(spinnerArray[position])
-                }
-
-            }
-
         fragmentAlertBinding.enableOrNot.setOnClickListener {
             alertViewModel.saveAlertSetting(fragmentAlertBinding.enableOrNot.text.toString())
             Log.d("TAG",fragmentAlertBinding.enableOrNot.text.toString())
         }
 
-//        startAlert()
 
 
         return fragmentAlertBinding.root
     }
 
-//    private fun loadData(timeZone: String) {
-//        if (timeZone == "Current City Alerts") {
-//            alertViewModel.getAllData().observe(this, {
-//                if (it.isNotEmpty())
-//                    showRecyclel(it[0].alerts)
-//            })
-//        } else {
-//            alertViewModel.getAlertFav(timeZone)!!.observe(this, {
-//                showRecyclelFav(it.alerts)
-//
-//            })
-//        }
-//    }
 
 //    private fun showRecyclelFav(alerts: List<com.example.kotlinproject.dataLayer.entity.favtable.Alert>?) {
 //        if (alerts != null) {
@@ -137,20 +90,18 @@ class Alert : Fragment() {
 //        }
 //    }
 //
-//    private fun showRecyclel(alerts: List<Alert>?) {
-//        if (alerts != null){
-//            fragmentAlertBinding.empty.visibility=View.INVISIBLE
-//            fragmentAlertBinding.listFav.visibility=View.INVISIBLE
-//            fragmentAlertBinding.listCurrent.visibility=View.VISIBLE
-//            currentAlertAdaapter.models = alerts
-//            currentAlertAdaapter.notifyDataSetChanged()
-//        }else{
-//            fragmentAlertBinding.empty.visibility=View.VISIBLE
-//            fragmentAlertBinding.listFav.visibility=View.INVISIBLE
-//            fragmentAlertBinding.listCurrent.visibility=View.INVISIBLE
-//        }
-//
-//    }
+    private fun showRecyclel(alerts: List<AlertTable>?) {
+        if (alerts != null){
+            fragmentAlertBinding.empty.visibility=View.INVISIBLE
+            fragmentAlertBinding.listCurrent.visibility=View.VISIBLE
+            currentAlertAdaapter.models = alerts
+            currentAlertAdaapter.notifyDataSetChanged()
+        }else{
+            fragmentAlertBinding.empty.visibility=View.VISIBLE
+            fragmentAlertBinding.listCurrent.visibility=View.INVISIBLE
+        }
+
+    }
 
     fun startAlert() {
 

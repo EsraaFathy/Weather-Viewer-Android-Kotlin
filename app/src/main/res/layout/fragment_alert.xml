@@ -30,26 +30,14 @@
             android:background="@drawable/toggle_selector"
             android:textColor="@color/cafe" />
 
-        <Spinner
-            android:id="@+id/alert_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="90dp" />
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:layout_marginTop="120dp"-->
-        <!--            android:id="@+id/list_current"-->
-        <!--            tools:listitem="@layout/alarm_item"-->
-        <!--            android:visibility="gone"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent" />-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="120dp"
+                    android:id="@+id/list_current"
+                    tools:listitem="@layout/alarm_item"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:layout_marginTop="120dp"-->
-        <!--            tools:listitem="@layout/alarm_item"-->
-        <!--            android:id="@+id/list_Fav"-->
-        <!--            android:visibility="gone"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent" />-->
 
         <LinearLayout
             android:id="@+id/empty"

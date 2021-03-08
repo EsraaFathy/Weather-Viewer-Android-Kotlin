@@ -24,14 +24,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="3dp"
-            android:layout_margin="20dp"
-            android:background="@color/text_color"
-            android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/start_text"
-            app:layout_constraintBottom_toBottomOf="@id/end_text"/>
 
         <ImageView
             android:id="@+id/description_ic"
@@ -42,7 +34,7 @@
             android:layout_margin="20dp"
             android:text="@string/description"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/end_text" />
+            app:layout_constraintTop_toBottomOf="@id/start_text" />
 
         <TextView
             android:id="@+id/event_text"
@@ -68,17 +60,6 @@
 
         <TextView
             android:textColor="@color/back_ground"
-            android:id="@+id/end_text"
-            style="@style/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:text="@string/end"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/start_text" />
-
-        <TextView
-            android:textColor="@color/back_ground"
             android:id="@+id/description_text"
             style="@style/textView"
             android:layout_width="wrap_content"
@@ -87,7 +68,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/description"
             app:layout_constraintStart_toEndOf="@id/description_ic"
-            app:layout_constraintTop_toBottomOf="@id/end_text" />
+            app:layout_constraintTop_toBottomOf="@id/start_text" />
 
 
         <TextView
@@ -112,16 +93,6 @@
             app:layout_constraintStart_toEndOf="@id/start_text"
             app:layout_constraintTop_toBottomOf="@id/event_text" />
 
-        <TextView
-            android:id="@+id/end_data"
-            style="@style/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:text="@string/end"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/end_text"
-            app:layout_constraintTop_toBottomOf="@id/start_text" />
 
         <TextView
             android:id="@+id/description_data"
@@ -133,6 +104,14 @@
             android:text="@string/description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/description_ic"
-            app:layout_constraintTop_toBottomOf="@id/end_text" />
+            app:layout_constraintTop_toBottomOf="@id/start_text" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/event_Data"
+            app:layout_constraintBottom_toBottomOf="@id/event_Data"
+            app:layout_constraintStart_toEndOf="@id/event_Data"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

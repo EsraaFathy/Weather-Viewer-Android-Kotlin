@@ -114,10 +114,8 @@ class DataSourceViewModel(application: Application) : AndroidViewModel(applicati
         return sharedPreferencesReopsitory.getAlertSetting()
     }
 
-     fun saveAlert(alertTable: AlertTable){
-        CoroutineScope(Dispatchers.IO).launch {
-            roomRepositry.saveAlert(alertTable)
-        }
+     fun saveAlert(alertTable: AlertTable):Long{
+           return roomRepositry.saveAlert(alertTable)
     }
     fun getAllAlerts():LiveData<List<AlertTable>>{
         return roomRepositry.getAllAlerts()

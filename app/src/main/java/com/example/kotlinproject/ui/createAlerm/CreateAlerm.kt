@@ -16,8 +16,6 @@ import java.util.*
 
 
 class CreateAlerm : AppCompatActivity() {
-    lateinit var picker: TimePickerDialog
-    lateinit var pickerDate: DatePickerDialog
     lateinit var activityCreateAlermBinding: ActivityCreateAlermBinding
     lateinit var createAlermViewModel: CreateAlermViewModel
     var zhour: Int? = null
@@ -25,6 +23,11 @@ class CreateAlerm : AppCompatActivity() {
     var zmonth: Int? = null
     var zday: Int? = null
     var zyear: Int? = null
+    var ahour: Int? = null
+    var amin: Int? = null
+    var amonth: Int? = null
+    var aday: Int? = null
+    var ayear: Int? = null
     private val startCalendar: Calendar = Calendar.getInstance()
 
     @SuppressLint("SetTextI18n")
@@ -40,60 +43,39 @@ class CreateAlerm : AppCompatActivity() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(this.application)
         )[CreateAlermViewModel::class.java]
 
-        var secondsTimeStarts: Long? = null
         activityCreateAlermBinding.timePickerStart.setOnClickListener {
-            val cldr: Calendar = Calendar.getInstance()
             getTime()
 
         }
-        var secondsDateStart: Long? = null
         activityCreateAlermBinding.timePickerend.setOnClickListener {
-            val cldr: Calendar = Calendar.getInstance()
-            val ahour: Int = cldr.get(Calendar.HOUR_OF_DAY)
-            val aminutes: Int = cldr.get(Calendar.MINUTE)
-
-            picker = TimePickerDialog(
-                this,
-                { tp, sHour, sMinute ->
-                    activityCreateAlermBinding.endTimeText.text = "$sHour : $sMinute"
-                    secondsDateStart = cldr.timeInMillis
-//                    hour = sHour
-//                    min = sMinute
-//                    startCalendar.set(Calendar.HOUR,sHour)
-//                    startCalendar.set(Calendar.MINUTE,sMinute)
-//                    startCalendar.set(Calendar.SECOND,0)
-
-                    picker.dismiss()
-                }, ahour, aminutes, true
-            )
-            picker.show()
         }
-        var secondsTimeEnd: Long? = null
         activityCreateAlermBinding.datePickerStart.setOnClickListener {
             getDate()
         }
 
-        var secondsDateEnd: Long? = null
         activityCreateAlermBinding.datePickerEnd.setOnClickListener {
             getDate()
         }
 //        fun setAlaram(activity: Activity, hour:Int, min:Int, month:Int, day:Int, year:Int) {
         activityCreateAlermBinding.saveButton.setOnClickListener {
-            createAlermViewModel.setAlaram(this, zhour!!,zmin!!,zmonth!!,zday!!,zyear!!)
-//            createAlermViewModel.saveData(
-//                title = activityCreateAlermBinding.alertTitle.text.toString(),
-//                startTime = secondsTimeStarts,
-//                startDate = secondsDateStart,
-//                endTime = secondsTimeEnd,
-//                endDate = secondsDateEnd,
-//                reputation = activityCreateAlermBinding.checkboxReputation.isChecked
-//            )
+            createAlermViewModel.saveData(
+                title = activityCreateAlermBinding.alertTitle.text.toString(),
+                getResources().getStringArray(R.array.alert)[activityCreateAlermBinding.alertSpinner.selectedItemPosition],
+                reputation = activityCreateAlermBinding.checkboxReputation.isChecked,
+                time = "${activityCreateAlermBinding.startTimeText.text}  ${activityCreateAlermBinding.startDateText.text}"
+            )
         }
+
+        createAlermViewModel.idLiveData.observe(this,{
+            if (it!=null){
+                createAlermViewModel.setAlaram(this, zhour!!, zmin!!, zmonth!!, zday!!, zyear!!
+                    ,type = getResources().getStringArray(R.array.alert)[activityCreateAlermBinding.alertSpinner.selectedItemPosition],
+                    reputation = activityCreateAlermBinding.checkboxReputation.isChecked,it)
+            }
+        })
 
         createAlermViewModel.getDataSavedOrNot().observe(this, {
             if (it) {
-//                createAlerm(startCalendar.timeInMillis)
-//                createAlermViewModel.setAlaram(this, startCalendar)
                 Toast.makeText(this, getString(R.string.data_saaved), Toast.LENGTH_SHORT).show()
                 finish()
             } else {
@@ -120,33 +102,85 @@ class CreateAlerm : AppCompatActivity() {
                 startCalendar[Calendar.MONTH] = month - 1
                 startCalendar[Calendar.DATE] = dayOfMonth
                 startCalendar[Calendar.YEAR] = year
-//                activityCreateAlermBinding.startTimeText.t
-            }, year, month, day)
+                activityCreateAlermBinding.startDateText.text = "$dayOfMonth-$month$year"
+            }, year, month, day
+        )
         dpd.datePicker.minDate = System.currentTimeMillis() - 1000
         dpd.show()
     }
+
+    @SuppressLint("SetTextI18n")
     private fun getTime() {
-    val c = Calendar.getInstance()
-    val hour = c.get(Calendar.HOUR)
-    val minute = c.get(Calendar.MINUTE)
-    val datetime = Calendar.getInstance()
-    val tpd = TimePickerDialog(
-        this,
-        { view, h, m ->
-            c[Calendar.HOUR_OF_DAY] = h
-            c[Calendar.MINUTE] = m
-            if (c.timeInMillis >= datetime.timeInMillis) {
-                zhour = h
-                zmin = m
-                startCalendar.set(Calendar.HOUR_OF_DAY, h)
-                startCalendar.set(Calendar.MINUTE, m)
-                startCalendar[Calendar.SECOND] = 0
-            } else {
-            }
-        }, hour, minute, false
-    )
-    tpd.show()
-}
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR)
+        val minute = c.get(Calendar.MINUTE)
+        val datetime = Calendar.getInstance()
+        val tpd = TimePickerDialog(
+            this,
+            { view, h, m ->
+                c[Calendar.HOUR_OF_DAY] = h
+                c[Calendar.MINUTE] = m
+                if (c.timeInMillis >= datetime.timeInMillis) {
+                    zhour = h
+                    zmin = m
+                    startCalendar.set(Calendar.HOUR_OF_DAY, h)
+                    startCalendar.set(Calendar.MINUTE, m)
+                    startCalendar[Calendar.SECOND] = 0
+                    activityCreateAlermBinding.startTimeText.text = "$h:$m"
+
+                } else {
+                }
+            }, hour, minute, false
+        )
+        tpd.show()
+    }
+
+//    @SuppressLint("SetTextI18n")
+//    private fun getDateEnd() {
+//        val c = Calendar.getInstance()
+//        val year = c.get(Calendar.YEAR)
+//        val month = c.get(Calendar.MONTH)
+//        val day = c.get(Calendar.DAY_OF_MONTH)
+//        val dpd = DatePickerDialog(
+//            this, { _, year, monthOfYear, dayOfMonth ->
+//                amonth = monthOfYear + 1
+//                ayear = year
+//                aday = dayOfMonth
+//                startCalendar[Calendar.MONTH] = month - 1
+//                startCalendar[Calendar.DATE] = dayOfMonth
+//                startCalendar[Calendar.YEAR] = year
+//                activityCreateAlermBinding.endDateText.text = "$dayOfMonth-$month$year"
+//            }, year, month, day
+//        )
+//        dpd.datePicker.minDate = System.currentTimeMillis() - 1000
+//        dpd.show()
+//    }
+//
+//    @SuppressLint("SetTextI18n")
+//    private fun getTimeEnd() {
+//        val c = Calendar.getInstance()
+//        val hour = c.get(Calendar.HOUR)
+//        val minute = c.get(Calendar.MINUTE)
+//        val datetime = Calendar.getInstance()
+//        val tpd = TimePickerDialog(
+//            this,
+//            { view, h, m ->
+//                c[Calendar.HOUR_OF_DAY] = h
+//                c[Calendar.MINUTE] = m
+//                if (c.timeInMillis >= datetime.timeInMillis) {
+//                    ahour = h
+//                    amin = m
+//                    startCalendar.set(Calendar.HOUR_OF_DAY, h)
+//                    startCalendar.set(Calendar.MINUTE, m)
+//                    startCalendar[Calendar.SECOND] = 0
+//                    activityCreateAlermBinding.endTimeText.text = "$h:$m"
+//
+//                } else {
+//                }
+//            }, hour, minute, false
+//        )
+//        tpd.show()
+//    }
 }
 
 

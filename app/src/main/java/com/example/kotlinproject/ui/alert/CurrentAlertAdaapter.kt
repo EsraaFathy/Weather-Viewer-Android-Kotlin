@@ -9,28 +9,23 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Alert
-import com.example.kotlinproject.ui.GeneralFunctions
+import com.example.kotlinproject.dataLayer.entity.AlertTable
 
 class CurrentAlertAdaapter(var favViewModel: AlertViewModel) : RecyclerView.Adapter<CurrentAlertAdaapter.MyViewHolder>() {
-     var models: List<Alert> = emptyList()
-    val generalFunctions : GeneralFunctions= GeneralFunctions()
+     var models: List<AlertTable> = emptyList()
 
     inner class MyViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val event : TextView = itemView.findViewById(R.id.event_Data)
         private val start : TextView = itemView.findViewById(R.id.start_data)
-        private val end : TextView = itemView.findViewById(R.id.end_data)
         private val description : TextView = itemView.findViewById(R.id.description_data)
 
 
         @SuppressLint("SetTextI18n")
         @RequiresApi(Build.VERSION_CODES.O)
-        fun binding(allData: Alert) {
-            event.text=allData.event
-            description.text=allData.description
-            start.text= "${generalFunctions.formateDate(allData.start)} ${generalFunctions.formateTime(allData.start)}"
-            end.text= "${generalFunctions.formateDate(allData.end)} ${generalFunctions.formateTime(allData.end)}"
-
+        fun binding(allData: AlertTable) {
+            event.text=allData.title
+            description.text=allData.type
+            start.text=allData.time
         }
     }
 

@@ -13,63 +13,69 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.AlertTable
+import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 
+
 class CreateAlermViewModel(application: Application) : AndroidViewModel(application) {
-    val dataSourceViewModel=DataSourceViewModel(application)
-    val dataSavedOrNot=MutableLiveData<Boolean>()
-     private fun saveAlert(alertTable: AlertTable){
-            dataSourceViewModel.saveAlert(alertTable)
-    }
-    fun getAllAlerts(): LiveData<List<AlertTable>> {
-        return dataSourceViewModel.getAllAlerts()
+    val dataSourceViewModel = DataSourceViewModel(application)
+    val dataSavedOrNot = MutableLiveData<Boolean>()
+    val idLiveData = MutableLiveData<Int>()
+    private fun saveAlert(alertTable: AlertTable):Long {
+       return dataSourceViewModel.saveAlert(alertTable)
     }
 
-    fun saveData( title: String?,
-                  startTime: Long?,
-                  startDate: Long?,
-                  endTime: Long?,
-                  endDate: Long?,
-                  reputation: Boolean){
-        if (title != null || startTime!= null
-            || startDate != null || endTime != null
-            || endDate!= null){
-//            saveAlert(AlertTable(title = title!!,startTime = startTime!!,startDate = startDate!!,
-//                endTime = endTime!!,endDate = endDate!!,reputation = reputation))
-            dataSavedOrNot.value=true
-        }else{
-            dataSavedOrNot.value=false
+    fun getdata(): LiveData<List<AllData>> {
+        return dataSourceViewModel.getRoomDataBase()
+    }
+
+    fun saveData(
+        title: String?,
+        type: String?,
+        time: String,
+        reputation: Boolean
+    ) {
+        if (title != null || type != null) {
+            CoroutineScope(Dispatchers.IO).launch {
+                val id =saveAlert(
+                    AlertTable(
+                        title = title!!,
+                        type = type!!,
+                        time = time,
+                        reputation = reputation
+                    )
+                )
+                Log.d("TAG", id.toString())
+                idLiveData.postValue(id.toInt())
+            }
+            dataSavedOrNot.value = true
+        } else {
+            dataSavedOrNot.value = false
         }
     }
 
-    fun getDataSavedOrNot():LiveData<Boolean>{
+    fun getDataSavedOrNot(): LiveData<Boolean> {
         return dataSavedOrNot
     }
 
-
-//     fun setAlaram(activity: Activity,calende : Calendar) {
-//        val intentA = Intent(activity, AlermRecever::class.java)
-//        val random = Random()
-//        val int1 = random.nextInt(99)
-//        val pendingIntentA = PendingIntent.getBroadcast(activity, int1, intentA, 0)
-////        val calendar = Calendar.getInstance()
-////        calendar.set(Calendar.HOUR_OF_DAY, hour)
-////        calendar.set(Calendar.MINUTE, min)
-////        calendar[Calendar.MONTH] = month - 1
-////        calendar[Calendar.DATE] = day
-////        calendar[Calendar.YEAR] = year
-////        calendar[Calendar.SECOND] = 0
-//        val alarmtime: Long = calende.timeInMillis
-//         Log.d("Tag",alarmtime.toString())
-//        val alarmManager: AlarmManager = activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//        alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmtime, pendingIntentA)
-//        activity.registerReceiver(AlermRecever(), IntentFilter())
-//    }
-     fun setAlaram(activity: Activity,hour:Int,min:Int,month:Int,day:Int,year:Int) {
+    fun setAlaram(
+        activity: Activity,
+        hour: Int,
+        min: Int,
+        month: Int,
+        day: Int,
+        year: Int,
+        type: String?,
+        reputation: Boolean,
+        id: Int
+    ) {
         val intentA = Intent(activity, AlermRecever::class.java)
-        val random = Random()
-        val int1 = random.nextInt(99)
-        val pendingIntentA = PendingIntent.getBroadcast(activity, int1, intentA, 0)
+        intentA.putExtra("TYPE", type)
+        intentA.putExtra("REPUTATION", reputation)
+        val pendingIntentA = PendingIntent.getBroadcast(activity, id, intentA, 0)
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, hour)
         calendar.set(Calendar.MINUTE, min)
@@ -78,10 +84,16 @@ class CreateAlermViewModel(application: Application) : AndroidViewModel(applicat
         calendar[Calendar.YEAR] = year
         calendar[Calendar.SECOND] = 0
         val alarmtime: Long = calendar.timeInMillis
-         Log.d("Tag",alarmtime.toString())
+        Log.d("Tag", alarmtime.toString())
         val alarmManager: AlarmManager = activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmtime, pendingIntentA)
         activity.registerReceiver(AlermRecever(), IntentFilter())
+    }
+    fun cancelAlert( activity: Activity,id: Int){
+        val alarmManager = activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager?
+        val myIntent = Intent(activity, AlermRecever::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(activity, id, myIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        alarmManager!!.cancel(pendingIntent)
     }
 
 }

@@ -11,9 +11,7 @@ data class AlertTable(
 
     @ColumnInfo(defaultValue = "UnTitled", name = "title")
     val title: String,
-    val startTime: Long,
-    val startDate: Long,
-    val endTime: Long,
-    val endDate: Long,
+    val type: String,
+    val time :String,
     val reputation: Boolean,
     )

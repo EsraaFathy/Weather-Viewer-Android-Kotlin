@@ -75,6 +75,7 @@
     <string name="add_alert">Add Alert</string>
     <string name="data_saaved">Data Saved</string>
     <string name="there_is_missed_data">There is Missed Data</string>
+    <string name="weather_alert">Weather Alert</string>
 
     <string-array name="alert">
         <item>thunderstorm</item>

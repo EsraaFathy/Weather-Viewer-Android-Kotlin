@@ -16,6 +16,9 @@ interface WeatherDao {
     @Query("SELECT * FROM AllData")
     fun getAllData(): LiveData<List<AllData>>
 
+    @Query("SELECT * FROM AllData")
+    fun getData(): List<AllData>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveAllData(allData: AllData)
 
@@ -47,7 +50,7 @@ interface WeatherDao {
 
     //////////////////////alert\\\\\\\\\\\\\\\\\\\\\
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveAlert(alertTable: AlertTable)
+     fun saveAlert(alertTable: AlertTable):Long
 
     @Query("SELECT * FROM AlertTable")
     fun getAllAlerts():LiveData<List<AlertTable>>
