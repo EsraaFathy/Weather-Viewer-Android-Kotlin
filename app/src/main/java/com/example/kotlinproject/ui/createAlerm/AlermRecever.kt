@@ -16,3 +16,5 @@ class AlermRecever: BroadcastReceiver() {
         notificationHelper.getManger()!!.notify(1,notificationBuilder.build())
     }
 }
+
+
