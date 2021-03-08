@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.example.kotlinproject.dataLayer.entity.AlertTable
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Alert
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
@@ -45,5 +46,11 @@ class RoomRepositry(context: Application) : AndroidViewModel(context) {
 
     fun getTimezones():LiveData<List<String>>{
         return weatherDao.getTimezones()
+    }
+    suspend fun saveAlert(alertTable: AlertTable){
+        weatherDao.saveAlert(alertTable)
+    }
+    fun getAllAlerts():LiveData<List<AlertTable>>{
+        return weatherDao.getAllAlerts()
     }
 }

@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.example.kotlinproject.dataLayer.entity.AlertTable
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Alert
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
@@ -111,6 +112,15 @@ class DataSourceViewModel(application: Application) : AndroidViewModel(applicati
 
     fun getAlertSetting(): LiveData<String>{
         return sharedPreferencesReopsitory.getAlertSetting()
+    }
+
+     fun saveAlert(alertTable: AlertTable){
+        CoroutineScope(Dispatchers.IO).launch {
+            roomRepositry.saveAlert(alertTable)
+        }
+    }
+    fun getAllAlerts():LiveData<List<AlertTable>>{
+        return roomRepositry.getAllAlerts()
     }
 
 }

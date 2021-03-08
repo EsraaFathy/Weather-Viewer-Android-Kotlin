@@ -6,12 +6,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.example.kotlinproject.dataLayer.entity.AlertTable
 import com.example.kotlinproject.dataLayer.entity.Converter
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 
 @TypeConverters(Converter::class)
-@Database(entities = [AllData::class, FavData::class], version = 2,exportSchema = false)
+@Database(entities = [AllData::class, FavData::class,AlertTable::class], version = 1,exportSchema = false)
 abstract class DataBaseWeather : RoomDatabase() {
     companion object{
         @Volatile

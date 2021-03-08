@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.kotlinproject.dataLayer.entity.AlertTable
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.favtable.Alert
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
@@ -42,4 +43,15 @@ interface WeatherDao {
 
     @Query("SELECT * FROM FavData WHERE timezone LIKE:timezone LIMIT 1")
     fun getOAlerts(timezone : String): LiveData<FavData>?
+
+
+    //////////////////////alert\\\\\\\\\\\\\\\\\\\\\
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveAlert(alertTable: AlertTable)
+
+    @Query("SELECT * FROM AlertTable")
+    fun getAllAlerts():LiveData<List<AlertTable>>
+
+
+
 }
