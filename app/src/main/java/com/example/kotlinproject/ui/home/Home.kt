@@ -14,11 +14,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
+import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Alert
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.example.kotlinproject.databinding.FragmentHomeBinding
+import com.example.kotlinproject.ui.createAlerm.NotificationHelper
 
 
 class Home : Fragment() {
@@ -26,6 +28,7 @@ class Home : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var adapter: HourlyAdabter
     private lateinit var dailyadapter: DailyAdapter
+    lateinit var notificationHelper: NotificationHelper
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -171,9 +174,22 @@ class Home : Fragment() {
                 loadHourly(it[0].hourly)
                 loadDaily(it[0].daily)
                 homeViewModel.loadImage(binding.currentModeImg, it[0].current.weather[0].icon)
+                loadAlert(it[0].alerts)
             }
         })
         return binding.root
+    }
+
+    private fun loadAlert(alerts: List<Alert>?) {
+        if (alerts!=null){
+            Log.d("TAG","alert not null")
+            notificationHelper = NotificationHelper(context!!)
+            val notificationBuilder = notificationHelper.getChanelNotification(
+                getString(R.string.weather_alert),
+                "Take care he Weather is ${alerts[0].event}"
+            )
+            notificationHelper.getManger()!!.notify(1000, notificationBuilder.build())
+        }
     }
 
 
