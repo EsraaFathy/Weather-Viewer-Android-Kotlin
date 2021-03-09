@@ -31,7 +31,6 @@ class Home : Fragment() {
     private lateinit var dailyadapter: DailyAdapter
     lateinit var notificationHelper: NotificationHelper
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE lll$requestCode")
