@@ -79,7 +79,6 @@ class Setting : Fragment() {
         })
     }
 
-
     private fun savedata() {
         val units: String = when (binding.unitsRadioGroup.checkedRadioButtonId) {
             R.id.standardRadioButton -> {
@@ -107,6 +106,7 @@ class Setting : Fragment() {
             "add"
         }
 
+        settingViewModel.setLocale(requireActivity(),lang)
         settingViewModel.setSetting(SettingModel(units, lang, location))
     }
 
