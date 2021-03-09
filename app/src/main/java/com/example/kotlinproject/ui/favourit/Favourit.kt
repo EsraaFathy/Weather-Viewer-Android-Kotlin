@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.databinding.FragmentFavouritBinding
+import com.example.kotlinproject.ui.baseHome.MainActivity
 import com.example.kotlinproject.ui.favouriteDetails.FavouriteDetails
 import com.example.kotlinproject.ui.map.MapActivity
 import kotlinx.coroutines.CoroutineScope
@@ -35,7 +36,7 @@ class Favourit : Fragment() {
         binding = FragmentFavouritBinding.inflate(inflater, container, false)
         favouriteViewModel= ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[FavouriteViewModel::class.java]
 
-        adapter= FavouriteAdapter(favouriteViewModel)
+        adapter= FavouriteAdapter(favouriteViewModel,MainActivity.units)
         binding.addButton.setOnClickListener{
             if (favouriteViewModel.getOnline(activity!!)) {
             val intent = Intent(activity, MapActivity::class.java)

@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Build
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,9 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.ui.GeneralFunctions
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+
 
 class FavouriteViewModel(application: Application) : AndroidViewModel(application) {
     private val dataSourceViewModel: DataSourceViewModel = DataSourceViewModel(application)
@@ -53,5 +50,8 @@ class FavouriteViewModel(application: Application) : AndroidViewModel(applicatio
     }
     fun getOnline(context: Context) : Boolean{
         return generalFunctions.isOnline(context)
+    }
+    fun getUnites(units: String): String {
+        return generalFunctions.getUnites(units)
     }
 }

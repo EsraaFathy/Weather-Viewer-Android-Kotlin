@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var fragment: Fragment
     lateinit var bottomNavigationView : BottomNavigationView
-
+companion object{
+    var units:String="standard"
+}
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

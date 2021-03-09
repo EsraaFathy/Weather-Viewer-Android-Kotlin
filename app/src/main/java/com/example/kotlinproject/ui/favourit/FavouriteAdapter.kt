@@ -12,12 +12,13 @@ import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 
 
-class FavouriteAdapter(var favViewModel: FavouriteViewModel) : RecyclerView.Adapter<FavouriteAdapter.MyViewHolder>() {
+class FavouriteAdapter(var favViewModel: FavouriteViewModel,val units:String) : RecyclerView.Adapter<FavouriteAdapter.MyViewHolder>() {
     lateinit var models: List<FavData>
 //    var homeViewModel: FavouriteViewModel = FavouriteViewModel(context)
 
     inner class MyViewHolder(var itemView: View) : RecyclerView.ViewHolder(itemView) {
         var temp = itemView.findViewById<TextView>(R.id.currentTemp)
+        var tempUnits = itemView.findViewById<TextView>(R.id.tempUnit)
         var description = itemView.findViewById<TextView>(R.id.description)
         var time_Zone = itemView.findViewById<TextView>(R.id.time_zone)
         var icon = itemView.findViewById<ImageView>(R.id.currentModeImg)
@@ -29,6 +30,8 @@ class FavouriteAdapter(var favViewModel: FavouriteViewModel) : RecyclerView.Adap
             description.text = favData.current.weather[0].description
             temp.text = favData.current.temp.toString()
             time_Zone.text=favData.timezone
+            tempUnits.text=favViewModel.getUnites(units)
+
             itemView.setOnClickListener{
                 favViewModel.intentLiveData(position)
             }

@@ -20,6 +20,7 @@ import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.example.kotlinproject.databinding.FragmentHomeBinding
+import com.example.kotlinproject.ui.baseHome.MainActivity
 import com.example.kotlinproject.ui.createAlerm.NotificationHelper
 
 
@@ -228,6 +229,7 @@ class Home : Fragment() {
         homeViewModel.getSetting().observe(this, { it ->
             Log.d("TAG", "it.lang" + it.lang)
             settingModel = it
+            MainActivity.units=settingModel.units
             adapter = HourlyAdabter(homeViewModel,settingModel.units)
             dailyadapter = DailyAdapter(homeViewModel,settingModel.units)
             binding.currentTempUnic.text=homeViewModel.getUnites(settingModel.units)
