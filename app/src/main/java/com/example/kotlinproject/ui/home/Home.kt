@@ -29,7 +29,7 @@ class Home : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var adapter: HourlyAdabter
     private lateinit var dailyadapter: DailyAdapter
-    lateinit var notificationHelper: NotificationHelper
+    private lateinit var notificationHelper: NotificationHelper
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -181,13 +181,18 @@ class Home : Fragment() {
 
     private fun loadAlert(alerts: List<Alert>?) {
         if (alerts!=null){
-            Log.d("TAG","alert not null")
-            notificationHelper = NotificationHelper(context!!)
-            val notificationBuilder = notificationHelper.getChanelNotification(
-                getString(R.string.weather_alert),
-                "Take care he Weather is ${alerts[0].event}"
-            )
-            notificationHelper.getManger()!!.notify(1000, notificationBuilder.build())
+            homeViewModel.getAlertFromSetting().observe(viewLifecycleOwner,{
+                if (it == "ON"){
+                    Log.d("TAG","alert not null")
+                    notificationHelper = NotificationHelper(context!!)
+                    val notificationBuilder = notificationHelper.getChanelNotification(
+                        getString(R.string.weather_alert),
+                        "Take care he Weather is ${alerts[0].event}"
+                    )
+                    notificationHelper.getManger()!!.notify(1000, notificationBuilder.build())
+                }
+            })
+
         }
     }
 

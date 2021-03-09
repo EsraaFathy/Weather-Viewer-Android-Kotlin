@@ -26,9 +26,11 @@ companion object{
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE111111 $requestCode")
-        val fragment = supportFragmentManager.findFragmentByTag("HOME")
-        fragment!!.onActivityResult(requestCode, resultCode, data)
+        if(resultCode != RESULT_CANCELED&&data!=null){
+            Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE111111 $requestCode")
+            val fragment = supportFragmentManager.findFragmentByTag("HOME")
+            fragment!!.onActivityResult(requestCode, resultCode, data)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

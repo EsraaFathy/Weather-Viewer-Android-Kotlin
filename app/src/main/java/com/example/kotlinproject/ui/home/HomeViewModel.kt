@@ -71,7 +71,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     @SuppressLint("SimpleDateFormat")
     fun formateTime(format: Int): String {
         return generalFunctions.formateTime(format)
+    }
 
+    fun getAlertFromSetting():LiveData<String>{
+        return dataSourceViewModel.getAlertSetting()
     }
 
 

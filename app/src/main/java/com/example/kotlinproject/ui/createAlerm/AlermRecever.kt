@@ -15,7 +15,7 @@ class AlermRecever() : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         notificationHelper = NotificationHelper(context!!)
-        var roomRepositry= RoomRepositry(context = context.applicationContext as Application)
+        val roomRepositry= RoomRepositry(context = context.applicationContext as Application)
         val current = roomRepositry.getData()[0].current
         val actualType = current.weather[0].description
         d("TAG", "Receved")
