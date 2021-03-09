@@ -32,6 +32,7 @@ class DailyAdapter ( var homeViewModel: HomeViewModel,val units:String) : Recycl
         }
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = inflater.inflate(R.layout.hourly_item, parent, false)
