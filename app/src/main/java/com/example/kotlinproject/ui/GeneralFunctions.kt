@@ -67,10 +67,13 @@ class GeneralFunctions {
         return dateFormat.format(date)
     }
 
-    fun test(format : Int){
-        val period = String.format("%02d", TimeUnit.MILLISECONDS.toSeconds(format.toLong()))
-        Log.d("TAG sec", period)
-        val a :Long =period.toLong()+2
-        Log.d("TAG sec", "$a")
+     fun getUnites(units: String): String {
+        if (units == "standard") {
+            return "C"
+        } else if (units == "imperial") {
+            return "F"
+        } else {
+            return "K"
+        }
     }
 }

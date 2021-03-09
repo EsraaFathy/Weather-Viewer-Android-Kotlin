@@ -53,8 +53,7 @@ class Home : Fragment() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[HomeViewModel::class.java]
 
-        adapter = HourlyAdabter(homeViewModel)
-        dailyadapter = DailyAdapter(homeViewModel)
+
         relad()
 
         binding.cureentCard.setOnClickListener {
@@ -229,6 +228,10 @@ class Home : Fragment() {
         homeViewModel.getSetting().observe(this, { it ->
             Log.d("TAG", "it.lang" + it.lang)
             settingModel = it
+            adapter = HourlyAdabter(homeViewModel,settingModel.units)
+            dailyadapter = DailyAdapter(homeViewModel,settingModel.units)
+            binding.currentTempUnic.text=homeViewModel.getUnites(settingModel.units)
+
 
             if (settingModel.location == "gps") {
                 homeViewModel.gettingLocation(activity!!,requireActivity()).observe(this, {
@@ -261,6 +264,7 @@ class Home : Fragment() {
 
 
     }
+
 
 
 }

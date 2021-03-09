@@ -36,7 +36,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-
+    fun getUnites(units: String): String {
+        return generalFunctions.getUnites(units)
+    }
 
     fun gettingLocation(context: Context,activity: Activity) :LiveData<Location>{
         locationHanding.loadLocation(context,activity)
