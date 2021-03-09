@@ -100,13 +100,6 @@ class DataSourceViewModel(application: Application) : AndroidViewModel(applicati
         roomRepositry.deleteOneFav(lat,lon)
     }
 
-    fun getTimezones():LiveData<List<String>>{
-        return roomRepositry.getTimezones()
-    }
-
-    fun getAlertFav(timeZone :String): LiveData<FavData>?{
-        return roomRepositry.getAlertFav(timeZone)
-    }
 
     fun saveAlertSetting(alert: String)=sharedPreferencesReopsitory.saveAlertSetting(alert)
 
@@ -120,5 +113,6 @@ class DataSourceViewModel(application: Application) : AndroidViewModel(applicati
     fun getAllAlerts():LiveData<List<AlertTable>>{
         return roomRepositry.getAllAlerts()
     }
+    fun deleteAlert(id: Long)=roomRepositry.deleteAlert(id)
 
 }

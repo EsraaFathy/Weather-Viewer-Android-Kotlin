@@ -89,11 +89,6 @@ class CreateAlermViewModel(application: Application) : AndroidViewModel(applicat
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmtime, pendingIntentA)
         activity.registerReceiver(AlermRecever(), IntentFilter())
     }
-    fun cancelAlert( activity: Activity,id: Int){
-        val alarmManager = activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager?
-        val myIntent = Intent(activity, AlermRecever::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(activity, id, myIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-        alarmManager!!.cancel(pendingIntent)
-    }
+
 
 }

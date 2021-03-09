@@ -5,6 +5,7 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,7 @@ class CurrentAlertAdaapter(var favViewModel: AlertViewModel) : RecyclerView.Adap
         private val event : TextView = itemView.findViewById(R.id.event_Data)
         private val start : TextView = itemView.findViewById(R.id.start_data)
         private val description : TextView = itemView.findViewById(R.id.description_data)
+        private val close : ImageView=itemView.findViewById(R.id.close_alert)
 
 
         @SuppressLint("SetTextI18n")
@@ -26,6 +28,9 @@ class CurrentAlertAdaapter(var favViewModel: AlertViewModel) : RecyclerView.Adap
             event.text=allData.title
             description.text=allData.type
             start.text=allData.time
+            close.setOnClickListener {
+                favViewModel.cancelAlert.value=allData.id
+            }
         }
     }
 

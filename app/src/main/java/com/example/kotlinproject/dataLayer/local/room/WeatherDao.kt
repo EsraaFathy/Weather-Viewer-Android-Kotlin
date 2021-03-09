@@ -55,6 +55,8 @@ interface WeatherDao {
     @Query("SELECT * FROM AlertTable")
     fun getAllAlerts():LiveData<List<AlertTable>>
 
+    @Query("DELETE FROM AlertTable WHERE id Like:id")
+    fun deleteAlert(id: Long)
 
 
 }

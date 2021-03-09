@@ -70,7 +70,9 @@ class Alert : Fragment() {
             Log.d("TAG",fragmentAlertBinding.enableOrNot.text.toString())
         }
 
-
+        alertViewModel.cancelAlert.observe(this,{
+            alertViewModel.cancelAlert(activity!!,it)
+        })
 
         return fragmentAlertBinding.root
     }

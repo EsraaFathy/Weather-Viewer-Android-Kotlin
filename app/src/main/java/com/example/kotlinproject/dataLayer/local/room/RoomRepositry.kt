@@ -43,17 +43,11 @@ class RoomRepositry(context: Application) : AndroidViewModel(context) {
         weatherDao.deleteOneFav(lat,lon)
     }
 
-    fun getAlertFav(timeZone :String): LiveData<FavData>?{
-        return weatherDao.getOAlerts(timeZone)
-    }
-
-    fun getTimezones():LiveData<List<String>>{
-        return weatherDao.getTimezones()
-    }
      fun saveAlert(alertTable: AlertTable):Long{
        return weatherDao.saveAlert(alertTable)
     }
     fun getAllAlerts():LiveData<List<AlertTable>>{
         return weatherDao.getAllAlerts()
     }
+    fun deleteAlert(id: Long)=weatherDao.deleteAlert(id)
 }
