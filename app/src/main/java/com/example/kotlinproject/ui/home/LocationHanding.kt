@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -16,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.kotlinproject.R
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
@@ -38,7 +38,6 @@ class LocationHanding(val context: Context) {
                     .addOnSuccessListener { location: Location? ->
                         if (location!=null)
                         locationLiveData.value=location
-                       // Toast.makeText(context,location.toString(),Toast.LENGTH_SHORT).show()
                     }
             }else{
                 requestPremition(activity)
@@ -51,14 +50,14 @@ class LocationHanding(val context: Context) {
 
     private fun enableLocationSitting(context: Context) {
         val alertDialogBuilder = AlertDialog.Builder(context)
-        alertDialogBuilder.setTitle("Location Not enable")
-        alertDialogBuilder.setMessage("To load the current accurate temperature you have to enable location")
-        alertDialogBuilder.setPositiveButton("Enable") { dialog, which ->
+        alertDialogBuilder.setTitle(context.getString(R.string.location_not_enabel))
+        alertDialogBuilder.setMessage(context.getString(R.string.to_load_condetions))
+        alertDialogBuilder.setPositiveButton(context.getString(R.string.enabel)) { dialog, _ ->
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             startActivityForResult(context as Activity,intent, LOCATION_PERMISSION_REQUEST_CODE, Bundle())
             dialog.dismiss()
         }
-        alertDialogBuilder.setNegativeButton("Load From Last Known") {dialog, which ->
+        alertDialogBuilder.setNegativeButton(context.getString(R.string.load_from_last_known_data)) { _, _ ->
             loadLocal.value=true
         }
         alertDialogBuilder.show()

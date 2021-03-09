@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ActivityMainBinding
@@ -13,13 +12,11 @@ import com.example.kotlinproject.ui.alert.Alert
 import com.example.kotlinproject.ui.favourit.Favourit
 import com.example.kotlinproject.ui.home.Home
 import com.example.kotlinproject.ui.setting.Setting
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
-    lateinit var fragment: Fragment
-    lateinit var bottomNavigationView : BottomNavigationView
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var fragment: Fragment
 companion object{
     var units:String="standard"
 }
@@ -40,18 +37,23 @@ companion object{
         supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment,"HOME").commit()
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
-            if (it.itemId==R.id.homeItem_menu){
-                fragment= Home()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
-            }else if (it.itemId==R.id.favorite_menu){
-                fragment= Favourit()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
-            }else if (it.itemId==R.id.alert_menu){
-                fragment= Alert()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
-            }else {
-                fragment = Setting()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
+            when (it.itemId) {
+                R.id.homeItem_menu -> {
+                    fragment= Home()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
+                }
+                R.id.favorite_menu -> {
+                    fragment= Favourit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
+                }
+                R.id.alert_menu -> {
+                    fragment= Alert()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
+                }
+                else -> {
+                    fragment = Setting()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
+                }
             }
             return@setOnNavigationItemSelectedListener true
 

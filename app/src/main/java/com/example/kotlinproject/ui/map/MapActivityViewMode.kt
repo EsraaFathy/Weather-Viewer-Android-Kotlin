@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.google.android.gms.maps.model.LatLng
@@ -20,24 +21,24 @@ class MapActivityViewMode(application: Application) : AndroidViewModel(applicati
 
      fun showAlarm(context: Context) {
         val alertDialogBuilder = AlertDialog.Builder(context)
-        alertDialogBuilder.setTitle("Are you Sure")
-        alertDialogBuilder.setMessage("you want to add this location to favourit places")
-        alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
+        alertDialogBuilder.setTitle(context.getString(R.string.are_you_sure))
+        alertDialogBuilder.setMessage(context.getString(R.string.you_want_to_add))
+        alertDialogBuilder.setPositiveButton(context.getString(R.string.yes)) { _, _ ->
             saveFav.value=true
         }
-        alertDialogBuilder.setNegativeButton("No") { _, _ ->
+        alertDialogBuilder.setNegativeButton(context.getString(R.string.no)) { _, _ ->
             saveFav.value=false
         }
         alertDialogBuilder.show()
     }
     fun showLocationSavingAlarm(context: Context) {
         val alertDialogBuilder = AlertDialog.Builder(context)
-        alertDialogBuilder.setTitle("Are you Sure")
-        alertDialogBuilder.setMessage("you want to add this location to store as your location")
-        alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
+        alertDialogBuilder.setTitle(context.getString(R.string.are_you_sure))
+        alertDialogBuilder.setMessage(context.getString(R.string.are_you_sure_location))
+        alertDialogBuilder.setPositiveButton(context.getString(R.string.yes)) { _, _ ->
             saveLatLng.value=true
         }
-        alertDialogBuilder.setNegativeButton("No") { _, _ ->
+        alertDialogBuilder.setNegativeButton(context.getString(R.string.no)) { _, _ ->
             saveLatLng.value=false
         }
         alertDialogBuilder.show()

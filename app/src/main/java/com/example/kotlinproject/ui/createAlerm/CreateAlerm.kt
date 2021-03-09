@@ -1,11 +1,9 @@
 package com.example.kotlinproject.ui.createAlerm
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -16,18 +14,18 @@ import java.util.*
 
 
 class CreateAlerm : AppCompatActivity() {
-    lateinit var activityCreateAlermBinding: ActivityCreateAlermBinding
-    lateinit var createAlermViewModel: CreateAlermViewModel
-    var zhour: Int? = null
-    var zmin: Int? = null
-    var zmonth: Int? = null
-    var zday: Int? = null
-    var zyear: Int? = null
-    var ahour: Int? = null
-    var amin: Int? = null
-    var amonth: Int? = null
-    var aday: Int? = null
-    var ayear: Int? = null
+    private lateinit var activityCreateAlermBinding: ActivityCreateAlermBinding
+    private lateinit var createAlermViewModel: CreateAlermViewModel
+    private var zhour: Int? = null
+    private var zmin: Int? = null
+    private var zmonth: Int? = null
+    private var zday: Int? = null
+    private var zyear: Int? = null
+//    private var ahour: Int? = null
+//    private var amin: Int? = null
+//    private var amonth: Int? = null
+//    private var aday: Int? = null
+//    private var ayear: Int? = null
     private val startCalendar: Calendar = Calendar.getInstance()
 
     @SuppressLint("SetTextI18n")
@@ -60,7 +58,7 @@ class CreateAlerm : AppCompatActivity() {
         activityCreateAlermBinding.saveButton.setOnClickListener {
             createAlermViewModel.saveData(
                 title = activityCreateAlermBinding.alertTitle.text.toString(),
-                getResources().getStringArray(R.array.alert)[activityCreateAlermBinding.alertSpinner.selectedItemPosition],
+                resources.getStringArray(R.array.alert)[activityCreateAlermBinding.alertSpinner.selectedItemPosition],
                 reputation = activityCreateAlermBinding.checkboxReputation.isChecked,
                 time = "${activityCreateAlermBinding.startTimeText.text}  ${activityCreateAlermBinding.startDateText.text}"
             )
@@ -69,14 +67,13 @@ class CreateAlerm : AppCompatActivity() {
         createAlermViewModel.idLiveData.observe(this,{
             if (it!=null){
                 createAlermViewModel.setAlaram(this, zhour!!, zmin!!, zmonth!!, zday!!, zyear!!
-                    ,type = getResources().getStringArray(R.array.alert)[activityCreateAlermBinding.alertSpinner.selectedItemPosition],
+                    ,type = resources.getStringArray(R.array.alert)[activityCreateAlermBinding.alertSpinner.selectedItemPosition],
                     reputation = activityCreateAlermBinding.checkboxReputation.isChecked,it)
             }
         })
 
         createAlermViewModel.getDataSavedOrNot().observe(this, {
             if (it) {
-                Toast.makeText(this, getString(R.string.data_saaved), Toast.LENGTH_SHORT).show()
                 finish()
             } else {
                 Toast.makeText(this, getString(R.string.there_is_missed_data), Toast.LENGTH_SHORT)
@@ -95,9 +92,9 @@ class CreateAlerm : AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
         val dpd = DatePickerDialog(
-            this, { _, year, monthOfYear, dayOfMonth ->
+            this, { _, yearA, monthOfYear, dayOfMonth ->
                 zmonth = monthOfYear + 1
-                zyear = year
+                zyear = yearA
                 zday = dayOfMonth
                 startCalendar[Calendar.MONTH] = month - 1
                 startCalendar[Calendar.DATE] = dayOfMonth
@@ -117,10 +114,9 @@ class CreateAlerm : AppCompatActivity() {
         val datetime = Calendar.getInstance()
         val tpd = TimePickerDialog(
             this,
-            { view, h, m ->
+            { _, h, m ->
                 c[Calendar.HOUR_OF_DAY] = h
                 c[Calendar.MINUTE] = m
-                if (c.timeInMillis >= datetime.timeInMillis) {
                     zhour = h
                     zmin = m
                     startCalendar.set(Calendar.HOUR_OF_DAY, h)
@@ -128,8 +124,6 @@ class CreateAlerm : AppCompatActivity() {
                     startCalendar[Calendar.SECOND] = 0
                     activityCreateAlermBinding.startTimeText.text = "$h:$m"
 
-                } else {
-                }
             }, hour, minute, false
         )
         tpd.show()

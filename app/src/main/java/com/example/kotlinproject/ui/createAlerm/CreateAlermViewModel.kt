@@ -8,9 +8,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.AlertTable
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
@@ -24,8 +26,8 @@ class CreateAlermViewModel(application: Application) : AndroidViewModel(applicat
     val dataSourceViewModel = DataSourceViewModel(application)
     val dataSavedOrNot = MutableLiveData<Boolean>()
     val idLiveData = MutableLiveData<Int>()
-    private fun saveAlert(alertTable: AlertTable):Long {
-       return dataSourceViewModel.saveAlert(alertTable)
+    private fun saveAlert(alertTable: AlertTable): Long {
+        return dataSourceViewModel.saveAlert(alertTable)
     }
 
     fun getdata(): LiveData<List<AllData>> {
@@ -40,7 +42,7 @@ class CreateAlermViewModel(application: Application) : AndroidViewModel(applicat
     ) {
         if (title != null || type != null) {
             CoroutineScope(Dispatchers.IO).launch {
-                val id =saveAlert(
+                val id = saveAlert(
                     AlertTable(
                         title = title!!,
                         type = type!!,
@@ -83,11 +85,25 @@ class CreateAlermViewModel(application: Application) : AndroidViewModel(applicat
         calendar[Calendar.DATE] = day
         calendar[Calendar.YEAR] = year
         calendar[Calendar.SECOND] = 0
-        val alarmtime: Long = calendar.timeInMillis
-        Log.d("Tag", alarmtime.toString())
-        val alarmManager: AlarmManager = activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmtime, pendingIntentA)
-        activity.registerReceiver(AlermRecever(), IntentFilter())
+        val datetime = Calendar.getInstance()
+        if (calendar.timeInMillis >= datetime.timeInMillis) {
+            val alarmtime: Long = calendar.timeInMillis
+            Log.d("Tag", alarmtime.toString())
+            val alarmManager: AlarmManager =
+                activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmtime, pendingIntentA)
+            activity.registerReceiver(AlermRecever(), IntentFilter())
+        } else {
+            Toast.makeText(
+                activity,
+                activity.getString(R.string.cant_create_alert_at_this_time),
+                Toast.LENGTH_SHORT
+            ).show()
+            CoroutineScope(Dispatchers.IO).launch {
+                dataSourceViewModel.deleteAlert(id.toLong())
+            }
+        }
+
     }
 
 

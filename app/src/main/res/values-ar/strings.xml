@@ -67,6 +67,11 @@
     <string name="logo">logo</string>
     <string name="you_are_offline">You Are Offline</string>
     <string name="there_is_missed_data">There is Missed Data</string>
+    <string name="to_load_condetions">To load the current accurate temperature you have to enable location</string>
+    <string name="you_areoffline">You are offline</string>
+    <string name="are_you_sure">Are you Sure</string>
+    <string name="you_want_to_add">you want to add this location to favourite places</string>
+    <string name="cant_create_alert_at_this_time">\"can\'t create alert at this time \"</string>
 
     <string-array name="alert">
         <item>thunderstorm</item>

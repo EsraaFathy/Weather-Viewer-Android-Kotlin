@@ -16,14 +16,7 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
     private val generalFunctions=GeneralFunctions()
 
     private fun setLocale(activity: Activity, languageCode: String?) {
-
         generalFunctions.setLocale(activity,languageCode)
-        //        val locale = Locale(languageCode)
-//        Locale.setDefault(locale)
-//        val resources: Resources = activity.resources
-//        val config: Configuration = resources.configuration
-//        config.setLocale(locale)
-//        resources.updateConfiguration(config, resources.displayMetrics)
     }
     fun getSetting():LiveData<SettingModel>{
         return dataSourceViewModel.getSetting()

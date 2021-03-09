@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="there_is_missed_data">There is Missed Data</string>
+    <string name="you_areoffline">You are offline</string>
+    <string name="are_you_sure">Are you Sure</string>
+    <string name="you_want_to_add">you want to add this location to favourite places</string>
+    <string name="cant_create_alert_at_this_time">\"can\'t create alert at this time \"</string>
 </resources>

@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
@@ -32,7 +33,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             Log.d("TAG", "loadOnlineData: ")
             dataSourceViewModel.loadOneCall(lat, lon, lang, units)
         }else{
-            Toast.makeText(context,"You are offline",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,context.getString(R.string.you_areoffline),Toast.LENGTH_SHORT).show()
         }
     }
 
