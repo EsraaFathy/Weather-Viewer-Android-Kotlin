@@ -17,6 +17,7 @@ import com.example.kotlinproject.dataLayer.entity.favtable.Daily
 import com.example.kotlinproject.dataLayer.entity.favtable.FavData
 import com.example.kotlinproject.dataLayer.entity.favtable.Hourly
 import com.example.kotlinproject.databinding.ActivityFavouriteDetailsBinding
+import com.example.kotlinproject.ui.baseHome.MainActivity
 
 
 class FavouriteDetails : AppCompatActivity() {
@@ -46,6 +47,7 @@ class FavouriteDetails : AppCompatActivity() {
 
         })
 
+        binding.currentTempUnic.text=detailsViewModel.getUnites(MainActivity.units)
         binding.cureentCard.setOnClickListener {
             binding.cureentCard.backgroundTintList= ContextCompat.getColorStateList(
                 this,

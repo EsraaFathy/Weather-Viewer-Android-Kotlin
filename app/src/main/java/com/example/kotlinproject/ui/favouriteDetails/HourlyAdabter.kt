@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.favtable.Hourly
+import com.example.kotlinproject.ui.baseHome.MainActivity
 
 
 class HourlyAdabter(var homeViewModel: DetailsViewModel) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
@@ -18,6 +19,7 @@ class HourlyAdabter(var homeViewModel: DetailsViewModel) : RecyclerView.Adapter<
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var time = itemView.findViewById<TextView>(R.id.currentTime)
+        private var tempUnits = itemView.findViewById<TextView>(R.id.tempUnit)
         private var temp = itemView.findViewById<TextView>(R.id.currentTemp)
         private var description = itemView.findViewById<TextView>(R.id.description)
         private var icon = itemView.findViewById<ImageView>(R.id.currentModeImg)
@@ -28,6 +30,7 @@ class HourlyAdabter(var homeViewModel: DetailsViewModel) : RecyclerView.Adapter<
             description.text = hourly.weather[0].description
             temp.text = hourly.temp.toString()
             time.text = homeViewModel.fermatTime(hourly.dt)
+            tempUnits.text=homeViewModel.getUnites(MainActivity.units)
 
         }
     }

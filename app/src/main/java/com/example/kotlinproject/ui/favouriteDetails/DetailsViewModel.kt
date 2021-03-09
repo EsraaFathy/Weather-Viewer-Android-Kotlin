@@ -32,4 +32,7 @@ class DetailsViewModel(application: Application) : AndroidViewModel(application)
     fun formatDate(format: Int): String {
         return generalFunctions.formateDate(format)
     }
+    fun getUnites(units: String): String {
+        return generalFunctions.getUnites(units)
+    }
 }

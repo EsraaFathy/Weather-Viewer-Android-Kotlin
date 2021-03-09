@@ -10,12 +10,14 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.favtable.Daily
+import com.example.kotlinproject.ui.baseHome.MainActivity
 
 class DailyAdapter (var homeViewModel: DetailsViewModel) : RecyclerView.Adapter<DailyAdapter.MyViewHolder>() {
     lateinit var models: List<Daily>
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var time = itemView.findViewById<TextView>(R.id.currentTime)
+        private var tempUnits = itemView.findViewById<TextView>(R.id.tempUnit)
         private var temp = itemView.findViewById<TextView>(R.id.currentTemp)
         private var description = itemView.findViewById<TextView>(R.id.description)
         private var icon = itemView.findViewById<ImageView>(R.id.currentModeImg)
@@ -26,6 +28,7 @@ class DailyAdapter (var homeViewModel: DetailsViewModel) : RecyclerView.Adapter<
             description.text = hourly.weather[0].description
             temp.text = hourly.temp.day.toString()
             time.text = homeViewModel.formatDate(hourly.dt)
+            tempUnits.text=homeViewModel.getUnites(MainActivity.units)
 
         }
     }
