@@ -16,17 +16,18 @@
             android:paddingVertical="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
+                android:id="@+id/currentModeImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
-                android:id="@+id/currentModeImg"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="12dp"
+                android:contentDescription="@string/current_mode"
                 android:src="@drawable/ic_cloud"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginStart="0dp"
-                android:contentDescription="@string/current_mode" />
+                app:layout_constraintStart_toEndOf="@id/description"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/time_zone"
