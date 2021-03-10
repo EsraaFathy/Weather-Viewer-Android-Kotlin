@@ -14,9 +14,6 @@ import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
-import kotlin.time.ExperimentalTime
-import kotlin.time.seconds
 
 
 class GeneralFunctions {
@@ -71,15 +68,20 @@ class GeneralFunctions {
     }
 
      fun getUnites(units: String): String {
-        if (units == "standard") {
-            return "C"
-        } else if (units == "imperial") {
-            return "F"
-        } else {
-            return "K"
-        }
+         return when (units) {
+             "standard" -> {
+                 "C"
+             }
+             "imperial" -> {
+                 "F"
+             }
+             else -> {
+                 "K"
+             }
+         }
     }
 
+     @Suppress("DEPRECATION", "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
      fun setLocale(activity: Activity, languageCode: String?) {
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
@@ -87,5 +89,5 @@ class GeneralFunctions {
         val config: Configuration = resources.configuration
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
-    }
+     }
 }
