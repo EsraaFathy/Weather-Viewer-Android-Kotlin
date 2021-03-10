@@ -25,7 +25,7 @@ class AlermRecever() : BroadcastReceiver() {
             if (actualType.contains(type!!) ) {
                 val notificationBuilder = notificationHelper.getChanelNotification(
                     context.getString(R.string.weather_alert),
-                    "Take care he Weather is $type"
+                    context.getString(R.string.take_care) + type
                 )
                 notificationHelper.getManger()!!.notify(1, notificationBuilder.build())
             }

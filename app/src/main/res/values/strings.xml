@@ -5,12 +5,11 @@
     <string name="setting">Setting</string>
     <string name="shape">shape</string>
     <string name="current_city">Current City</string>
-    <string name="_20_2_2021">20-2-2021</string>
+    <string name="_20_2_2021">1</string>
     <string name="_11_11">11:11</string>
     <string name="current_mode">current mode</string>
     <string name="_c">ْ C</string>
     <string name="mostly_clear">Mostly Clear</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="arrow">arrow</string>
     <string name="current">Current</string>
@@ -26,14 +25,14 @@
     <string name="title_activity_map">Map</string>
     <string name="api_key">517a14f849e519bb4fa84cdbd4755f56</string>
     <string name="minutely">minutely</string>
-    <string name="her_yoy_can_change_units_of_measurement_as_you_want">Her yoy can change units of measurement as you want</string>
+    <string name="her_yoy_can_change_units_of_measurement_as_you_want">Here yoy can change units of measurement as you want</string>
     <string name="standard">standard</string>
     <string name="metric">Metric</string>
     <string name="imperial">Imperial</string>
     <string name="temperature_in_kelvin_and_wind_speed_in_meter_sec">Temperature in Kelvin and wind speed in meter/sec</string>
     <string name="celsius_and_wind_speed_in_meter_sec">Celsius and wind speed in meter/sec</string>
     <string name="temperature_in_fahrenheit_and_wind_speed_in_miles_hour">temperature in Fahrenheit and wind speed in miles/hour</string>
-    <string name="her_you_can_chose_language">Her you can chose language</string>
+    <string name="her_you_can_chose_language">Here you can chose language</string>
     <string name="english">English</string>
     <string name="arabic">Arabic</string>
     <string name="save">Save</string>
@@ -46,7 +45,7 @@
     <string name="top">top</string>
     <string name="gps">Gps</string>
     <string name="add_custom_location">Add Custom Location</string>
-    <string name="her_you_can_chose_your_location_setting">Her you can chose your location setting</string>
+    <string name="her_you_can_chose_your_location_setting">Here you can choose your location setting</string>
     <string name="alert">Alert</string>
     <string name="details">Details</string>
     <string name="title_activity_splash">Splash</string>
@@ -82,11 +81,12 @@
     <string name="no">No</string>
     <string name="are_you_sure_location">you want to add this location to store as your location</string>
     <string name="enabel">Enable</string>
-    <string name="to_load_condetions">To load the current accurate temperature you have to enable location</string>
+    <string name="to_load_condetions">To load the current weather data you have to enable location</string>
     <string name="you_areoffline">You are offline</string>
     <string name="are_you_sure">Are you Sure</string>
     <string name="cant_create_alert_at_this_time">\"can\'t create alert at this time \"</string>
     <string name="you_want_to_add">you want to add this location to favourite places</string>
+    <string name="take_care">\"Take care he Weather is \"</string>
 
     <string-array name="alert">
         <item>thunderstorm</item>
