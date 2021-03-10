@@ -27,7 +27,7 @@
     <string name="title_activity_map">خريطه</string>
     <string name="api_key">517a14f849e519bb4fa84cdbd4755f56</string>
     <string name="minutely">minutely</string>
-    <string name="her_yoy_can_change_units_of_measurement_as_you_want">Her yoy can change units of measurement as you want</string>
+    <string name="her_yoy_can_change_units_of_measurement_as_you_want">هنا يمكنك تغير وحدات القياس</string>
     <string name="standard">standard</string>
     <string name="metric">Metric</string>
     <string name="imperial">Imperial</string>
@@ -72,7 +72,21 @@
     <string name="are_you_sure">Are you Sure</string>
     <string name="you_want_to_add">you want to add this location to favourite places</string>
     <string name="cant_create_alert_at_this_time">\"can\'t create alert at this time \"</string>
-
+    <string name="alert_name">Alert Name</string>
+    <string name="untitled">UnTitled</string>
+    <string name="reputation">Reputation</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_alert">Add Alert</string>
+    <string name="data_saaved">Data Saved</string>
+    <string name="weather_alert">Weather Alert</string>
+    <string name="load_from_last_known_data">Load From Last Known data</string>
+    <string name="location_not_enabel">Location Not enable</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="are_you_sure_location">you want to add this location to store as your location</string>
+    <string name="enabel">Enable</string>
     <string-array name="alert">
         <item>thunderstorm</item>
         <item>drizzle</item>

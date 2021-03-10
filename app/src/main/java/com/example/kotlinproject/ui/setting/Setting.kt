@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.example.kotlinproject.databinding.FragmentSettingBinding
+import com.example.kotlinproject.ui.baseHome.MainActivity
 import com.example.kotlinproject.ui.favouriteDetails.FavouriteDetails
 import com.example.kotlinproject.ui.map.MapActivity
 import com.example.kotlinproject.ui.map.MapActivityViewMode
@@ -78,7 +79,7 @@ class Setting : Fragment() {
             }
         })
     }
-
+ var langS:String="en"
     private fun savedata() {
         val units: String = when (binding.unitsRadioGroup.checkedRadioButtonId) {
             R.id.standardRadioButton -> {
@@ -98,6 +99,8 @@ class Setting : Fragment() {
         } else {
             "ar"
         }
+        langS=lang
+
 
 
         val location: String = if (binding.locationRadioGroup.checkedRadioButtonId == R.id.gpsRadioButton) {
@@ -106,9 +109,10 @@ class Setting : Fragment() {
             "add"
         }
 
-        settingViewModel.setLocale(requireActivity(),lang)
         settingViewModel.setSetting(SettingModel(units, lang, location))
+        settingViewModel.setLocale(requireActivity(),langS)
+        startActivity(Intent(requireContext(),MainActivity::class.java))
+        requireActivity().finish()
     }
-
 
 }

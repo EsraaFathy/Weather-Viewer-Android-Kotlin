@@ -64,29 +64,29 @@
     <string name="no_data_available">No Data Available</string>
     <string name="logo">logo</string>
     <string name="you_are_offline">You Are Offline</string>
-    <string name="alert_name">Alert Name</string>
-    <string name="untitled">UnTitled</string>
+    <string name="there_is_missed_data">There is Missed Data</string>
     <string name="start">Start</string>
     <string name="end">End</string>
+    <string name="alert_name">Alert Name</string>
+    <string name="untitled">UnTitled</string>
     <string name="reputation">Reputation</string>
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="cancel">Cancel</string>
     <string name="add_alert">Add Alert</string>
     <string name="data_saaved">Data Saved</string>
-    <string name="there_is_missed_data">There is Missed Data</string>
     <string name="weather_alert">Weather Alert</string>
     <string name="load_from_last_known_data">Load From Last Known data</string>
     <string name="location_not_enabel">Location Not enable</string>
-    <string name="to_load_condetions">To load the current accurate temperature you have to enable location</string>
-    <string name="enabel">Enable</string>
-    <string name="you_areoffline">You are offline</string>
-    <string name="are_you_sure">Are you Sure</string>
-    <string name="you_want_to_add">you want to add this location to favourite places</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="are_you_sure_location">you want to add this location to store as your location</string>
+    <string name="enabel">Enable</string>
+    <string name="to_load_condetions">To load the current accurate temperature you have to enable location</string>
+    <string name="you_areoffline">You are offline</string>
+    <string name="are_you_sure">Are you Sure</string>
     <string name="cant_create_alert_at_this_time">\"can\'t create alert at this time \"</string>
+    <string name="you_want_to_add">you want to add this location to favourite places</string>
 
     <string-array name="alert">
         <item>thunderstorm</item>
