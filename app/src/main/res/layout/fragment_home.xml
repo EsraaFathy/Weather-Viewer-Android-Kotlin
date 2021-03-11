@@ -162,6 +162,7 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="10dp"
                 app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintBottom_toBottomOf="@id/cureentCard"
                 app:layout_constraintTop_toTopOf="@id/cureentCard"
                 app:layout_constraintStart_toEndOf="@id/cureentCard"
                 app:layout_constraintEnd_toStartOf="@+id/daialyCard">
@@ -187,6 +188,7 @@
                 app:cardElevation="10dp"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/cureentCard"
                 app:layout_constraintStart_toEndOf="@id/hoourlyCard"
                 app:layout_constraintTop_toTopOf="@+id/cureentCard">
 

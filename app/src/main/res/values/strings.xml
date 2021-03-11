@@ -87,6 +87,7 @@
     <string name="cant_create_alert_at_this_time">\"can\'t create alert at this time \"</string>
     <string name="you_want_to_add">you want to add this location to favourite places</string>
     <string name="take_care">\"Take care he Weather is \"</string>
+    <string name="reputation_daily">Reputation daily</string>
 
     <string-array name="alert">
         <item>thunderstorm</item>

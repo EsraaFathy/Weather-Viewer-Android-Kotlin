@@ -20,6 +20,7 @@ class CurrentAlertAdaapter(var favViewModel: AlertViewModel) : RecyclerView.Adap
         private val start : TextView = itemView.findViewById(R.id.start_data)
         private val description : TextView = itemView.findViewById(R.id.description_data)
         private val close : ImageView=itemView.findViewById(R.id.close_alert)
+        private val reputation : ImageView=itemView.findViewById(R.id.repetedDaialyPic)
 
 
         @SuppressLint("SetTextI18n")
@@ -28,6 +29,11 @@ class CurrentAlertAdaapter(var favViewModel: AlertViewModel) : RecyclerView.Adap
             event.text=allData.title
             description.text=allData.type
             start.text=allData.time
+            if (allData.reputation){
+                reputation.setImageResource(R.drawable.ic_check_24)
+            }else{
+                reputation.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24)
+            }
             close.setOnClickListener {
                 favViewModel.cancelAlert.value=allData.id
             }

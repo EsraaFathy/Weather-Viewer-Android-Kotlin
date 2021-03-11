@@ -83,6 +83,7 @@
     <string name="are_you_sure_location">تريد إضافة هذا الموقع لتخزينه كموقعك</string>
     <string name="enabel">تفعيل</string>
     <string name="take_care">\"انتبه الطقس الان  \"</string>
+    <string name="reputation_daily">Reputation daily</string>
     <string-array name="alert">
         <item>عاصفة</item>
         <item>رذاذ</item>

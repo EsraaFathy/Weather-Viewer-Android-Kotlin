@@ -39,7 +39,8 @@ class Alert : Fragment() {
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[AlertViewModel::class.java]
-        val spinnerArray = ArrayList<String>()
+        fragmentAlertBinding.empty.visibility=View.VISIBLE
+
         currentAlertAdaapter = CurrentAlertAdaapter(alertViewModel)
         val lay: RecyclerView.LayoutManager = LinearLayoutManager(activity)
         fragmentAlertBinding.listCurrent.layoutManager = lay
@@ -51,6 +52,7 @@ class Alert : Fragment() {
         }
 
         alertViewModel.gerAlertTable().observe(this,{
+            if (it!=null)
             showRecyclel(it)
         })
 
@@ -78,22 +80,8 @@ class Alert : Fragment() {
     }
 
 
-//    private fun showRecyclelFav(alerts: List<com.example.kotlinproject.dataLayer.entity.favtable.Alert>?) {
-//        if (alerts != null) {
-//            fragmentAlertBinding.empty.visibility=View.INVISIBLE
-//            fragmentAlertBinding.listFav.visibility=View.VISIBLE
-//            fragmentAlertBinding.listCurrent.visibility=View.INVISIBLE
-//            favAlertAdaapter.models = alerts
-//            favAlertAdaapter.notifyDataSetChanged()
-//        }else{
-//            fragmentAlertBinding.empty.visibility=View.VISIBLE
-//            fragmentAlertBinding.listFav.visibility=View.INVISIBLE
-//            fragmentAlertBinding.listCurrent.visibility=View.INVISIBLE
-//        }
-//    }
-//
     private fun showRecyclel(alerts: List<AlertTable>?) {
-        if (alerts != null){
+        if (alerts!!.size >0){
             fragmentAlertBinding.empty.visibility=View.INVISIBLE
             fragmentAlertBinding.listCurrent.visibility=View.VISIBLE
             currentAlertAdaapter.models = alerts
@@ -105,27 +93,27 @@ class Alert : Fragment() {
 
     }
 
-    fun startAlert() {
-
-        val myIntent = Intent(activity, AlermRecever::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(activity, 1, myIntent, 0)
-        val alarmManager: AlarmManager =
-            activity!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val calendar: Calendar = Calendar.getInstance()
-        calendar.timeInMillis = System.currentTimeMillis()
-        calendar.add(Calendar.SECOND, 400)
-
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, 1000, pendingIntent)
-
-    }
-
-    fun cancelAlarm() {
-        val myIntent = Intent(activity, AlermRecever::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(activity, 1, myIntent, 0)
-        val alarmManager: AlarmManager =
-            activity!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.cancel(pendingIntent)
-
-    }
+//    fun startAlert() {
+//
+//        val myIntent = Intent(activity, AlermRecever::class.java)
+//        val pendingIntent = PendingIntent.getBroadcast(activity, 1, myIntent, 0)
+//        val alarmManager: AlarmManager =
+//            activity!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        val calendar: Calendar = Calendar.getInstance()
+//        calendar.timeInMillis = System.currentTimeMillis()
+//        calendar.add(Calendar.SECOND, 400)
+//
+//        alarmManager.setExact(AlarmManager.RTC_WAKEUP, 1000, pendingIntent)
+//
+//    }
+//
+//    fun cancelAlarm() {
+//        val myIntent = Intent(activity, AlermRecever::class.java)
+//        val pendingIntent = PendingIntent.getBroadcast(activity, 1, myIntent, 0)
+//        val alarmManager: AlarmManager =
+//            activity!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        alarmManager.cancel(pendingIntent)
+//
+//    }
 
 }

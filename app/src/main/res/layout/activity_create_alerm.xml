@@ -129,68 +129,68 @@
             app:layout_constraintStart_toEndOf="@id/datePickerStart"
             app:layout_constraintTop_toTopOf="@id/datePickerStart" />
 
-        <LinearLayout
-            android:id="@+id/linear2"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginVertical="20dp"
-            android:background="@color/text_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/timePickerStart"
-            tools:ignore="Orientation" />
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linear2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="2dp"-->
+<!--            android:layout_marginHorizontal="50dp"-->
+<!--            android:layout_marginVertical="20dp"-->
+<!--            android:background="@color/text_color"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/timePickerStart"-->
+<!--            tools:ignore="Orientation" />-->
 
-        <TextView
-            android:id="@+id/endText"
-            style="@style/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:text="@string/to"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear2" />
-
-
-        <ImageView
-            android:id="@+id/timePickerend"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="@string/start"
-            android:src="@drawable/ic__time_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/endText" />
-
-        <TextView
-            android:id="@+id/endTimeText"
-            style="@style/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            app:layout_constraintStart_toEndOf="@id/timePickerend"
-            app:layout_constraintTop_toTopOf="@id/timePickerend" />
+<!--        <TextView-->
+<!--            android:id="@+id/endText"-->
+<!--            style="@style/textView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginVertical="10dp"-->
+<!--            android:text="@string/to"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/linear2" />-->
 
 
-        <ImageView
-            android:id="@+id/datePickerEnd"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="@string/start"
-            android:src="@drawable/ic_date_24"
-            app:layout_constraintStart_toStartOf="@id/guideline2"
-            app:layout_constraintTop_toBottomOf="@id/endText" />
+<!--        <ImageView-->
+<!--            android:id="@+id/timePickerend"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:contentDescription="@string/start"-->
+<!--            android:src="@drawable/ic__time_24"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/endText" />-->
 
-        <TextView
-            android:id="@+id/endDateText"
-            style="@style/textView"
-            android:text="@string/start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            app:layout_constraintStart_toEndOf="@id/datePickerEnd"
-            app:layout_constraintTop_toTopOf="@id/datePickerEnd" />
+<!--        <TextView-->
+<!--            android:id="@+id/endTimeText"-->
+<!--            style="@style/textView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="10dp"-->
+<!--            android:layout_marginVertical="10dp"-->
+<!--            app:layout_constraintStart_toEndOf="@id/timePickerend"-->
+<!--            app:layout_constraintTop_toTopOf="@id/timePickerend" />-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/datePickerEnd"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:contentDescription="@string/start"-->
+<!--            android:src="@drawable/ic_date_24"-->
+<!--            app:layout_constraintStart_toStartOf="@id/guideline2"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/endText" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/endDateText"-->
+<!--            style="@style/textView"-->
+<!--            android:text="@string/start"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="10dp"-->
+<!--            android:layout_marginVertical="10dp"-->
+<!--            app:layout_constraintStart_toEndOf="@id/datePickerEnd"-->
+<!--            app:layout_constraintTop_toTopOf="@id/datePickerEnd" />-->
 
 
         <LinearLayout
@@ -202,7 +202,7 @@
             android:background="@color/text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/endTimeText"
+            app:layout_constraintTop_toBottomOf="@id/startDateText"
             tools:ignore="Orientation" />
 
         <CheckBox

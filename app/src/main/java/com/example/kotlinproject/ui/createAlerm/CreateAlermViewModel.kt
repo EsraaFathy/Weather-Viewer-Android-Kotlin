@@ -15,7 +15,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.DataSourceViewModel
 import com.example.kotlinproject.dataLayer.entity.AlertTable
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.AllData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,16 +22,16 @@ import java.util.*
 
 
 class CreateAlermViewModel(application: Application) : AndroidViewModel(application) {
-    val dataSourceViewModel = DataSourceViewModel(application)
-    val dataSavedOrNot = MutableLiveData<Boolean>()
-    val idLiveData = MutableLiveData<Int>()
+    private val dataSourceViewModel = DataSourceViewModel(application)
+    private val dataSavedOrNot = MutableLiveData<Boolean>()
+     val idLiveData = MutableLiveData<Int>()
     private fun saveAlert(alertTable: AlertTable): Long {
         return dataSourceViewModel.saveAlert(alertTable)
     }
 
-    fun getdata(): LiveData<List<AllData>> {
-        return dataSourceViewModel.getRoomDataBase()
-    }
+//    fun getdata(): LiveData<List<AllData>> {
+//        return dataSourceViewModel.getRoomDataBase()
+//    }
 
     fun saveData(
         title: String?,
@@ -91,7 +90,14 @@ class CreateAlermViewModel(application: Application) : AndroidViewModel(applicat
             Log.d("Tag", alarmtime.toString())
             val alarmManager: AlarmManager =
                 activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmtime, pendingIntentA)
+            if (reputation){
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmtime,AlarmManager.INTERVAL_DAY, pendingIntentA)
+//                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmtime,24*60*60*1000, pendingIntentA)
+
+            }else{
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmtime, pendingIntentA)
+
+            }
             activity.registerReceiver(AlermRecever(), IntentFilter())
         } else {
             Toast.makeText(

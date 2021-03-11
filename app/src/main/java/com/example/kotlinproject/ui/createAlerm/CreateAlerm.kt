@@ -45,15 +45,15 @@ class CreateAlerm : AppCompatActivity() {
             getTime()
 
         }
-        activityCreateAlermBinding.timePickerend.setOnClickListener {
-        }
+//        activityCreateAlermBinding.timePickerend.setOnClickListener {
+//        }
         activityCreateAlermBinding.datePickerStart.setOnClickListener {
             getDate()
         }
 
-        activityCreateAlermBinding.datePickerEnd.setOnClickListener {
-            getDate()
-        }
+//        activityCreateAlermBinding.datePickerEnd.setOnClickListener {
+//            getDate()
+//        }
 //        fun setAlaram(activity: Activity, hour:Int, min:Int, month:Int, day:Int, year:Int) {
         activityCreateAlermBinding.saveButton.setOnClickListener {
             createAlermViewModel.saveData(

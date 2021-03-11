@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="5dp"
     android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="5dp"
     android:backgroundTint="@color/list_item"
     app:cardCornerRadius="10dp">
 
@@ -16,11 +16,11 @@
         <ImageView
             android:id="@+id/event_ic"
             style="@style/textView"
-            android:src="@drawable/ic_event_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:contentDescription="@string/event"
+            android:src="@drawable/ic_event_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,10 +28,10 @@
         <ImageView
             android:id="@+id/description_ic"
             style="@style/textView"
-            android:src="@drawable/ic_description_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:src="@drawable/ic_description_24"
             android:text="@string/description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/start_text" />
@@ -48,75 +48,102 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:textColor="@color/black"
             android:id="@+id/start_text"
             style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
+            android:layout_margin="20dp"
             android:text="@string/start"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/event_text" />
 
         <TextView
-            android:textColor="@color/black"
             android:id="@+id/description_text"
             style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/description"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/description_ic"
             app:layout_constraintStart_toEndOf="@id/description_ic"
-            app:layout_constraintTop_toBottomOf="@id/start_text" />
-
+            app:layout_constraintTop_toTopOf="@id/description_ic" />
 
         <TextView
-            android:textColor="@color/brouna"
             android:id="@+id/event_Data"
             style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="@string/event"
+            android:textColor="@color/brouna"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/event_text"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:textColor="@color/brouna"
             android:id="@+id/start_data"
             style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
+            android:layout_margin="20dp"
             android:text="@string/start"
+            android:textColor="@color/brouna"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/start_text"
             app:layout_constraintTop_toBottomOf="@id/event_text" />
 
 
         <TextView
-            android:layout_marginHorizontal="10dp"
-            android:textColor="@color/brouna"
             android:id="@+id/description_data"
             style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="10dp"
             android:text="@string/description"
+            android:textColor="@color/brouna"
+            app:layout_constraintBottom_toBottomOf="@id/description_ic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/description_text"
-            app:layout_constraintTop_toBottomOf="@id/start_text" />
+            app:layout_constraintTop_toTopOf="@id/description_ic" />
+
+
         <ImageView
             android:id="@+id/close_alert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_close_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/event_Data"
             app:layout_constraintBottom_toBottomOf="@id/event_Data"
-            app:layout_constraintStart_toEndOf="@id/event_Data"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/event_Data"
+            app:layout_constraintTop_toTopOf="@id/event_Data" />
+
+
+        <TextView
+            android:id="@+id/repetedDaialy"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/reputation_daily"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/repetedDaialyPic"
+            app:layout_constraintTop_toBottomOf="@id/description_ic"/>
+
+        <ImageView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_ic"
+            android:id="@+id/repetedDaialyPic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:src="@drawable/ic_check_24"
+            android:contentDescription="@string/reputation_daily" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
