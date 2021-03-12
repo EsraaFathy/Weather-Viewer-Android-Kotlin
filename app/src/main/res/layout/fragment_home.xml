@@ -35,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/current_city"
                 android:textColor="@color/text_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +45,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/_20_2_2021"
                 android:textColor="@color/text_color"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@id/currentCity"
@@ -59,7 +57,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/_11_11"
                 android:textColor="@color/text_color"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@id/currentDate"
@@ -85,7 +82,6 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="@string/_1268"
                 android:textColor="@color/move"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +94,6 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="@string/_c"
                 android:textColor="@color/move"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="@id/currentTemp"
@@ -112,7 +107,6 @@
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="@string/mostly_clear"
                 android:textColor="@color/move"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -276,7 +270,7 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="20dp"
                             android:paddingEnd="20dp"
-                            android:text="@string/humidity" />
+                             />
 
                         <TextView
                             android:id="@+id/humidityPercentage"
@@ -284,7 +278,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="@string/_40" />
+                             />
                     </LinearLayout>
 
                     <LinearLayout
@@ -306,14 +300,14 @@
                             style="@style/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/wind_speed" />
+                             />
 
                         <TextView
                             android:id="@+id/wind_speedPercentage"
                             style="@style/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/_40" />
+                            />
                     </LinearLayout>
 
                     <LinearLayout
@@ -337,14 +331,14 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="20dp"
                             android:paddingEnd="20dp"
-                            android:text="@string/pressure" />
+                            />
 
                         <TextView
                             android:id="@+id/pressurePercentage"
                             style="@style/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/_40" />
+                            />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -377,14 +371,14 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="20dp"
                             android:paddingEnd="20dp"
-                            android:text="@string/clouds" />
+                             />
 
                         <TextView
                             android:id="@+id/cloudsPercentage"
                             style="@style/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/_40" />
+                            />
                     </LinearLayout>
 
                     <LinearLayout
@@ -408,14 +402,14 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="20dp"
                             android:paddingEnd="20dp"
-                            android:text="@string/sunrise" />
+                            />
 
                         <TextView
                             android:id="@+id/sunrisetime"
                             style="@style/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/_40" />
+                             />
                     </LinearLayout>
 
                     <LinearLayout
@@ -439,14 +433,12 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="20dp"
                             android:paddingEnd="20dp"
-                            android:text="@string/sunset" />
-
+                            />
                         <TextView
                             android:id="@+id/sunsetdate"
                             style="@style/textView"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/_40" />
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
