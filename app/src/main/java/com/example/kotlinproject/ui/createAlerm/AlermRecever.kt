@@ -6,8 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log.d
 import com.example.kotlinproject.R
-import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Current
 import com.example.kotlinproject.dataLayer.local.room.RoomRepositry
+import com.example.kotlinproject.ui.NotificationHelper
 
 class AlermRecever() : BroadcastReceiver() {
     lateinit var notificationHelper: NotificationHelper

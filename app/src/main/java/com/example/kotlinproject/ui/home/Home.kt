@@ -21,7 +21,7 @@ import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.example.kotlinproject.databinding.FragmentHomeBinding
 import com.example.kotlinproject.ui.baseHome.MainActivity
-import com.example.kotlinproject.ui.createAlerm.NotificationHelper
+import com.example.kotlinproject.ui.NotificationHelper
 
 
 class Home : Fragment() {
