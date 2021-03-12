@@ -53,9 +53,10 @@ class LocationHanding(val context: Context) {
         alertDialogBuilder.setTitle(context.getString(R.string.location_not_enabel))
         alertDialogBuilder.setMessage(context.getString(R.string.to_load_condetions))
         alertDialogBuilder.setPositiveButton(context.getString(R.string.enabel)) { dialog, _ ->
+            dialog.dismiss()
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             startActivityForResult(context as Activity,intent, LOCATION_PERMISSION_REQUEST_CODE, Bundle())
-            dialog.dismiss()
+
         }
         alertDialogBuilder.setNegativeButton(context.getString(R.string.load_from_last_known_data)) { _, _ ->
             loadLocal.value=true
