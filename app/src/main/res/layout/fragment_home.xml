@@ -266,6 +266,7 @@
 
                         <TextView
                             style="@style/textView"
+                            android:text="@string/humidity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingStart="20dp"
@@ -297,6 +298,7 @@
                             android:src="@drawable/ic_wind" />
 
                         <TextView
+                            android:text="@string/wind_speed"
                             style="@style/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -326,6 +328,7 @@
                             android:src="@drawable/ic_pressure" />
 
                         <TextView
+                            android:text="@string/pressure"
                             style="@style/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -366,6 +369,7 @@
                             android:src="@drawable/ic_cloud" />
 
                         <TextView
+                            android:text="@string/clouds"
                             style="@style/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -398,6 +402,7 @@
 
                         <TextView
                             style="@style/textView"
+                            android:text="@string/sunrise"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingStart="20dp"
@@ -428,6 +433,7 @@
                             android:src="@drawable/ic_sunset" />
 
                         <TextView
+                            android:text="@string/sunset"
                             style="@style/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
