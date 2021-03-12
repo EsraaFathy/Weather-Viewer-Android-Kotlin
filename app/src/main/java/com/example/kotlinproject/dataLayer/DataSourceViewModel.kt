@@ -115,4 +115,11 @@ class DataSourceViewModel(application: Application) : AndroidViewModel(applicati
     }
     fun deleteAlert(id: Long)=roomRepositry.deleteAlert(id)
 
+    fun deleteAllFav(){
+        return roomRepositry.deleteAllFav()
+    }
+
+    fun getFavDataNotLiveData(): List<FavData>{
+        return roomRepositry.getFavDataNotLiveData()
+    }
 }

@@ -31,6 +31,10 @@ interface WeatherDao {
     @Query("SELECT * FROM FavData ")
     fun getFavData(): LiveData<List<FavData>>
 
+
+    @Query("SELECT * FROM FavData ")
+    fun getFavDataNotLiveData(): List<FavData>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveFaveData(favData: FavData)
 
@@ -40,6 +44,10 @@ interface WeatherDao {
 
     @Query("DELETE FROM FavData WHERE lat LIKE:lat AND lon LIKE:lon")
     fun deleteOneFav(lat: String, lon: String)
+
+
+    @Query("DELETE FROM FavData")
+    fun deleteAllFav()
 
     @Query("SELECT timezone FROM FavData")
     fun getTimezones(): LiveData<List<String>>

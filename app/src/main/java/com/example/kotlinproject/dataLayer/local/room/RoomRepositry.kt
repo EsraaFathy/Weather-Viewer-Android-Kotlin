@@ -35,6 +35,12 @@ class RoomRepositry(context: Application) : AndroidViewModel(context) {
     fun getFavData(): LiveData<List<FavData>>{
         return weatherDao.getFavData()
     }
+    fun getFavDataNotLiveData(): List<FavData>{
+        return weatherDao.getFavDataNotLiveData()
+    }
+    fun deleteAllFav(){
+        return weatherDao.deleteAllFav()
+    }
 
     fun getOneFav(lat: String,lon: String):LiveData<FavData>{
         return weatherDao.getOneFav(lat,lon)

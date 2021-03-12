@@ -11,11 +11,12 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
+import com.example.kotlinproject.ui.baseHome.MainActivity
 
 
 //class HourlyAdabter {
 //}
-class HourlyAdabter(var homeViewModel: HomeViewModel,val units:String) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
+class HourlyAdabter(var homeViewModel: HomeViewModel) : RecyclerView.Adapter<HourlyAdabter.MyViewHolder>() {
     lateinit var models: List<Hourly>
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,7 +32,7 @@ class HourlyAdabter(var homeViewModel: HomeViewModel,val units:String) : Recycle
             description.text = hourly.weather[0].description
             temp.text = hourly.temp.toString()
             time.text = homeViewModel.formateTime(hourly.dt)
-            tempUnits.text=homeViewModel.getUnites(units)
+            tempUnits.text=homeViewModel.getUnites(MainActivity.units)
 
         }
     }

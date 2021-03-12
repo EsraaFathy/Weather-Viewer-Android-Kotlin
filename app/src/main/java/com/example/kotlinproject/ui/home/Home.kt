@@ -52,9 +52,10 @@ class Home : Fragment() {
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[HomeViewModel::class.java]
-
-
         relad()
+        adapter = HourlyAdabter(homeViewModel)
+        dailyadapter = DailyAdapter(homeViewModel)
+
 
         binding.cureentCard.setOnClickListener {
             binding.cureentCard.backgroundTintList = ContextCompat.getColorStateList(
@@ -234,8 +235,6 @@ class Home : Fragment() {
             Log.d("TAG", "it.lang" + it.lang)
             settingModel = it
             MainActivity.units=settingModel.units
-            adapter = HourlyAdabter(homeViewModel,settingModel.units)
-            dailyadapter = DailyAdapter(homeViewModel,settingModel.units)
             binding.currentTempUnic.text=homeViewModel.getUnites(settingModel.units)
 
 
