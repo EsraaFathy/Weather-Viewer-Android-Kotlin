@@ -84,7 +84,7 @@
     <string name="to_load_condetions">To load the current weather data you have to enable location</string>
     <string name="you_areoffline">You are offline</string>
     <string name="are_you_sure">Are you Sure</string>
-    <string name="cant_create_alert_at_this_time">\"can\'t create alert at this time \"</string>
+    <string name="cant_create_alert_at_this_time">can\'t create alert at this time</string>
     <string name="you_want_to_add">you want to add this location to favourite places</string>
     <string name="take_care">\"Take care he Weather is \"</string>
     <string name="reputation_daily">Reputation daily</string>

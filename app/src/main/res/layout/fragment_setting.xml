@@ -69,6 +69,16 @@
         app:layout_constraintTop_toBottomOf="@id/her">
 
         <RadioButton
+            android:textColor="@color/black"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/metricRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:checked="false"
+            android:text="@string/metric"
+            android:textSize="20sp" />
+        <RadioButton
             android:layout_marginBottom="20dp"
             android:id="@+id/standardRadioButton"
             android:layout_width="wrap_content"
@@ -78,17 +88,7 @@
             android:checked="false"
             android:text="@string/standard"
             android:textSize="20sp"/>
-        <RadioButton
-            android:textColor="@color/black"
 
-            android:layout_marginBottom="20dp"
-            android:id="@+id/metricRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:checked="false"
-            android:text="@string/metric"
-            android:textSize="20sp" />
         <RadioButton
             android:textColor="@color/black"
             android:layout_marginBottom="20dp"

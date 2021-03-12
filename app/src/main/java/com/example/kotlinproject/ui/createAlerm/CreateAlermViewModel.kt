@@ -92,8 +92,6 @@ class CreateAlermViewModel(application: Application) : AndroidViewModel(applicat
                 activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             if (reputation){
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmtime,AlarmManager.INTERVAL_DAY, pendingIntentA)
-//                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmtime,24*60*60*1000, pendingIntentA)
-
             }else{
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmtime, pendingIntentA)
 

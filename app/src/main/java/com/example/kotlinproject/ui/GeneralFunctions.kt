@@ -70,13 +70,13 @@ class GeneralFunctions {
      fun getUnites(units: String): String {
          return when (units) {
              "standard" -> {
-                 "C"
+                 "K"
              }
              "imperial" -> {
                  "F"
              }
              else -> {
-                 "K"
+                 "C"
              }
          }
     }

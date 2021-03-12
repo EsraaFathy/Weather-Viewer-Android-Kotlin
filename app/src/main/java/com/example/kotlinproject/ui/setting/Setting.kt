@@ -31,7 +31,7 @@ class Setting : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSettingBinding.inflate(inflater, container, false)
         settingViewModel =  ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(
             requireActivity().application

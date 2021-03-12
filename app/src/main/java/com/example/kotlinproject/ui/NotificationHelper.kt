@@ -62,6 +62,7 @@ class NotificationHelper(context: Context) : ContextWrapper(context){
 
         fun getChanelNotification(title: String, message: String): NotificationCompat.Builder {
             return NotificationCompat.Builder(applicationContext, channelID).setContentTitle(title)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setSound(Uri.parse(
                     "android.resource://" +
                             applicationContext.packageName +

@@ -16,7 +16,7 @@ class FavouriteAdapter(var favViewModel: FavouriteViewModel,val units:String) : 
     lateinit var models: List<FavData>
 //    var homeViewModel: FavouriteViewModel = FavouriteViewModel(context)
 
-    inner class MyViewHolder(var itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var temp = itemView.findViewById<TextView>(R.id.currentTemp)
         var tempUnits = itemView.findViewById<TextView>(R.id.tempUnit)
         var description = itemView.findViewById<TextView>(R.id.description)

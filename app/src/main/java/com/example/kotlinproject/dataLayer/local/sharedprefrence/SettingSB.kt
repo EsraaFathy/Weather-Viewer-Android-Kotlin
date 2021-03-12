@@ -81,4 +81,5 @@ class SettingSB(val context: Context) {
     fun getAlertSetting(): LiveData<String>{
         return alert
     }
+
 }

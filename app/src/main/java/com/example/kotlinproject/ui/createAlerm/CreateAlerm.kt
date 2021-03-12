@@ -111,7 +111,7 @@ class CreateAlerm : AppCompatActivity() {
         val c = Calendar.getInstance()
         val hour = c.get(Calendar.HOUR)
         val minute = c.get(Calendar.MINUTE)
-        val datetime = Calendar.getInstance()
+//        val datetime = Calendar.getInstance()
         val tpd = TimePickerDialog(
             this,
             { _, h, m ->

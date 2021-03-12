@@ -34,7 +34,8 @@
             android:src="@drawable/ic_description_24"
             android:text="@string/description"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/start_text" />
+            app:layout_constraintTop_toBottomOf="@id/start_text"
+            android:contentDescription="@string/description" />
 
         <TextView
             android:id="@+id/event_text"
@@ -118,7 +119,8 @@
             app:layout_constraintBottom_toBottomOf="@id/event_Data"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/event_Data"
-            app:layout_constraintTop_toTopOf="@id/event_Data" />
+            app:layout_constraintTop_toTopOf="@id/event_Data"
+            android:contentDescription="@string/alert" />
 
 
         <TextView

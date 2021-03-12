@@ -1,33 +1,26 @@
 package com.example.kotlinproject.ui.alert
 
-import android.R
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.dataLayer.entity.AlertTable
 import com.example.kotlinproject.databinding.FragmentAlertBinding
-import com.example.kotlinproject.ui.createAlerm.AlermRecever
 import com.example.kotlinproject.ui.createAlerm.CreateAlerm
-import java.util.*
 
 
 class Alert : Fragment() {
 
-    lateinit var fragmentAlertBinding: FragmentAlertBinding
-    lateinit var alertViewModel: AlertViewModel
-    lateinit var currentAlertAdaapter: CurrentAlertAdaapter
+    private lateinit var fragmentAlertBinding: FragmentAlertBinding
+    private lateinit var alertViewModel: AlertViewModel
+    private lateinit var currentAlertAdaapter: CurrentAlertAdaapter
 
 
     override fun onCreateView(
@@ -81,7 +74,7 @@ class Alert : Fragment() {
 
 
     private fun showRecyclel(alerts: List<AlertTable>?) {
-        if (alerts!!.size >0){
+        if (alerts!!.isNotEmpty()){
             fragmentAlertBinding.empty.visibility=View.INVISIBLE
             fragmentAlertBinding.listCurrent.visibility=View.VISIBLE
             currentAlertAdaapter.models = alerts

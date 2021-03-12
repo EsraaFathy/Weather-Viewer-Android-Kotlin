@@ -60,9 +60,9 @@ class Splash : AppCompatActivity() {
         splashViewModel.getSetting().observe(this,{
             splashViewModel.enableLocalization(this,it.lang)
         })
-        val handler = Handler()
+        @Suppress("DEPRECATION") val handler = Handler()
 
-        handler.postDelayed(Runnable {
+        handler.postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
