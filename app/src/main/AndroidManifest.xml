@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.kotlinproject">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -23,11 +24,23 @@
         android:theme="@style/Theme.KotlinProject"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".ui.createAlerm.CreateAlerm"
+        <receiver android:name=".ui.widget.WeatherWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/weather_widget_info" />
+        </receiver>
+
+        <activity
+            android:name=".ui.createAlerm.CreateAlerm"
             android:label="@string/add_alert"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
-        <activity android:name=".ui.favouriteDetails.FavouriteDetails"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
+            android:name=".ui.favouriteDetails.FavouriteDetails"
             android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -42,12 +55,14 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:screenOrientation="portrait"
             android:name=".ui.map.MapActivity"
-            android:label="@string/title_activity_map" />
-        <activity android:name=".ui.baseHome.MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.splash.Splash"
+            android:label="@string/title_activity_map"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.baseHome.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.splash.Splash"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

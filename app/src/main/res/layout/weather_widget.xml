@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin"
+    android:theme="@style/ThemeOverlay.KotlinProject.AppWidgetContainer">
+
+    <ImageView
+        android:id="@+id/currentModeImg"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/current_mode"
+        android:src="@drawable/ic_reload_24" />
+    <TextView
+        android:layout_toEndOf="@id/currentModeImg"
+        android:paddingTop="20dp"
+        android:id="@+id/currentTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/home"
+        android:textColor="@color/move"
+        android:textSize="25sp" />
+    <TextView
+        android:layout_toEndOf="@id/currentTemp"
+        android:paddingTop="20dp"
+        android:id="@+id/currentTempUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/home"
+        android:textColor="@color/move"
+        android:textSize="25sp" />
+
+
+    <TextView
+        android:id="@+id/currentCity"
+        style="@style/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentModeImg"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/home"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/currentTime"
+        style="@style/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentCity"
+        android:layout_marginTop="5dp"
+        android:text="@string/home"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/currentDate"
+        style="@style/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentCity"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/currentTime"
+        android:paddingHorizontal="5dp"
+        android:text="@string/home"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

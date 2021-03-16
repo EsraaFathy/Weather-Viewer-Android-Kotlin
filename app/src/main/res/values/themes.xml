@@ -19,7 +19,13 @@
         <item name="android:textSize">20sp</item>
         <item name="fontFamily">sans-serif-condensed</item>
     </style>
+
     <style name="mySpinnerItemStyle" parent="Base.Widget.AppCompat.Spinner">
         <item name="android:textColor">@color/broun</item>
+    </style>
+
+    <style name="ThemeOverlay.KotlinProject.AppWidgetContainer" parent="">
+        <item name="appWidgetBackgroundColor">@color/light_blue_600</item>
+        <item name="appWidgetTextColor">@color/light_blue_50</item>
     </style>
 </resources>
