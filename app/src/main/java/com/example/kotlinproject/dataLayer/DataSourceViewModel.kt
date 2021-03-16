@@ -12,6 +12,7 @@ import com.example.kotlinproject.dataLayer.local.sharedprefrence.SharedPrefrence
 import com.example.kotlinproject.dataLayer.local.room.RoomRepositry
 import com.example.kotlinproject.dataLayer.online.ApiClient
 import com.example.kotlinproject.dataLayer.online.Repository
+import com.example.kotlinproject.ui.baseHome.MainActivity
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,16 +32,24 @@ class DataSourceViewModel(application: Application) : AndroidViewModel(applicati
     private lateinit var job1: Job
 
     fun loadOneCall(lat: String,lon: String,lang: String,units :String) {
-           val data =  repositoryonLine.getOneCall(lat,lon,lang,"517a14f849e519bb4fa84cdbd4755f56","minutely",units)
-        //
+        if (!MainActivity.readFromDatabase) {
+            val data = repositoryonLine.getOneCall(
+                lat,
+                lon,
+                lang,
+                "517a14f849e519bb4fa84cdbd4755f56",
+                "minutely",
+                units
+            )
+            //
             data.enqueue(object : Callback<AllData?> {
                 override fun onResponse(call: Call<AllData?>, response: Response<AllData?>) {
                     Log.d("tag", response.body().toString())
 
-                  job=CoroutineScope(Dispatchers.IO).launch {
+                    job = CoroutineScope(Dispatchers.IO).launch {
                         roomRepositry.deleteAll()
-                        if (response.body()!=null)
-                        roomRepositry.saveAllData(response.body()!!)
+                        if (response.body() != null)
+                            roomRepositry.saveAllData(response.body()!!)
                     }
                 }
 
@@ -50,6 +59,7 @@ class DataSourceViewModel(application: Application) : AndroidViewModel(applicati
 
                 }
             })
+        }
 
 
     }

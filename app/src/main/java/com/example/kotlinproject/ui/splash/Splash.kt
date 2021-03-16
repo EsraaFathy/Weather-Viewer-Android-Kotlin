@@ -1,21 +1,21 @@
 package com.example.kotlinproject.ui.splash
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
-import android.content.res.Configuration
-import android.content.res.Resources
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ActivitySplashBinding
 import com.example.kotlinproject.ui.baseHome.MainActivity
-import com.example.kotlinproject.ui.home.HomeViewModel
+import com.example.kotlinproject.ui.home.LocationHanding
 import java.util.*
 
 
@@ -57,8 +57,13 @@ class Splash : AppCompatActivity() {
         binding.snow12.startAnimation(animation)
         binding.snow12.startAnimation(down)
 
-        splashViewModel.getSetting().observe(this,{
-            splashViewModel.enableLocalization(this,it.lang)
+
+//        val locationHanding : LocationHanding= LocationHanding(this)
+        splashViewModel.getSetting().observe(this, {
+//            if (it.location == "gps") {
+//                locationHanding.checkLocation(this, this)
+//            }
+            splashViewModel.enableLocalization(this, it.lang)
         })
         @Suppress("DEPRECATION") val handler = Handler()
 
@@ -68,6 +73,20 @@ class Splash : AppCompatActivity() {
             finish()
         }, 4000)
     }
+
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<String?>,
+//        grantResults: IntArray
+//    ) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
+//            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                Toast.makeText(this,"dhklsghlsghlfslj",Toast.LENGTH_SHORT).show()
+//                Log.d("jgjgjb","knbkbkbj${LocationHanding.LOCATION_PERMISSION_REQUEST_CODE}")
+//            }
+//        }
+//    }
 
 
 }

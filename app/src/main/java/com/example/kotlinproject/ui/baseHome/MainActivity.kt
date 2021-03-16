@@ -29,24 +29,38 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         var units: String = "standard"
+        var readFromDatabase:Boolean=false
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode != RESULT_CANCELED && data != null) {
-            Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE111111 $requestCode")
-            val fragment = supportFragmentManager.findFragmentByTag("HOME")
-            fragment!!.onActivityResult(requestCode, resultCode, data)
-        }
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (resultCode != RESULT_CANCELED && data != null) {
+//            Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE111111 $requestCode")
+//            val fragment = supportFragmentManager.findFragmentByTag("HOME")
+//            fragment!!.onActivityResult(requestCode, resultCode, data)
+//        }
+//    }
+
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<out String>,
+//        grantResults: IntArray
+//    ) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//        if (requestCode != RESULT_CANCELED) {
+//            Log.d("TAG", "onRequestPermissionsResult main $requestCode")
+//            val fragment = supportFragmentManager.findFragmentByTag("HOME")
+//            fragment!!.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//        }
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         mainViewModel = MainViewModel(application)
         updateFavourite()
-        fragment = Home()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment, "HOME").commit()
+//        fragment = Home()
+//        supportFragmentManager.beginTransaction().add(R.id.fragment, fragment, "HOME").commit()
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -98,6 +112,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
+    override fun onDestroy() {
+        super.onDestroy()
+        readFromDatabase = false
+    }
 
 }

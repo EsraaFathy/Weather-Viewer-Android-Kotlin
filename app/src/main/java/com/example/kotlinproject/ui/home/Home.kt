@@ -31,15 +31,31 @@ class Home : Fragment() {
     private lateinit var dailyadapter: DailyAdapter
     private lateinit var notificationHelper: NotificationHelper
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE lll$requestCode")
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE lll$requestCode")
+//
+//        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
+//            Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE $requestCode")
+//            //homeViewModel.gettingLocation(activity!!,requireActivity())
+//          //  relad()
+//        }
+//    }
 
-        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
-            Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE $requestCode")
-            homeViewModel.gettingLocation(activity!!,requireActivity())
-        }
-    }
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<out String>,
+//        grantResults: IntArray
+//    ) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//
+//        Log.d("TAG", "onRequestPermissionsResult $requestCode")
+//
+//        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
+//            Log.d("TAG", "onRequestPermissionsResult $requestCode")
+//           // homeViewModel.gettingLocation(activity!!,requireActivity())
+//        }
+//    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -166,6 +182,7 @@ class Home : Fragment() {
         }
 
         binding.reload.setOnClickListener {
+            Log.d("TAG","clicked")
             relad()
         }
         homeViewModel.getRoomData().observe(this, {
@@ -230,16 +247,18 @@ class Home : Fragment() {
 
 
     private fun relad() {
+        Log.d("TAG", "reload")
+
         lateinit var settingModel: SettingModel
         homeViewModel.getSetting().observe(this, { it ->
-            Log.d("TAG", "it.lang" + it.lang)
+            Log.d("TAG", "it.        lang" + it.lang)
             settingModel = it
             MainActivity.units=settingModel.units
             binding.currentTempUnic.text=homeViewModel.getUnites(settingModel.units)
 
 
             if (settingModel.location == "gps") {
-                homeViewModel.gettingLocation(activity!!,requireActivity()).observe(this, {
+                homeViewModel.gettingLocation(this.requireContext(), activity!!).observe(this, {
                     val location = it
                     Log.d("TAG", "it.location" + location.latitude)
                     homeViewModel.loadOnlineData(
@@ -266,10 +285,7 @@ class Home : Fragment() {
 
             }
         })
-
-
     }
-
 
 
 }
