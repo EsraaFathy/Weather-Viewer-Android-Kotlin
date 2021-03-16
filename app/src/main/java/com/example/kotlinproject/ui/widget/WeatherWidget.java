@@ -54,7 +54,7 @@ public class WeatherWidget extends AppWidgetProvider {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
                 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        views.setOnClickPendingIntent(R.id.currentModeImg, getPendingSelfIntent(context, MY_BUTTTON_START));
+        views.setOnClickPendingIntent(R.id.reload, getPendingSelfIntent(context, MY_BUTTTON_START));
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 

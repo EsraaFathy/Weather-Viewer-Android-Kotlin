@@ -21,22 +21,28 @@
         android:text="@string/home"
         android:textColor="@color/move"
         android:textSize="25sp" />
-    <TextView
-        android:layout_toEndOf="@id/currentTemp"
-        android:paddingTop="20dp"
-        android:id="@+id/currentTempUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/reload"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/reload"
+        android:src="@drawable/ic_reload_24"
         android:layout_marginStart="10dp"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/home"
-        android:textColor="@color/move"
-        android:textSize="25sp" />
+        android:paddingTop="20dp"
+        android:layout_toEndOf="@id/currentTemp"/>
 
-
+    <ImageView
+        android:id="@+id/locaation"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/reload"
+        android:src="@drawable/ic_location_on_24"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/currentModeImg"/>
     <TextView
         android:id="@+id/currentCity"
         style="@style/textView"
+        android:layout_toEndOf="@id/locaation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/currentModeImg"
@@ -48,8 +54,20 @@
         android:textColor="#fff" />
 
     <TextView
+        android:id="@+id/lastUpdate"
+        style="@style/textView"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentCity"
+        android:layout_marginTop="5dp"
+        android:text="@string/last_update"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+    <TextView
         android:id="@+id/currentTime"
         style="@style/textView"
+        android:layout_toEndOf="@+id/lastUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/currentCity"
