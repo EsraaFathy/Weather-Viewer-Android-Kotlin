@@ -1,4 +1,4 @@
-# Weather-Viewer-Android-Kotlin
+# Weather-Viewer-Android-by-Kotlin
 
 ## ***Table of Contents***<h3>
  
@@ -39,6 +39,7 @@ Just install it and set your favourite setting or set them as defult.
  * MVVM Design Pattern
  * Room DataBase
  * LiveData
+ * widget
 
 
  ###### **Tools and IDEs uses.**
