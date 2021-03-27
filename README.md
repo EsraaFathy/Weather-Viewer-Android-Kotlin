@@ -1,19 +1,15 @@
 # Weather-Viewer-Android-by-Kotlin
 
-## ***Table of Contents***<h3>
+## Table of Contents
+* [What is Weather-Viewer?](#What-is-Weather-Viewer?)
+* [How to use it?](How-to-use-it?)
+* [Link to APK.](Link-to-APK.)
+* [Futures.](Futures.)
+* [Tecgnologes uses in it.](Tecgnologes-uses-in-it.)
+* [Tools and IDEs uses.](Tools-and-IDEs-uses.)
+  
  
-* What is Weather-Viewer?
-* How to use it?
-* Link to APK.
-* Futures.
-* Tecgnologes uses in it.
-* Tools and IDEs uses.
-  
-  
-  
-  
-  _________________________________________________________________________________________________________________________________________________
-###### **What is Weather-Viewer?**
+## What is Weather-Viewer?
 
 Weather Viewer App is a forcasting Mobile Application based on kotlin language that is enabel you to featch weather and observe it with alot of future, and add as mutch as you 
 want of places to your favourite to observe them.
@@ -23,22 +19,22 @@ dangerose statios you can enaabel it to tell you
 
 
   
-###### **How to use it?**
+## How to use it?
 Just install it and set your favourite setting or set them as defult.
 
 
-###### **Link to APK**
+## Link to APK
 [Dowenload from here](https://drive.google.com/file/d/1N_Dys-N-5FIZ4_jbA4PQeNMvv6wG4LiA/view?usp=sharing)
 
 
-###### **Futures?**
-* Cashing
-* Add Custom Location, or va gps
-* Work Offline &Online
-* Suppurt Dark and Light Mood
-* Support English & Arabic Languages
+## Futures?
+ * Cashing
+ * Add Custom Location, or va gps
+ * Work Offline &Online
+ * Suppurt Dark and Light Mood
+ * Support English & Arabic Languages
 
- ###### **Tecgnologes uses in it.**
+## Tecgnologes uses in it
  * Kotlin.
  * xml
  * MVVM Design Pattern
@@ -47,11 +43,11 @@ Just install it and set your favourite setting or set them as defult.
  * widget
 
 
- ###### **Tools and IDEs uses.**
-* Android Studio
-* photoshop
-* Postman
-* Adobe XD
+## Tools and IDEs uses
+ * Android Studio
+ * photoshop
+ * Postman
+ * Adobe XD
 
 
 
