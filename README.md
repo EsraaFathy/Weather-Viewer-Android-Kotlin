@@ -4,7 +4,7 @@
  
 * What is Weather-Viewer?
 * How to use it?
-* Link to APK.
+* Links.
 * Futures.
 * Tecgnologes uses in it.
 * Tools and IDEs uses.
@@ -27,8 +27,9 @@ dangerose statios you can enaabel it to tell you
 Just install it and set your favourite setting or set them as defult.
 
 
-###### **Link to APK**
-[Dowenload from here](https://drive.google.com/file/d/1N_Dys-N-5FIZ4_jbA4PQeNMvv6wG4LiA/view?usp=sharing)
+###### **Links**
+[Dowenload APK from here](https://drive.google.com/file/d/1N_Dys-N-5FIZ4_jbA4PQeNMvv6wG4LiA/view?usp=sharing)
+[link to demo video from here](https://drive.google.com/file/d/1sdqu4qaUOqOiYNSN6n-noHD6-Sucobfe/view?usp=sharing)
 
 
 ###### **Futures?**
