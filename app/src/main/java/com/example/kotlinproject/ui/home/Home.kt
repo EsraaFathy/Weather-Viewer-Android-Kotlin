@@ -1,5 +1,6 @@
 package com.example.kotlinproject.ui.home
 
+import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -20,8 +21,8 @@ import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Daily
 import com.example.kotlinproject.dataLayer.entity.oneCallEntity.Hourly
 import com.example.kotlinproject.dataLayer.local.sharedprefrence.SettingModel
 import com.example.kotlinproject.databinding.FragmentHomeBinding
-import com.example.kotlinproject.ui.baseHome.MainActivity
 import com.example.kotlinproject.ui.NotificationHelper
+import com.example.kotlinproject.ui.baseHome.MainActivity
 
 
 class Home : Fragment() {
@@ -31,31 +32,7 @@ class Home : Fragment() {
     private lateinit var dailyadapter: DailyAdapter
     private lateinit var notificationHelper: NotificationHelper
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE lll$requestCode")
-//
-//        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
-//            Log.d("TAG", "LOCATION_PERMISSION_REQUEST_CODE $requestCode")
-//            //homeViewModel.gettingLocation(activity!!,requireActivity())
-//          //  relad()
-//        }
-//    }
 
-//    override fun onRequestPermissionsResult(
-//        requestCode: Int,
-//        permissions: Array<out String>,
-//        grantResults: IntArray
-//    ) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//
-//        Log.d("TAG", "onRequestPermissionsResult $requestCode")
-//
-//        if (requestCode == LocationHanding.LOCATION_PERMISSION_REQUEST_CODE) {
-//            Log.d("TAG", "onRequestPermissionsResult $requestCode")
-//           // homeViewModel.gettingLocation(activity!!,requireActivity())
-//        }
-//    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -182,7 +159,7 @@ class Home : Fragment() {
         }
 
         binding.reload.setOnClickListener {
-            Log.d("TAG","clicked")
+            Log.d("TAG", "clicked")
             relad()
         }
         homeViewModel.getRoomData().observe(this, {
@@ -199,9 +176,9 @@ class Home : Fragment() {
 
     private fun loadAlert(alerts: List<Alert>?) {
         if (alerts!=null){
-            homeViewModel.getAlertFromSetting().observe(viewLifecycleOwner,{
-                if (it == "ON"){
-                    Log.d("TAG","alert not null")
+            homeViewModel.getAlertFromSetting().observe(viewLifecycleOwner, {
+                if (it == "ON") {
+                    Log.d("TAG", "alert not null")
                     notificationHelper = NotificationHelper(context!!)
                     val notificationBuilder = notificationHelper.getChanelNotification(
                         getString(R.string.weather_alert),
@@ -253,8 +230,8 @@ class Home : Fragment() {
         homeViewModel.getSetting().observe(this, { it ->
             Log.d("TAG", "it.        lang" + it.lang)
             settingModel = it
-            MainActivity.units=settingModel.units
-            binding.currentTempUnic.text=homeViewModel.getUnites(settingModel.units)
+            MainActivity.units = settingModel.units
+            binding.currentTempUnic.text = homeViewModel.getUnites(settingModel.units)
 
 
             if (settingModel.location == "gps") {
@@ -269,6 +246,13 @@ class Home : Fragment() {
                         activity!!
                     )
                 })
+                /*
+                Intent intent = new Intent(this, DppWidget.class);
+intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
+int ids[] = AppWidgetManager.getInstance(getApplication()).getAppWidgetIds(new ComponentName(getApplication(), DppWidget.class));
+intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,ids);
+sendBroadcast(intent);
+                 */
             } else {
                 homeViewModel.getLocationSettnig().observe(this, {
                     Log.d("TAG", "it.latitude" + it.latitude)

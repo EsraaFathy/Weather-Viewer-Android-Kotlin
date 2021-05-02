@@ -48,11 +48,13 @@ class Favourit : Fragment() {
 
         favouriteViewModel.getFavDataBase().observe(this,{
             if (it.isNotEmpty()){
+                binding.recyclerViewFav.visibility=View.VISIBLE
                 binding.empty.visibility=View.GONE
                 loadFavourite(it)
                 dataList=it
             }else{
                 binding.empty.visibility=View.VISIBLE
+                binding.recyclerViewFav.visibility=View.GONE
             }
         })
 
