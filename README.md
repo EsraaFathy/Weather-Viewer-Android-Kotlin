@@ -4,11 +4,10 @@
  
 * What is Weather-Viewer?
 * How to use it?
-* Links.
 * Futures.
 * Tecgnologes uses in it.
 * Tools and IDEs uses.
-  
+* Links.  
   
   
   
@@ -25,13 +24,6 @@ dangerose statios you can enaabel it to tell you
   
 ###### **How to use it?**
 Just install it and set your favourite setting or set them as defult.
-
-
-###### **Links**
-* [Dowenload APK from here](https://drive.google.com/file/d/1N_Dys-N-5FIZ4_jbA4PQeNMvv6wG4LiA/view?usp=sharing)
-
-
-* [link to demo video from here](https://drive.google.com/file/d/1sdqu4qaUOqOiYNSN6n-noHD6-Sucobfe/view?usp=sharing)
 
 
 ###### **Futures?**
@@ -55,6 +47,12 @@ Just install it and set your favourite setting or set them as defult.
 * photoshop
 * Postman
 * Adobe XD
+
+
+###### **Links**
+* [Dowenload APK from here](https://drive.google.com/file/d/1N_Dys-N-5FIZ4_jbA4PQeNMvv6wG4LiA/view?usp=sharing)
+
+* link to demo video click the image [![link to demo video from here](https://github.com/EsraaFathy/EsraaFathy/blob/main/images/weather.png)](https://youtu.be/-pRl67B1uQ0)
 
 
 
